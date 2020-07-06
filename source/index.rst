@@ -9,6 +9,17 @@ Welcome to morelia_protocol's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :numbered:
+
+   api_types
+   get_update
+   send_message
+   all_messages
+   all_chat
+   user_info
+   register_user
+   authentication
+
 
 
 
