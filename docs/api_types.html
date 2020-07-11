@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Описание API &#8212; MoreliaTalk network protocol v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Описание методов" href="method_types.html" />
+    <link rel="prev" title="Официальная документация протокола MoreliaTalk Network" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="method_types.html" title="2. Описание методов"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Официальная документация протокола MoreliaTalk Network"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MoreliaTalk network protocol v1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Описание API</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api">
+<h1><span class="section-number">1. </span>Описание API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>Запросы между клиентом и сервером передаются в виде JSON-объекта.
+Первая пара ключ:значение определяет наименование метода.</p>
+<p>Ниже перечислены все возможные поля JSON-файла</p>
+<div class="section" id="type">
+<span id="id1"></span><h2><span class="section-number">1.1. </span>Type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h2>
+<p>В объекте Type передается тип метода.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальное имя метода из следующего списка: <a class="reference internal" href="method_types.html#all-chat"><span class="std std-ref">all_chat</span></a>, <a class="reference internal" href="method_types.html#all-messages"><span class="std std-ref">all_messages</span></a>, <a class="reference internal" href="method_types.html#authentication"><span class="std std-ref">authentication</span></a>,
+<a class="reference internal" href="method_types.html#get-update"><span class="std std-ref">get_update</span></a>, <a class="reference internal" href="method_types.html#register-user"><span class="std std-ref">register_user</span></a>, <a class="reference internal" href="method_types.html#send-message"><span class="std std-ref">send_message</span></a>, <a class="reference internal" href="method_types.html#user-info"><span class="std std-ref">user_info</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="data">
+<span id="id2"></span><h2><span class="section-number">1.2. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>В объекте Data передается основной массив информации.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>time</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Время на сервере, в секунда со времени началы эпохи (Unix-время).</p></td>
+</tr>
+<tr class="row-odd"><td><p>chat</p></td>
+<td><p><a class="reference internal" href="#chat"><span class="std std-ref">Chat</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Объект данных в виде массива типа dict.</p></td>
+</tr>
+<tr class="row-even"><td><p>message</p></td>
+<td><p><a class="reference internal" href="#message"><span class="std std-ref">Message</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Объект данных в виде массива типа dict.</p></td>
+</tr>
+<tr class="row-odd"><td><p>user</p></td>
+<td><p><a class="reference internal" href="#user"><span class="std std-ref">User</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Объект данных в виде массива типа dict.</p></td>
+</tr>
+<tr class="row-even"><td><p>meta</p></td>
+<td><p>str</p></td>
+<td><p>No</p></td>
+<td><p>Зарезервировано.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="chat">
+<span id="id3"></span><h2><span class="section-number">1.3. </span>Chat<a class="headerlink" href="#chat" title="Permalink to this headline">¶</a></h2>
+<p>В объекте Chat передается полная информация о чате (канале, группе).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер чата.</p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Время обновления чата.</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Тип чата: chat (2 пишут, 2 читают), channel (1 пишет, многие читают), group (многие пишут, многие читают).</p></td>
+</tr>
+<tr class="row-odd"><td><p>title</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Персональное имя чата (может быть не уникальным).</p></td>
+</tr>
+<tr class="row-even"><td><p>info</p></td>
+<td><p>str</p></td>
+<td><p>No</p></td>
+<td><p>Описание канала.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="message">
+<span id="id4"></span><h2><span class="section-number">1.4. </span>Message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h2>
+<p>В объекте message передается информация о сообщении.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер сообщения.</p></td>
+</tr>
+<tr class="row-odd"><td><p>text</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Текст сообщения.</p></td>
+</tr>
+<tr class="row-even"><td><p>from_user</p></td>
+<td><p><a class="reference internal" href="#from-user"><span class="std std-ref">From_user</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Объект в ввиде массива типа dict. Информация о пользователе который написал это сообщение.</p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Время когда сообщение было написано.</p></td>
+</tr>
+<tr class="row-even"><td><p>from_chat</p></td>
+<td><p><a class="reference internal" href="#from-chat"><span class="std std-ref">From_chat</span></a></p></td>
+<td><p>Yes</p></td>
+<td><p>Объект в ввиде массива типа dict. К какому чату принадлежит это сообщение.</p></td>
+</tr>
+<tr class="row-odd"><td><p>file</p></td>
+<td><p><a class="reference internal" href="#file"><span class="std std-ref">File</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Объект в ввиде массива типа dict. Файл прикреплённый к сообщению (аудио, видео, фото, документ).</p></td>
+</tr>
+<tr class="row-even"><td><p>emoji</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Тип емоджи (в виде файла).</p></td>
+</tr>
+<tr class="row-odd"><td><p>edited_message</p></td>
+<td><p><a class="reference internal" href="#edited-message"><span class="std std-ref">edited_message</span></a></p></td>
+<td><p>No</p></td>
+<td><p>Объект в ввиде массива типа dict. Информация о редактировании сообщения, а так же о дате редактирования.</p></td>
+</tr>
+<tr class="row-even"><td><p>reply_to</p></td>
+<td><p>Any</p></td>
+<td><p>No</p></td>
+<td><p>Ссылка на цитируемое сообщение.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-user">
+<span id="id5"></span><h2><span class="section-number">1.5. </span>From_user<a class="headerlink" href="#from-user" title="Permalink to this headline">¶</a></h2>
+<p>в объекте from_user передается информация о пользователе который написал сообщение.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер пользователя.</p></td>
+</tr>
+<tr class="row-odd"><td><p>username</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Имя пользователя.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-chat">
+<span id="id6"></span><h2><span class="section-number">1.6. </span>From_chat<a class="headerlink" href="#from-chat" title="Permalink to this headline">¶</a></h2>
+<p>В объекте from_chat передается информация о id чата к которому принадлежит сообщение.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер чата</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="file">
+<span id="id7"></span><h2><span class="section-number">1.7. </span>File<a class="headerlink" href="#file" title="Permalink to this headline">¶</a></h2>
+<p>В объекте file передаются файлы, которые пользователь прикрепил к сообщению.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>picture</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Изображение.</p></td>
+</tr>
+<tr class="row-odd"><td><p>video</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Видео.</p></td>
+</tr>
+<tr class="row-even"><td><p>audio</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Аудио.</p></td>
+</tr>
+<tr class="row-odd"><td><p>document</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Документ.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="edited-message">
+<span id="id8"></span><h2><span class="section-number">1.8. </span>edited_message<a class="headerlink" href="#edited-message" title="Permalink to this headline">¶</a></h2>
+<p>В объекте edited_message передается информация об исправлении сообщения, а так же дата последнего редактирования.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>time</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Время когда пользователь последний раз исправил сообщение.</p></td>
+</tr>
+<tr class="row-odd"><td><p>status</p></td>
+<td><p>bool</p></td>
+<td><p>Yes</p></td>
+<td><p>Статус сообщения (исправлено или нет).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="user">
+<span id="id9"></span><h2><span class="section-number">1.9. </span>User<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h2>
+<p>В объекте user передается информация о пользователе (настройки пользователя).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер пользователя.</p></td>
+</tr>
+<tr class="row-odd"><td><p>bio</p></td>
+<td><p>str</p></td>
+<td><p>No</p></td>
+<td><p>Информация о пользователе.</p></td>
+</tr>
+<tr class="row-even"><td><p>avatar</p></td>
+<td><p>bytes</p></td>
+<td><p>No</p></td>
+<td><p>Изображение пользователя.</p></td>
+</tr>
+<tr class="row-odd"><td><p>password</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Пароль пользователя.</p></td>
+</tr>
+<tr class="row-even"><td><p>login</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Логин пользователя.</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_bot</p></td>
+<td><p>bool</p></td>
+<td><p>Yes</p></td>
+<td><p>Указывает на тип пользователя (бот или человек).</p></td>
+</tr>
+<tr class="row-even"><td><p>auth_id</p></td>
+<td><p>bytes</p></td>
+<td><p>Yes</p></td>
+<td><p>Хэш пароля.</p></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>EmailStr</p></td>
+<td><p>Yes</p></td>
+<td><p>Контактная информация (адрес почты) пользователя.</p></td>
+</tr>
+<tr class="row-even"><td><p>username</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Имя пользователя (не уникальное).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="errors">
+<span id="id10"></span><h2><span class="section-number">1.10. </span>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<p>В объекте errors передается информация о результате выполнения запроса.
+Коды ошибок (и их значения) такие же как и в протоколе HTTP.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Уникальный номер ошибки</p></td>
+</tr>
+<tr class="row-odd"><td><p>time</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Время когда произошла ошибка</p></td>
+</tr>
+<tr class="row-even"><td><p>status</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Статус ошибки (в соответствии с таблицей кодов состояний HTTP-протокола)</p></td>
+</tr>
+<tr class="row-odd"><td><p>code</p></td>
+<td><p>int</p></td>
+<td><p>Yes</p></td>
+<td><p>Код ошибки (в соответствии с таблицей кодов состояний HTTP-протокола)</p></td>
+</tr>
+<tr class="row-even"><td><p>detail</p></td>
+<td><p>str</p></td>
+<td><p>Yes</p></td>
+<td><p>Описание ошибки.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="jsonapi">
+<h2><span class="section-number">1.11. </span>Объект Jsonapi<a class="headerlink" href="#jsonapi" title="Permalink to this headline">¶</a></h2>
+<p>В объекте jsonapi передается версия протокола.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>version</p></td>
+<td><p>float</p></td>
+<td><p>Yes</p></td>
+<td><p>Версия протокола.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="meta">
+<h2><span class="section-number">1.12. </span>Объект Meta<a class="headerlink" href="#meta" title="Permalink to this headline">¶</a></h2>
+<p>Объект meta зарезервирован.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 55%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ключ</p></th>
+<th class="head"><p>Тип</p></th>
+<th class="head"><p>Обязательный</p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>meta</p></td>
+<td><p>Any</p></td>
+<td><p>No</p></td>
+<td><p>Зарезервировано.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Описание API</a><ul>
+<li><a class="reference internal" href="#type">1.1. Type</a></li>
+<li><a class="reference internal" href="#data">1.2. Data</a></li>
+<li><a class="reference internal" href="#chat">1.3. Chat</a></li>
+<li><a class="reference internal" href="#message">1.4. Message</a></li>
+<li><a class="reference internal" href="#from-user">1.5. From_user</a></li>
+<li><a class="reference internal" href="#from-chat">1.6. From_chat</a></li>
+<li><a class="reference internal" href="#file">1.7. File</a></li>
+<li><a class="reference internal" href="#edited-message">1.8. edited_message</a></li>
+<li><a class="reference internal" href="#user">1.9. User</a></li>
+<li><a class="reference internal" href="#errors">1.10. Errors</a></li>
+<li><a class="reference internal" href="#jsonapi">1.11. Объект Jsonapi</a></li>
+<li><a class="reference internal" href="#meta">1.12. Объект Meta</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Официальная документация протокола MoreliaTalk Network</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="method_types.html"
+                        title="next chapter"><span class="section-number">2. </span>Описание методов</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api_types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="method_types.html" title="2. Описание методов"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Официальная документация протокола MoreliaTalk Network"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MoreliaTalk network protocol v1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Описание API</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Stepan Skriabin.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.1.
+    </div>
+  </body>
+</html>
