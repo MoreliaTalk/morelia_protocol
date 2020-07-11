@@ -11,7 +11,27 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 * [Описание API](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-api)
   * [Объект type](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-type)
+  * [Объект data](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-data)
+  * [Объект chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-chat)
+  * [Объект message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-message)
+  * [Объект from_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_user)
+  * [Объект from_chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_chat)
+  * [Объект file](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-file)
+  * [Объект edited_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-edited_message)
+  * [Объект user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-user)
+  * [Объект errors](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-errors)
+  * [Объект jsonapi](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-jsonapi)
   * [Объект meta](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-meta)
+* [Пример JSON-объекта](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-json-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0)
+* [Схема валидации](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D0%B8)
+* [Описание методов](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2)
+  * [Метод get_update](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-get_update)
+  * [Метод send_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-send_message)
+  * [Метод all_messages](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_messages)
+  * [Метод all_chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_chat)
+  * [Метод user_info](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
+  * [Метод register_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
+  * [Метод authentication](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
 
 ## Описание API
 
