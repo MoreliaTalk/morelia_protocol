@@ -7,6 +7,12 @@
 MoreliaTalk protocol создан для унификации взаимодействия между клиентом и сервером, используется в MoreliaTalk Network.
 Интерфейс взаимодействия реализован через ВебСокеты, путём отправки JSON-объекта. Значение первого поля JSON-объекта является именем метода.
 
+Содержание:
+
+* [Описание API](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-api)
+  * [Объект type](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-type)
+  * [Объект meta](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-meta)
+
 ## Описание API
 
 Запросы между клиентом и сервером передаются в виде JSON-объекта.
@@ -64,7 +70,7 @@ reply_to | Any | No | Ссылка на цитируемое сообщение.
 
 ### Объект from_user
 
-в объекте from_user передается информация о пользователе который написал сообщение.
+В объекте from_user передается информация о пользователе который написал сообщение.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
