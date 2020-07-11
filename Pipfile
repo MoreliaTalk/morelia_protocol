@@ -4,13 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
+
 
 [packages]
-sphinx = "*"
-doc8 = "*"
-rstcheck = "*"
-sphinx-autobuild = "*"
+
 
 [requires]
 python_version = "3.8"
