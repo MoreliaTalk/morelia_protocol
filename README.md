@@ -1,6 +1,6 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **10.07.2020**
+Актуально на: **19.07.2020**
 
 Версия протокола: **1.0**
 
@@ -15,7 +15,7 @@ MoreliaTalk protocol создан для унификации взаимодей
   * [Объект chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-chat)
   * [Объект message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-message)
   * [Объект from_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_user)
-  * [Объект from_chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_chat)
+  * [Объект from_flow](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_flow)
   * [Объект file](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-file)
   * [Объект edited_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-edited_message)
   * [Объект user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-user)
@@ -60,15 +60,20 @@ message | message | No | Объект данных в виде массива т
 user | user | No | Объект данных в виде массива типа dict.
 meta | str | No | Зарезервировано.
 
-### Объект chat
+### Объект flow
 
-В объекте Chat передается полная информация о чате (канале, группе).
+В объекте Flow передается полная информация о потоке (чате, канале, группе).
+Всего существуют три типа потока:
+
+* chat (2 пишут, 2 читают)
+* channel (1 пишет, многие читают)
+* group (многие пишут, многие читают)
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 id | int | Yes | Уникальный номер чата.
 time | int | Yes | Время обновления чата.
-type | str | Yes | Тип чата: chat (2 пишут, 2 читают), channel (1 пишет, многие читают), group (многие пишут, многие читают).
+type | str | Yes | Тип потока.
 title | str | Yes | Персональное имя чата (может быть не уникальным).
 info | str | No | Описание чата.
 
@@ -82,7 +87,7 @@ id | int | Yes | Уникальный номер сообщения.
 text | str | Yes | Текст сообщения.
 from_user | from_user | Yes | Объект в ввиде массива типа dict. Информация о пользователе который написал это сообщение.
 time | int | Yes | Время когда сообщение было написано.
-from_chat | from_chat | Yes | Объект в ввиде массива типа dict. Информация к какому чату принадлежит это сообщение.
+from_flow | from_flow | Yes | Объект в ввиде массива типа dict. Информация к какому чату принадлежит это сообщение.
 file | file | No | Объект в ввиде массива типа dict. Файл-вложение к сообщению (аудио, видео, фото, документ).
 emoji | bytes | No | Тип емоджи (в виде файла).
 edited_message | edited_message | No | Объект в ввиде массива типа dict. Информация о редактировании сообщения, а так же о дате редактирования.
@@ -97,13 +102,14 @@ reply_to | Any | No | Ссылка на цитируемое сообщение.
 id | int | Yes | Уникальный номер пользователя.
 username | str | Yes | Имя пользователя.
 
-### Объект from_chat
+### Объект from_flow
 
-В объекте from_chat передается информация об id чата к которому относится message (сообщение).
+В объекте from_flow передается информация об id потока к которому относится message (сообщение).
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-id | int | Yes | Уникальный номер чата
+id | int | Yes | Уникальный номер потока.
+type | str | Yes | Тип потока.
 
 ### Объект file
 
@@ -177,7 +183,7 @@ meta | Any | No | Зарезервировано.
     'type': 'user_info',
     'data': {
         'time': 1594492370.5225992,
-        'chat': {
+        'flow': {
             'id': 1254,
             'time': 1594492370.5225992,
             'type': 'chat',
@@ -192,8 +198,9 @@ meta | Any | No | Зарезервировано.
                 'username': 'Vasya'
                 },
             'time': 1594492370.5225992,
-            'from_chat': {
-                'id': 123655455
+            'from_flow': {
+                'id': 123655455,
+                'type': 'chat'
                 },
             'file': {
                 'picture': 'jkfikdkdsd',
@@ -247,13 +254,13 @@ meta | Any | No | Зарезервировано.
       "type": "string"
     },
     "data": {
-      "$ref": "#/definitions/APIData"
+      "$ref": "#/definitions/Data"
     },
     "errors": {
-      "$ref": "#/definitions/APIErrors"
+      "$ref": "#/definitions/Errors"
     },
     "jsonapi": {
-      "$ref": "#/definitions/APIVersion"
+      "$ref": "#/definitions/Version"
     },
     "meta": {
       "title": "Meta"
@@ -264,7 +271,7 @@ meta | Any | No | Зарезервировано.
     "jsonapi"
   ],
   "definitions": {
-    "APIChat": {
+    "Flow": {
       "title": "List of chat rooms with their description and type",
       "type": "object",
       "properties": {
@@ -293,7 +300,7 @@ meta | Any | No | Зарезервировано.
         "id"
       ]
     },
-    "APIMessageFromUser": {
+    "MessageFromUser": {
       "title": "Information about forwarded message user",
       "type": "object",
       "properties": {
@@ -311,20 +318,25 @@ meta | Any | No | Зарезервировано.
         "username"
       ]
     },
-    "APIFromChat": {
+    "FromFlow": {
       "title": "Information from chat id",
       "type": "object",
       "properties": {
         "id": {
           "title": "Id",
           "type": "integer"
+        },
+        "type": {
+          "title": "Type",
+          "type": "string"
         }
       },
       "required": [
-        "id"
+        "id",
+        "type"
       ]
     },
-    "APIFile": {
+    "File": {
       "title": "Files attached to the message",
       "type": "object",
       "properties": {
@@ -350,7 +362,7 @@ meta | Any | No | Зарезервировано.
         }
       }
     },
-    "APIEditedMessage": {
+    "EditedMessage": {
       "title": "Time of editing the message",
       "type": "object",
       "properties": {
@@ -368,7 +380,7 @@ meta | Any | No | Зарезервировано.
         "status"
       ]
     },
-    "APIMessage": {
+    "Message": {
       "title": "Message options",
       "type": "object",
       "properties": {
@@ -381,17 +393,17 @@ meta | Any | No | Зарезервировано.
           "type": "string"
         },
         "from_user": {
-          "$ref": "#/definitions/APIMessageFromUser"
+          "$ref": "#/definitions/MessageFromUser"
         },
         "time": {
           "title": "Time",
           "type": "integer"
         },
-        "from_chat": {
-          "$ref": "#/definitions/APIFromChat"
+        "from_flow": {
+          "$ref": "#/definitions/FromChat"
         },
         "file": {
-          "$ref": "#/definitions/APIFile"
+          "$ref": "#/definitions/File"
         },
         "emoji": {
           "title": "Emoji",
@@ -399,7 +411,7 @@ meta | Any | No | Зарезервировано.
           "format": "binary"
         },
         "edited": {
-          "$ref": "#/definitions/APIEditedMessage"
+          "$ref": "#/definitions/EditedMessage"
         },
         "reply_to": {
           "title": "Reply To"
@@ -410,7 +422,7 @@ meta | Any | No | Зарезервировано.
         "time"
       ]
     },
-    "APIUser": {
+    "User": {
       "title": "User information",
       "type": "object",
       "properties": {
@@ -458,7 +470,7 @@ meta | Any | No | Зарезервировано.
         "auth_id"
       ]
     },
-    "APIData": {
+    "Data": {
       "title": "Main data-object",
       "type": "object",
       "properties": {
@@ -467,20 +479,20 @@ meta | Any | No | Зарезервировано.
           "type": "integer"
         },
         "chat": {
-          "$ref": "#/definitions/APIChat"
+          "$ref": "#/definitions/Chat"
         },
         "message": {
-          "$ref": "#/definitions/APIMessage"
+          "$ref": "#/definitions/Message"
         },
         "user": {
-          "$ref": "#/definitions/APIUser"
+          "$ref": "#/definitions/User"
         },
         "meta": {
           "title": "Meta"
         }
       }
     },
-    "APIErrors": {
+    "Errors": {
       "title": "Error information and statuses of request processing",
       "type": "object",
       "properties": {
@@ -513,7 +525,7 @@ meta | Any | No | Зарезервировано.
         "detail"
       ]
     },
-    "APIVersion": {
+    "Version": {
       "title": "Protocol version",
       "type": "object",
       "properties": {
@@ -547,7 +559,7 @@ meta | Any | No | Зарезервировано.
     'type': 'get_update',
     'data': {
         'time': 1594492370.5225992,
-        'chat': {
+        'flow': {
             'id': 123
             },
         'user': {
@@ -570,7 +582,7 @@ meta | Any | No | Зарезервировано.
     'type': 'get_update',
     'data': {
         'time': 1594492370.5225992,
-        'chat': {
+        'flow': {
             'id': 1254,
             'time': 1594492370.5225992,
             'type': 'chat',
@@ -585,8 +597,9 @@ meta | Any | No | Зарезервировано.
                 'username': 'Vasya'
                 },
             'time': 1594492370.5225992,
-            'from_chat': {
-                'id': 123655455
+            'from_flow': {
+                'id': 123655455,
+                'type': 'chat'
                 },
             'file': {
                 'picture': 'jkfikdkdsd',
@@ -638,7 +651,7 @@ meta | Any | No | Зарезервировано.
 {
     'type': 'send_message',
     'data': {
-        'chat': {
+        'flow': {
             'id': 123,
             'time': 1594492370.5225992,
             'type': 'chat'
@@ -651,8 +664,9 @@ meta | Any | No | Зарезервировано.
                 'username': 'User'
             },
             'time': 1594492370.5225992,
-            'from_chat': {
-                'id': 5656565656
+            'from_flow': {
+                'id': 5656565656,
+                'type': 'chat'
             },
             'file': {
                 'picture': 'jkfikdkdsd',
@@ -746,8 +760,9 @@ meta | Any | No | Зарезервировано.
                 'username': 'Vasya'
                 },
             'time': 1594492370.5225992,
-            'from_chat': {
-                'id': 123655455
+            'from_flow': {
+                'id': 123655455,
+                'type': 'chat'
                 },
             'file': {
                 'picture': 'jkfikdkdsd',
@@ -824,7 +839,7 @@ meta | Any | No | Зарезервировано.
             'id': 556565656,
             'auth_id': 'jkds78dsids89ds89sd'
             },
-        'chat': {
+        'flow': {
             'id': 5655,
             'time': 1594492370.5225992,
             'type': 'chat',
