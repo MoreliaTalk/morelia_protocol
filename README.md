@@ -1,6 +1,6 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **22.07.2020**
+Актуально на: **23.07.2020**
 
 Версия протокола: **1.0**
 
@@ -32,6 +32,7 @@ MoreliaTalk protocol создан для унификации взаимодей
   * [Метод user_info](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
   * [Метод register_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
   * [Метод authentication](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
+  * [Метод delete_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-delete_user)
 
 ## Описание API
 
@@ -46,7 +47,7 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_chat, all_messages, authentication, get_update, register_user, send_message, user_info.
+type | str | Yes | Уникальное имя метода из следующего списка: all_chat, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
 
 ### Объект data
 
@@ -1004,6 +1005,57 @@ meta | Any | No | Зарезервировано.
         'time': 1594492370.5225992,
         'user': {
             'id': 5654665416541,
+            'auth_id': 'lkds89ds89fd98fd'
+            },
+        'meta': None
+        },
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+### Метод delete_user
+
+Метод позволяет клиенту удалить пользователя.
+
+Пример запроса:
+
+```python
+{
+    'type': 'delete_user',
+    'data': {
+        'user': {
+            'password': 'ds45ds45fd45fd',
+            'login': 'User',
+            'username': 'User1'
+            },
+        'meta': None
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+Пример ответа:
+
+```python
+{
+    'type': 'delete_user',
+    'data': {
+        'user': {
+            'id': 5345634567354
+            'login': 'User',
             'auth_id': 'lkds89ds89fd98fd'
             },
         'meta': None
