@@ -28,7 +28,7 @@ MoreliaTalk protocol создан для унификации взаимодей
   * [Метод get_update](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-get_update)
   * [Метод send_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-send_message)
   * [Метод all_messages](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_messages)
-  * [Метод all_chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_chat)
+  * [Метод all_flow](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_flow)
   * [Метод user_info](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
   * [Метод register_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
   * [Метод authentication](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
@@ -47,7 +47,7 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_chat, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
+type | str | Yes | Уникальное имя метода из следующего списка: all_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
 
 ### Объект data
 
@@ -805,7 +805,7 @@ meta | Any | No | Зарезервировано.
     }
 ```
 
-### Метод all_chat
+### Метод all_flow
 
 Метод позволяет получить от сервера перечень и нформацию обо всех чатах.
 Под чатами подразумеваются чаты, группы, каналы.
@@ -814,7 +814,7 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_chat',
+    'type': 'all_flow',
     'data': {
         'user': {
             'id': 111111111,
@@ -833,7 +833,7 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_chat',
+    'type': 'all_flow',
     'data': {
         'time': 1594492370.5225992,
         'user': {
