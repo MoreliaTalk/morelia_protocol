@@ -1,6 +1,6 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **23.07.2020**
+Актуально на: **25.07.2020**
 
 Версия протокола: **1.0**
 
@@ -9,37 +9,63 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Содержание:
 
-* [Описание API](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-api)
-  * [Объект type](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-type)
-  * [Объект data](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-data)
-  * [Объект chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-chat)
-  * [Объект message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-message)
-  * [Объект from_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_user)
-  * [Объект from_flow](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_flow)
-  * [Объект file](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-file)
-  * [Объект edited_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-edited_message)
-  * [Объект user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-user)
-  * [Объект errors](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-errors)
-  * [Объект jsonapi](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-jsonapi)
-  * [Объект meta](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-meta)
-* [Пример JSON-объекта](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-json-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0)
-* [Схема валидации](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D0%B8)
-* [Описание методов](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2)
-  * [Метод get_update](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-get_update)
-  * [Метод send_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-send_message)
-  * [Метод all_messages](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_messages)
-  * [Метод all_chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_chat)
-  * [Метод user_info](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
-  * [Метод register_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
-  * [Метод authentication](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
-  * [Метод delete_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-delete_user)
+- [Официальная документация протокола MoreliaTalk Network](#официальная-документация-протокола-moreliatalk-network)
+  - [Описание API](#описание-api)
+    - [Объект type](#объект-type)
+    - [Объект data](#объект-data)
+    - [Объект flow](#объект-flow)
+    - [Объект message](#объект-message)
+    - [Объект from_user](#объект-from_user)
+    - [Объект from_flow](#объект-from_flow)
+    - [Объект file](#объект-file)
+    - [Объект edited_message](#объект-edited_message)
+    - [Объект user](#объект-user)
+    - [Объект errors](#объект-errors)
+    - [Объект jsonapi](#объект-jsonapi)
+    - [Объект meta](#объект-meta)
+    - [Пример JSON-объекта](#пример-json-объекта)
+    - [Схема валидации](#схема-валидации)
+  - [Описание методов](#описание-методов)
+    - [Метод get_update](#метод-get_update)
+    - [Метод send_message](#метод-send_message)
+    - [Метод all_messages](#метод-all_messages)
+    - [Метод all_flow](#метод-all_flow)
+    - [Метод user_info](#метод-user_info)
+    - [Метод register_user](#метод-register_user)
+    - [Метод authentication](#метод-authentication)
+    - [Метод delete_user](#метод-delete_user)
+    - [Метод delete_message](#метод-delete_message)
+    - [Метод edited_message](#метод-edited_message)
+  - [Описание ошибок](#описание-ошибок)
+    - [Код 200 статус 'Ok'](#код-200-статус-ok)
+    - [Код 201 статус 'Created'](#код-201-статус-created)
+    - [Код 202 статус 'Accepted'](#код-202-статус-accepted)
+    - [Код 400 статус 'Bad Request'](#код-400-статус-bad-request)
+    - [Код 401 статус 'Unauthorized'](#код-401-статус-unauthorized)
+    - [Код 403 статус 'Forbidden'](#код-403-статус-forbidden)
+    - [Код 404 статус 'Not Found'](#код-404-статус-not-found)
+    - [Код 405 статус 'Method Not Allowed'](#код-405-статус-method-not-allowed)
+    - [Код 408 статус 'Request Timeout'](#код-408-статус-request-timeout)
+    - [Код 415 статус 'Unsupported Media Type'](#код-415-статус-unsupported-media-type)
+    - [Код 417 статус 'Expectation Failed'](#код-417-статус-expectation-failed)
+    - [Код 426 статус 'Upgrade Required'](#код-426-статус-upgrade-required)
+    - [Код 429 статус 'Too Many Requests'](#код-429-статус-too-many-requests)
+    - [Код 499 статус 'Client Closed Request'](#код-499-статус-client-closed-request)
+    - [Код 500 статус 'Internal Server Error'](#код-500-статус-internal-server-error)
+    - [Код 503 статус 'Service Unavailable'](#код-503-статус-service-unavailable)
+    - [Код 526 статус 'Invalid SSL Certificate'](#код-526-статус-invalid-ssl-certificate)
 
 ## Описание API
 
-Запросы между клиентом и сервером передаются в виде JSON-объекта.
-Первая пара _ключ:значение_ определяет тип метода.
+Запросы между клиентом и сервером передаются в виде JSON-объекта. Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
 
-Ниже перечислены все возможные поля JSON-файла
+* Первая пара _ключ:значение_ (объект `Type`) устанавливает тип метода. Клиент/сервер обрабатывают запрос в соответсвии с типом метода.
+* Вторая пара _ключ:значение_ (объект `Data`) передает массив данных соответствующих запросу.
+* Третья пара _ключ:значение_ (объект `JSONapi`) передает информацию о статусе выполенения запроса, коды статусов соответствуют кодам протокола HTTP.
+* Четвёртая пара _ключ:значение_ (объект `JSONapi`) передает информацию об используемом протоколе.
+* Пятая пара _ключ:значение_ (объект `Meta`) резервная, для дальнейшего расширения протокола.
+
+Ниже перечислены все возможные поля JSON-объекта.
 
 ### Объект type
 
@@ -47,7 +73,7 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_chat, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
+type | str | Yes | Уникальное имя метода из следующего списка: all_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
 
 ### Объект data
 
@@ -179,6 +205,8 @@ meta | Any | No | Зарезервировано.
 
 ### Пример JSON-объекта
 
+Содержание JSON-объекта в виде python dict содержащем все используемые поля.
+
 ```python
 {
     'type': 'user_info',
@@ -244,6 +272,8 @@ meta | Any | No | Зарезервировано.
 ```
 
 ### Схема валидации
+
+"Эталонная" схема валидации данных.
 
 ```python
 {
@@ -548,6 +578,7 @@ meta | Any | No | Зарезервировано.
 Имя метода передается как значение ключа type внутри JSON-объекта.
 Передача имени метода происходит как при запросе, так и при ответе.
 Ниже описаны примеры запросов и ответы на них.
+Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
 
 ### Метод get_update
 
@@ -805,7 +836,7 @@ meta | Any | No | Зарезервировано.
     }
 ```
 
-### Метод all_chat
+### Метод all_flow
 
 Метод позволяет получить от сервера перечень и нформацию обо всех чатах.
 Под чатами подразумеваются чаты, группы, каналы.
@@ -814,7 +845,7 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_chat',
+    'type': 'all_flow',
     'data': {
         'user': {
             'id': 111111111,
@@ -833,7 +864,7 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_chat',
+    'type': 'all_flow',
     'data': {
         'time': 1594492370.5225992,
         'user': {
@@ -1072,4 +1103,346 @@ meta | Any | No | Зарезервировано.
         },
     'meta': None
     }
+```
+
+### Метод delete_message
+
+Метод позволяет клиенту удалить своё сообщение.
+
+Пример запроса:
+
+```python
+{
+    'type': 'delete_message',
+    'data': {
+        'flow': {
+            'id': 123
+            },
+        'message': {
+            'id': 858585,
+            'time': 1594492370.5225992
+            },
+        'user': {
+            'id': 5345634567354,
+            'auth_id': 'lkds89ds89fd98fd'
+            },
+        'meta': None
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+Пример ответа:
+
+```python
+{
+    'type': 'delete_message',
+    'data': None,
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+### Метод edited_message
+
+Метод позволяет клиенту отредактировать своё сообщение.
+
+Пример запроса:
+
+```python
+{
+    'type': 'edited_message',
+    'data': {
+        'flow': {
+            'id': 123
+            },
+        'message': {
+            'id': 858585,
+            'text': 'Hello!',
+            'time': 1594492370.5225992
+            },
+        'user': {
+            'id': 5345634567354,
+            'auth_id': 'lkds89ds89fd98fd'
+            },
+        'meta': None
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+Пример ответа:
+
+```python
+{
+    'type': 'edited_message',
+    'data': None,
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+## Описание ошибок
+
+Информация о коде состояния запроса передается в поле Errors. Ниже приведены все варианты кодов состояния запроса.
+
+### Код 200 статус 'Ok'
+
+Команда выполнена успешно.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        }
+```
+
+### Код 201 статус 'Created'
+
+Объект (пользователь) создан.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Created',
+        'code': 201,
+        'detail': 'Created'
+        }
+```
+
+### Код 202 статус 'Accepted'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Accepted',
+        'code': 202,
+        'detail': 'Accepted'
+        }
+```
+
+### Код 400 статус 'Bad Request'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Bad Request',
+        'code': 400,
+        'detail': 'Bad Request'
+        }
+```
+
+### Код 401 статус 'Unauthorized'
+
+Ошибка авторизации. Неверный логин или пароль.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Unauthorized',
+        'code': 401,
+        'detail': 'Unauthorized'
+        }
+```
+
+### Код 403 статус 'Forbidden'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Forbidden',
+        'code': 403,
+        'detail': 'Forbidden'
+        }
+```
+
+### Код 404 статус 'Not Found'
+
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Not Found',
+        'code': 404,
+        'detail': 'Not Found'
+        }
+```
+
+### Код 405 статус 'Method Not Allowed'
+
+Такой запрос недоступен. Возможно клиент использует старый API.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OMethod Not AllowedK',
+        'code': 405,
+        'detail': 'Method Not Allowed'
+        }
+```
+
+### Код 408 статус 'Request Timeout'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Request Timeout',
+        'code': 408,
+        'detail': 'Request Timeout'
+        }
+```
+
+### Код 415 статус 'Unsupported Media Type'
+
+Неподдерживаемый тип данных (не пройдена валидация).
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Unsupported Media Type',
+        'code': 415,
+        'detail': 'Unsupported Media Type'
+        }
+```
+
+### Код 417 статус 'Expectation Failed'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Expectation Failed',
+        'code': 417,
+        'detail': 'Expectation Failed'
+        }
+```
+
+### Код 426 статус 'Upgrade Required'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Upgrade Required',
+        'code': 426,
+        'detail': 'Upgrade Required'
+        }
+```
+
+### Код 429 статус 'Too Many Requests'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Too Many Requests',
+        'code': 429,
+        'detail': 'Too Many Requests'
+        }
+```
+
+### Код 499 статус 'Client Closed Request'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Client Closed Request',
+        'code': 499,
+        'detail': 'Client Closed Request'
+        }
+```
+
+### Код 500 статус 'Internal Server Error'
+
+Серверу настала жопа.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Internal Server Error',
+        'code': 500,
+        'detail': 'Internal Server Error'
+        }
+```
+
+### Код 503 статус 'Service Unavailable'
+
+_Дополнить_
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Service Unavailable',
+        'code': 503,
+        'detail': 'Service Unavailable'
+        }
+```
+
+### Код 526 статус 'Invalid SSL Certificate'
+
+Недействительный сертификат SSL.
+
+```python
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'Invalid SSL Certificate',
+        'code': 526,
+        'detail': 'Invalid SSL Certificate'
+        }
 ```
