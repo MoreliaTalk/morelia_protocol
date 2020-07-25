@@ -1,6 +1,6 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **23.07.2020**
+Актуально на: **24.07.2020**
 
 Версия протокола: **1.0**
 
@@ -9,37 +9,47 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Содержание:
 
-* [Описание API](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-api)
-  * [Объект type](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-type)
-  * [Объект data](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-data)
-  * [Объект chat](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-chat)
-  * [Объект message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-message)
-  * [Объект from_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_user)
-  * [Объект from_flow](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_flow)
-  * [Объект file](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-file)
-  * [Объект edited_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-edited_message)
-  * [Объект user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-user)
-  * [Объект errors](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-errors)
-  * [Объект jsonapi](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-jsonapi)
-  * [Объект meta](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-meta)
-* [Пример JSON-объекта](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-json-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0)
-* [Схема валидации](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D0%B8)
-* [Описание методов](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2)
-  * [Метод get_update](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-get_update)
-  * [Метод send_message](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-send_message)
-  * [Метод all_messages](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_messages)
-  * [Метод all_flow](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_flow)
-  * [Метод user_info](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
-  * [Метод register_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
-  * [Метод authentication](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
-  * [Метод delete_user](https://github.com/MoreliaTalk/morelia_protocol/tree/develop#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-delete_user)
+* [Описание API](#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-api)
+  * [Объект type](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-type)
+  * [Объект data](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-data)
+  * [Объект chat](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-chat)
+  * [Объект message](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-message)
+  * [Объект from_user](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_user)
+  * [Объект from_flow](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-from_flow)
+  * [Объект file](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-file)
+  * [Объект edited_message](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-edited_message)
+  * [Объект user](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-user)
+  * [Объект errors](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-errors)
+  * [Объект jsonapi](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-jsonapi)
+  * [Объект meta](#%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82-meta)
+* [Пример JSON-объекта](#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-json-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0)
+* [Схема валидации](#%D1%81%D1%85%D0%B5%D0%BC%D0%B0-%D0%B2%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D0%B8)
+* [Описание методов](#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2)
+  * [Метод get_update](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-get_update)
+  * [Метод send_message](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-send_message)
+  * [Метод all_messages](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_messages)
+  * [Метод all_flow](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-all_flow)
+  * [Метод user_info](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-user_info)
+  * [Метод register_user](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-register_user)
+  * [Метод authentication](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-authentication)
+  * [Метод delete_user](#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-delete_user)
+  * [Метод delete_message](#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4-delete_message)
+  * [Метод edited_message](#%D0%9C%D0%B5%D1%82%D0%BE%D0%B4-edited_message)
+* [Описание ошибок](#%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BE%D1%88%D0%B8%D0%B1%D0%BE%D0%BA)
+  * [Код 200 статус 'Ok'](#%D0%9A%D0%BE%D0%B4-200-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%27Ok%27)
+  * [Код 400 статус 'Bad Request'](#%D0%9A%D0%BE%D0%B4-400-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-%27Bad-Request%27)
 
 ## Описание API
 
-Запросы между клиентом и сервером передаются в виде JSON-объекта.
-Первая пара _ключ:значение_ определяет тип метода.
+Запросы между клиентом и сервером передаются в виде JSON-объекта. Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
 
-Ниже перечислены все возможные поля JSON-файла
+* Первая пара _ключ:значение_ (объект `Type`) устанавливает тип метода. Клиент/сервер обрабатывают запрос в соответсвии с типом метода.
+* Вторая пара _ключ:значение_ (объект `Data`) передает массив данных соответствующих запросу.
+* Третья пара _ключ:значение_ (объект `JSONapi`) передает информацию о статусе выполенения запроса, коды статусов соответствуют кодам протокола HTTP.
+* Четвёртая пара _ключ:значение_ (объект `JSONapi`) передает информацию об используемом протоколе.
+* Пятая пара _ключ:значение_ (объект `Meta`) резервная, для дальнейшего расширения протокола.
+
+Ниже перечислены все возможные поля JSON-объекта.
 
 ### Объект type
 
@@ -179,6 +189,8 @@ meta | Any | No | Зарезервировано.
 
 ### Пример JSON-объекта
 
+Содержание JSON-объекта в виде python dict содержащем все используемые поля.
+
 ```python
 {
     'type': 'user_info',
@@ -244,6 +256,8 @@ meta | Any | No | Зарезервировано.
 ```
 
 ### Схема валидации
+
+"Эталонная" схема валидации данных.
 
 ```python
 {
@@ -548,6 +562,7 @@ meta | Any | No | Зарезервировано.
 Имя метода передается как значение ключа type внутри JSON-объекта.
 Передача имени метода происходит как при запросе, так и при ответе.
 Ниже описаны примеры запросов и ответы на них.
+Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
 
 ### Метод get_update
 
@@ -1073,3 +1088,111 @@ meta | Any | No | Зарезервировано.
     'meta': None
     }
 ```
+
+### Метод delete_message
+
+Метод позволяет клиенту удалить своё сообщение.
+
+Пример запроса:
+
+```python
+{
+    'type': 'delete_message',
+    'data': {
+        'flow': {
+            'id': 123
+            },
+        'message': {
+            'id': 858585,
+            'time': 1594492370.5225992
+            },
+        'user': {
+            'id': 5345634567354,
+            'auth_id': 'lkds89ds89fd98fd'
+            },
+        'meta': None
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+Пример ответа:
+
+```python
+{
+    'type': 'delete_message',
+    'data': None,
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+### Метод edited_message
+
+Метод позволяет клиенту отредактировать своё сообщение.
+
+Пример запроса:
+
+```python
+{
+    'type': 'edited_message',
+    'data': {
+        'flow': {
+            'id': 123
+            },
+        'message': {
+            'id': 858585,
+            'text': 'Hello!',
+            'time': 1594492370.5225992
+            },
+        'user': {
+            'id': 5345634567354,
+            'auth_id': 'lkds89ds89fd98fd'
+            },
+        'meta': None
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+Пример ответа:
+
+```python
+{
+    'type': 'edited_message',
+    'data': None,
+    'errors': {
+        'id': 25665546,
+        'time': 1594492370.5225992,
+        'status': 'OK',
+        'code': 200,
+        'detail': 'successfully'
+        },
+    'jsonapi': {
+        'version': 1.0
+        },
+    'meta': None
+    }
+```
+
+## Описание ошибок
+
+### Код 200 статус 'Ok'
+
+### Код 400 статус 'Bad Request'
+
