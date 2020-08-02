@@ -1,8 +1,8 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **29.07.2020**
+Актуально на: **02.08.2020**
 
-Версия протокола: **1.0** Редакция протокола: **1.11**
+Версия протокола: **1.0** Редакция протокола: **1.12**
 
 MoreliaTalk protocol создан для унификации взаимодействия между клиентом и сервером, используется в MoreliaTalk Network.
 Интерфейс взаимодействия реализован через ВебСокеты, путём отправки JSON-объекта. Значение первого поля JSON-объекта является именем метода.
@@ -128,7 +128,7 @@ reply_to | Any | No | Ссылка на цитируемое сообщение.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-UUID | int | Yes | Уникальный номер пользователя.
+uuid | int | Yes | Уникальный номер пользователя.
 username | str | Yes | Имя пользователя.
 
 ### Объект from_flow
@@ -166,7 +166,7 @@ status | bool | Yes | Статус сообщения (исправлено ил
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-UUID | int | Yes | Уникальный номер пользователя.
+uuid | int | Yes | Уникальный номер пользователя.
 bio | str | No | Информация о пользователе.
 avatar | bytes | No | Изображение пользователя.
 password | str | Yes | Пароль пользователя.
@@ -224,7 +224,7 @@ meta | Any | No | Зарезервировано.
       'id': 1,
       'text': 'some text...',
       'from_user': {
-        'UUID': 1254,
+        'uuid': 1254,
         'username': 'Vasya'
         },
       'time': 1594492370,
@@ -246,13 +246,13 @@ meta | Any | No | Зарезервировано.
       'reply_to': None
       },
     'user': {
-      'UUID': 5855,
+      'uuid': 5855,
       'login': 'username1',
       'password': 'lksdjflksjfsd',
       'username': 'Vasya',
       'is_bot': True,
       'auth_id': '464645646464',
-      'email': 'stepan.skrjabin@gmail.com',
+      'email': 'querty@querty.com',
       'avatar': 'fffdddddd',
       'bio': 'My bio'
       },
@@ -457,8 +457,8 @@ meta | Any | No | Зарезервировано.
       "title": "User information",
       "type": "object",
       "properties": {
-        "UUID": {
-          "title": "UUID",
+        "uuid": {
+          "title": "uuid",
           "type": "integer"
         },
         "login": {
@@ -497,7 +497,7 @@ meta | Any | No | Зарезервировано.
         }
       },
       "required": [
-        "UUID",
+        "uuid",
         "auth_id"
       ]
     },
@@ -595,7 +595,7 @@ meta | Any | No | Зарезервировано.
       'id': 123
       },
     'user': {
-      'UUID': 111111111,
+      'uuid': 111111111,
       'auth_id': 'dks7sd9f6g4fg67vb78g65'
       },
     'meta': None
@@ -625,7 +625,7 @@ meta | Any | No | Зарезервировано.
       'id': 1,
       'text': 'some text...',
       'from_user': {
-        'UUID': 1254,
+        'uuid': 1254,
         'username': 'Vasya'
         },
         'time': 1594492370,
@@ -647,13 +647,13 @@ meta | Any | No | Зарезервировано.
         'reply_to': None
         },
     'user': {
-      'UUID': 5855,
+      'uuid': 5855,
       'login': 'username1',
       'password': 'lksdjflksjfsd',
       'username': 'Vasya',
       'is_bot': True,
       'auth_id': '464645646464',
-      'email': 'stepan.skrjabin@gmail.com',
+      'email': 'querty@querty.com',
       'avatar': 'fffdddddd',
       'bio': 'My bio'
       },
@@ -691,7 +691,7 @@ meta | Any | No | Зарезервировано.
       'id': 858585,
       'text': 'Hello!',
       'from_user': {
-        'UUID': 111111111,
+        'uuid': 111111111,
         'username': 'User'
         },
       'time': 1594492370,
@@ -713,7 +713,7 @@ meta | Any | No | Зарезервировано.
       'reply_to': None
     },
     'user': {
-      'UUID': 111111111,
+      'uuid': 111111111,
       'auth_id': 'dks7sd9f6g4fg67vb78g65',
       },
     'meta': None
@@ -759,7 +759,7 @@ meta | Any | No | Зарезервировано.
   'data': {
     'time': 1594492370,
     'user': {
-      'UUID': 111111111,
+      'uuid': 111111111,
       'auth_id': 'dks7sd9f6g4fg67vb78g65'
       },
     'meta': None
@@ -779,14 +779,14 @@ meta | Any | No | Зарезервировано.
   'data': {
     'time': 1594492370,
     'user': {
-      'UUID': 556565656,
+      'uuid': 556565656,
       'auth_id': 'jkds78dsids89ds89sd'
       }
     'message': {
       'id': 1,
       'text': 'some text...',
       'from_user': {
-        'UUID': 1254,
+        'uuid': 1254,
         'username': 'Vasya'
         },
       'time': 1594492370,
@@ -834,7 +834,7 @@ meta | Any | No | Зарезервировано.
   'type': 'all_flow',
   'data': {
     'user': {
-      'UUID': 111111111,
+      'uuid': 111111111,
       'auth_id': 'dks7sd9f6g4fg67vb78g65'
       },
   'meta': None
@@ -890,7 +890,7 @@ meta | Any | No | Зарезервировано.
   'type': 'user_info',
   'data': {
     'user': {
-      'UUID': 111111111,
+      'uuid': 111111111,
       'auth_id': 'dks7sd9f6g4fg67vb78g65'
       },
     'meta': None
@@ -910,13 +910,13 @@ meta | Any | No | Зарезервировано.
   'data': {
     'time': 1594492370,
     'user': {
-      'UUID': 5855,
+      'uuid': 5855,
       'login': 'username1',
       'password': 'lksdjflksjfsd',
       'username': 'Vasya',
       'is_bot': True,
       'auth_id': '464645646464',
-      'email': 'stepan.skrjabin@gmail.com',
+      'email': 'querty@querty.com',
       'avatar': 'fffdddddd',
       'bio': 'My bio'
       },
@@ -948,7 +948,7 @@ meta | Any | No | Зарезервировано.
     'user': {
       'password': 'ds45ds45fd45fd',
       'login': 'User',
-      'email': 'qwwer@qwer.ru',
+      'email': 'querty@querty.com',
       'username': 'User1'
       },
     'meta': None
@@ -960,7 +960,7 @@ meta | Any | No | Зарезервировано.
   }
 ```
 
-Пример ответа:
+Пример ответа (успех):
 
 ```python
 {
@@ -968,7 +968,7 @@ meta | Any | No | Зарезервировано.
   'data': {
     'time': 1594492370,
     'user': {
-      'UUID': 5654665416541,
+      'uuid': 5654665416541,
       'auth_id': 'lkds89ds89fd98fd'
       },
     'meta': None
@@ -978,6 +978,24 @@ meta | Any | No | Зарезервировано.
     'status': 'OK',
     'time': 1594492370,
     'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
+```
+
+Пример ответа (провал):
+
+```python
+{
+  'type': 'register_user',
+  'errors': {
+    'code': 400,
+    'status': 'Bad Request',
+    'time': 1594492370,
+    'detail': 'Bad Request'
     },
   'jsonapi': {
     'version': '1.0'
@@ -998,8 +1016,7 @@ meta | Any | No | Зарезервировано.
   'data': {
     'user': {
       'password': 'ds45ds45fd45fd',
-      'login': 'User',
-      'username': 'User1'
+      'login': 'User'
       },
     'meta': None
     },
@@ -1018,7 +1035,7 @@ meta | Any | No | Зарезервировано.
   'data': {
     'time': 1594492370,
     'user': {
-      'UUID': 5654665416541,
+      'uuid': 5654665416541,
       'auth_id': 'lkds89ds89fd98fd'
       },
     'meta': None
@@ -1067,7 +1084,7 @@ meta | Any | No | Зарезервировано.
   'type': 'delete_user',
   'data': {
     'user': {
-      'UUID': 5345634567354
+      'uuid': 5345634567354
       'login': 'User'
       },
     'meta': None
@@ -1103,7 +1120,7 @@ meta | Any | No | Зарезервировано.
       'time': 1594492370
       },
     'user': {
-      'UUID': 5345634567354,
+      'uuid': 5345634567354,
       'auth_id': 'lkds89ds89fd98fd'
       },
     'meta': None
@@ -1153,7 +1170,7 @@ meta | Any | No | Зарезервировано.
         'time': 1594492370
         },
       'user': {
-        'UUID': 5345634567354,
+        'uuid': 5345634567354,
         'auth_id': 'lkds89ds89fd98fd'
         },
       'meta': None
@@ -1195,7 +1212,7 @@ meta | Any | No | Зарезервировано.
   'type': 'ping-pong',
   'data': {
     'user': {
-      'UUID': 5345634567354,
+      'uuid': 5345634567354,
       'auth_id': 'lkds89ds89fd98fd'
       },
     'meta': None
@@ -1237,7 +1254,7 @@ _В качестве примера приведен запрос клиента
 ```python
 {
   'data': {
-    'UUID': 45654645,
+    'uuid': 45654645,
     'auth_id': 'asdfadsfadfggzasd'
   },
 }
