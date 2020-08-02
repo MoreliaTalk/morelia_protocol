@@ -1,8 +1,8 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **25.07.2020**
+Актуально на: **02.08.2020**
 
-Версия протокола: **1.0**
+Версия протокола: **1.0** Редакция протокола: **1.12**
 
 MoreliaTalk protocol создан для унификации взаимодействия между клиентом и сервером, используется в MoreliaTalk Network.
 Интерфейс взаимодействия реализован через ВебСокеты, путём отправки JSON-объекта. Значение первого поля JSON-объекта является именем метода.
@@ -37,6 +37,7 @@ MoreliaTalk protocol создан для унификации взаимодей
     - [Метод delete_message](#метод-delete_message)
     - [Метод edited_message](#метод-edited_message)
     - [Метод ping-pong](#метод-ping-pong)
+    - [Метод error](#метод-error)
   - [Описание ошибок](#описание-ошибок)
     - [Код 200 статус 'Ok'](#код-200-статус-ok)
     - [Код 201 статус 'Created'](#код-201-статус-created)
@@ -62,8 +63,8 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 - Первая пара _ключ:значение_ (объект `Type`) устанавливает тип метода. Клиент/сервер обрабатывают запрос в соответсвии с типом метода.
 - Вторая пара _ключ:значение_ (объект `Data`) передает массив данных соответствующих запросу.
-- Третья пара _ключ:значение_ (объект `JSONapi`) передает информацию о статусе выполенения запроса, коды статусов соответствуют кодам протокола HTTP.
-- Четвёртая пара _ключ:значение_ (объект `JSONapi`) передает информацию об используемом протоколе.
+- Третья пара _ключ:значение_ (объект `Errors`) передает информацию о статусе выполенения запроса, коды статусов соответствуют кодам протокола HTTP.
+- Четвёртая пара _ключ:значение_ (объект `Jsonapi`) передает информацию об используемом протоколе.
 - Пятая пара _ключ:значение_ (объект `Meta`) резервная, для дальнейшего расширения протокола.
 
 Ниже перечислены все возможные поля JSON-объекта.
@@ -74,7 +75,7 @@ MoreliaTalk protocol создан для унификации взаимодей
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user.
+type | str | Yes | Уникальное имя метода из следующего списка: all_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user, delete_message, edited_message, ping-pong.
 
 ### Объект data
 
@@ -82,7 +83,7 @@ type | str | Yes | Уникальное имя метода из следующ�
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-time | float | Yes | Время на сервере, в секунда со времени началы эпохи (Unix-время).
+time | float | Yes | Время на сервере, в секундах со времени началы эпохи (Unix-время).
 chat | chat | No | Объект данных в виде массива типа dict.
 message | message | No | Объект данных в виде массива типа dict.
 user | user | No | Объект данных в виде массива типа dict.
@@ -99,11 +100,11 @@ meta | str | No | Зарезервировано.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-id | int | Yes | Уникальный номер чата.
-time | float | Yes | Время обновления чата.
+id | int | Yes | Уникальный номер потока.
+time | int | Yes | Время обновления потока, в секундах со времени началы эпохи (Unix-время).
 type | str | Yes | Тип потока.
-title | str | Yes | Персональное имя чата (может быть не уникальным).
-info | str | No | Описание чата.
+title | str | Yes | Персональное имя потока (может быть не уникальным).
+info | str | No | Описание потока.
 
 ### Объект message
 
@@ -114,7 +115,7 @@ info | str | No | Описание чата.
 id | int | Yes | Уникальный номер сообщения.
 text | str | Yes | Текст сообщения.
 from_user | from_user | Yes | Объект в ввиде массива типа dict. Информация о пользователе который написал это сообщение.
-time | float | Yes | Время когда сообщение было написано.
+time | int | Yes | Время когда сообщение было написано, в секундах со времени началы эпохи (Unix-время).
 from_flow | from_flow | Yes | Объект в ввиде массива типа dict. Информация к какому чату принадлежит это сообщение.
 file | file | No | Объект в ввиде массива типа dict. Файл-вложение к сообщению (аудио, видео, фото, документ).
 emoji | bytes | No | Тип емоджи (в виде файла).
@@ -127,7 +128,7 @@ reply_to | Any | No | Ссылка на цитируемое сообщение.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-id | int | Yes | Уникальный номер пользователя.
+uuid | int | Yes | Уникальный номер пользователя.
 username | str | Yes | Имя пользователя.
 
 ### Объект from_flow
@@ -156,7 +157,7 @@ document | bytes | No | Документ.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-time | float | Yes | Время когда пользователь последний раз исправил сообщение.
+time | int | Yes | Время когда пользователь последний раз исправил сообщение, в секундах со времени началы эпохи (Unix-время).
 status | bool | Yes | Статус сообщения (исправлено или нет).
 
 ### Объект user
@@ -165,7 +166,7 @@ status | bool | Yes | Статус сообщения (исправлено ил
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-UUID | int | Yes | Уникальный номер пользователя.
+uuid | int | Yes | Уникальный номер пользователя.
 bio | str | No | Информация о пользователе.
 avatar | bytes | No | Изображение пользователя.
 password | str | Yes | Пароль пользователя.
@@ -182,10 +183,9 @@ username | str | Yes | Имя пользователя (не уникально�
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-id | int | Yes | Уникальный номер ошибки
-time | float | Yes | Время когда произошла ошибка
-status | str | Yes | Статус ошибки.
 code | int | Yes | Код ошибки.
+status | str | Yes | Статус ошибки.
+time | int | Yes | Время когда произошла ошибка, в секундах со времени началы эпохи (Unix-время).
 detail | str | Yes | Описание ошибки.
 
 ### Объект jsonapi
@@ -194,7 +194,7 @@ detail | str | Yes | Описание ошибки.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-version | float | Yes | Версия протокола.
+version | str | Yes | Версия протокола.
 
 ### Объект meta
 
@@ -210,71 +210,70 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'user_info',
-    'data': {
-        'time': 1594492370.5225992,
-        'flow': {
-            'id': 1254,
-            'time': 1594492370.5225992,
-            'type': 'chat',
-            'title': 'Name Chat',
-            'info': 'Info about this chat'
-            },
-        'message': {
-            'id': 1,
-            'text': 'some text...',
-            'from_user': {
-                'id': 1254,
-                'username': 'Vasya'
-                },
-            'time': 1594492370.5225992,
-            'from_flow': {
-                'id': 123655455,
-                'type': 'chat'
-                },
-            'file': {
-                'picture': 'jkfikdkdsd',
-                'video': 'sdfsdfsdf',
-                'audio': 'fgfsdfsdfsdf',
-                'document': ''
-                },
-            'emoji': 'sfdfsdfsdf',
-            'edited_message': {
-                'time': 1594492370.5225992,
-                'status': True
-                },
-            'reply_to': None
-            },
-        'user': {
-            'UUID': 5855,
-            'login': 'username1',
-            'password': 'lksdjflksjfsd',
-            'username': 'Vasya',
-            'is_bot': True,
-            'auth_id': '464645646464',
-            'email': 'stepan.skrjabin@gmail.com',
-            'avatar': 'fffdddddd',
-            'bio': 'My bio'
-            },
-        'meta': None
+  'type': 'user_info',
+  'data': {
+    'time': 1594492370,
+    'flow': {
+      'id': 1254,
+      'time': 1594492370,
+      'type': 'chat',
+      'title': 'Name Chat',
+      'info': 'Info about this chat'
+      },
+    'message': {
+      'id': 1,
+      'text': 'some text...',
+      'from_user': {
+        'uuid': 1254,
+        'username': 'Vasya'
         },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
+      'time': 1594492370,
+      'from_flow': {
+        'id': 123655455,
+        'type': 'chat'
         },
-    'jsonapi': {
-        'version': None
+      'file': {
+        'picture': 'jkfikdkdsd',
+        'video': 'sdfsdfsdf',
+        'audio': 'fgfsdfsdfsdf',
+        'document': 'fghsfghsfgh'
         },
+      'emoji': 'sfdfsdfsdf',
+      'edited_message': {
+        'time': 1594492370,
+        'status': True
+        },
+      'reply_to': None
+      },
+    'user': {
+      'uuid': 5855,
+      'login': 'username1',
+      'password': 'lksdjflksjfsd',
+      'username': 'Vasya',
+      'is_bot': True,
+      'auth_id': '464645646464',
+      'email': 'querty@querty.com',
+      'avatar': 'fffdddddd',
+      'bio': 'My bio'
+      },
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Схема валидации
 
-"Эталонная" схема валидации данных.
+"Эталонная" схема валидации данных. Используется для валидации запросов и ответов.
 
 ```python
 {
@@ -458,8 +457,8 @@ meta | Any | No | Зарезервировано.
       "title": "User information",
       "type": "object",
       "properties": {
-        "UUID": {
-          "title": "UUID",
+        "uuid": {
+          "title": "uuid",
           "type": "integer"
         },
         "login": {
@@ -498,7 +497,7 @@ meta | Any | No | Зарезервировано.
         }
       },
       "required": [
-        "UUID",
+        "uuid",
         "auth_id"
       ]
     },
@@ -589,88 +588,87 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'get_update',
-    'data': {
-        'time': 1594492370.5225992,
-        'flow': {
-            'id': 123
-            },
-        'user': {
-            'UUID': 111111111,
-            'auth_id': 'dks7sd9f6g4fg67vb78g65'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'get_update',
+  'data': {
+    'time': 1594492370,
+    'flow': {
+      'id': 123
+      },
+    'user': {
+      'uuid': 111111111,
+      'auth_id': 'dks7sd9f6g4fg67vb78g65'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'get_update',
-    'data': {
-        'time': 1594492370.5225992,
-        'flow': {
-            'id': 1254,
-            'time': 1594492370.5225992,
-            'type': 'chat',
-            'title': 'Name Chat',
-            'info': 'Info about this chat'
-            },
-        'message': {
-            'id': 1,
-            'text': 'some text...',
-            'from_user': {
-                'id': 1254,
-                'username': 'Vasya'
-                },
-            'time': 1594492370.5225992,
-            'from_flow': {
-                'id': 123655455,
-                'type': 'chat'
-                },
-            'file': {
-                'picture': 'jkfikdkdsd',
-                'video': 'sdfsdfsdf',
-                'audio': 'fgfsdfsdfsdf',
-                'document': 'adgdfhfgth'
-                },
-            'emoji': 'sfdfsdfsdf',
-            'edited_message': {
-                'time': 1594492370.5225992,
-                'status': True
-                },
-            'reply_to': None
-            },
-        'user': {
-            'UUID': 5855,
-            'login': 'username1',
-            'password': 'lksdjflksjfsd',
-            'username': 'Vasya',
-            'is_bot': True,
-            'auth_id': '464645646464',
-            'email': 'stepan.skrjabin@gmail.com',
-            'avatar': 'fffdddddd',
-            'bio': 'My bio'
-            },
-        'meta': None
+  'type': 'get_update',
+  'data': {
+    'time': 1594492370,
+    'flow': {
+      'id': 1254,
+      'time': 1594492370,
+      'type': 'chat',
+      'title': 'Name Chat',
+      'info': 'Info about this chat'
+      },
+    'message': {
+      'id': 1,
+      'text': 'some text...',
+      'from_user': {
+        'uuid': 1254,
+        'username': 'Vasya'
         },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
+        'time': 1594492370,
+        'from_flow': {
+          'id': 123655455,
+          'type': 'chat'
+          },
+        'file': {
+          'picture': 'jkfikdkdsd',
+          'video': 'sdfsdfsdf',
+          'audio': 'fgfsdfsdfsdf',
+          'document': 'adgdfhfgth'
+          },
+        'emoji': 'sfdfsdfsdf',
+        'edited_message': {
+          'time': 1594492370,
+          'status': True
+          },
+        'reply_to': None
         },
-    'jsonapi': {
-        'version': 1.0
-        },
+    'user': {
+      'uuid': 5855,
+      'login': 'username1',
+      'password': 'lksdjflksjfsd',
+      'username': 'Vasya',
+      'is_bot': True,
+      'auth_id': '464645646464',
+      'email': 'querty@querty.com',
+      'avatar': 'fffdddddd',
+      'bio': 'My bio'
+      },
     'meta': None
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
     }
 ```
 
@@ -682,72 +680,71 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'send_message',
-    'data': {
-        'flow': {
-            'id': 123,
-            'time': 1594492370.5225992,
-            'type': 'chat'
-            },
-        'message': {
-            'id': 858585,
-            'text': 'Hello!',
-            'from_user': {
-                'id': 111111111,
-                'username': 'User'
-            },
-            'time': 1594492370.5225992,
-            'from_flow': {
-                'id': 5656565656,
-                'type': 'chat'
-            },
-            'file': {
-                'picture': 'jkfikdkdsd',
-                'video': 'sdfsdfsdf',
-                'audio': 'fgfsdfsdfsdf',
-                'document': 'adgdfhfgth'
-                },
-            'emoji': 'sfdfsdfsdf',
-            },
-            'edited_message': {
-                'time': 1594492370.5225992,
-                'status': True
-                },
-            'reply_to': None
-        'user': {
-            'UUID': 111111111,
-            'auth_id': 'dks7sd9f6g4fg67vb78g65',
-            },
-        'meta': None
+  'type': 'send_message',
+  'data': {
+    'flow': {
+      'id': 123,
+      'time': 1594492370,
+      'type': 'chat'
+      },
+    'message': {
+      'id': 858585,
+      'text': 'Hello!',
+      'from_user': {
+        'uuid': 111111111,
+        'username': 'User'
         },
-    'jsonapi': {
-        'version': 1.0
+      'time': 1594492370,
+      'from_flow': {
+        'id': 5656565656,
+        'type': 'chat'
         },
+      'file': {
+        'picture': 'jkfikdkdsd',
+        'video': 'sdfsdfsdf',
+        'audio': 'fgfsdfsdfsdf',
+        'document': 'adgdfhfgth'
+        },
+      'emoji': 'sfdfsdfsdf',
+      'edited_message': {
+        'time': 1594492370,
+        'status': True
+        },
+      'reply_to': None
+    },
+    'user': {
+      'uuid': 111111111,
+      'auth_id': 'dks7sd9f6g4fg67vb78g65',
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'send_message',
-    'data': {
-        'time': 1594492370.5225992,
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'send_message',
+  'data': {
+    'time': 1594492370,
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод all_messages
@@ -758,72 +755,71 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_messages',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'UUID': 111111111,
-            'auth_id': 'dks7sd9f6g4fg67vb78g65'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'all_messages',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'uuid': 111111111,
+      'auth_id': 'dks7sd9f6g4fg67vb78g65'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'all_messages',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'UUID': 556565656,
-            'auth_id': 'jkds78dsids89ds89sd'
-        }
-        'message': {
-            'id': 1,
-            'text': 'some text...',
-            'from_user': {
-                'id': 1254,
-                'username': 'Vasya'
-                },
-            'time': 1594492370.5225992,
-            'from_flow': {
-                'id': 123655455,
-                'type': 'chat'
-                },
-            'file': {
-                'picture': 'jkfikdkdsd',
-                'video': 'sdfsdfsdf',
-                'audio': 'fgfsdfsdfsdf',
-                'document': 'adgdfhfgth'
-                },
-            'emoji': 'sfdfsdfsdf',
-            'edited_message': {
-                'time': 1594492370.5225992,
-                'status': True
-                },
-            'reply_to': None
+  'type': 'all_messages',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'uuid': 556565656,
+      'auth_id': 'jkds78dsids89ds89sd'
+      }
+    'message': {
+      'id': 1,
+      'text': 'some text...',
+      'from_user': {
+        'uuid': 1254,
+        'username': 'Vasya'
+        },
+      'time': 1594492370,
+      'from_flow': {
+        'id': 123655455,
+        'type': 'chat'
+        },
+        'file': {
+          'picture': 'jkfikdkdsd',
+          'video': 'sdfsdfsdf',
+          'audio': 'fgfsdfsdfsdf',
+          'document': 'adgdfhfgth'
+          },
+        'emoji': 'sfdfsdfsdf',
+        'edited_message': {
+            'time': 1594492370,
+            'status': True
             },
-        'meta': None
+        'reply_to': None
         },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
-    'meta': None
-    }
+      'meta': None
+      },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод all_flow
@@ -835,53 +831,52 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'all_flow',
-    'data': {
-        'user': {
-            'UUID': 111111111,
-            'auth_id': 'dks7sd9f6g4fg67vb78g65'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
-    'meta': None
-    }
+  'type': 'all_flow',
+  'data': {
+    'user': {
+      'uuid': 111111111,
+      'auth_id': 'dks7sd9f6g4fg67vb78g65'
+      },
+  'meta': None
+  },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'all_flow',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'id': 556565656,
-            'auth_id': 'jkds78dsids89ds89sd'
-            },
-        'flow': {
-            'id': 5655,
-            'time': 1594492370.5225992,
-            'type': 'chat',
-            'title': 'Some chat',
-            'info': 'Info from some chat'
-            },
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'all_flow',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'id': 556565656,
+      'auth_id': 'jkds78dsids89ds89sd'
+       },
+    'flow': {
+      'id': 5655,
+      'time': 1594492370,
+      'type': 'chat',
+      'title': 'Some chat',
+      'info': 'Info from some chat'
+      },
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод user_info
@@ -892,53 +887,52 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'user_info',
-    'data': {
-        'user': {
-            'UUID': 111111111,
-            'auth_id': 'dks7sd9f6g4fg67vb78g65'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'user_info',
+  'data': {
+    'user': {
+      'uuid': 111111111,
+      'auth_id': 'dks7sd9f6g4fg67vb78g65'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'user_info',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'UUID': 5855,
-            'login': 'username1',
-            'password': 'lksdjflksjfsd',
-            'username': 'Vasya',
-            'is_bot': True,
-            'auth_id': '464645646464',
-            'email': 'stepan.skrjabin@gmail.com',
-            'avatar': 'fffdddddd',
-            'bio': 'My bio'
-            },
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'user_info',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'uuid': 5855,
+      'login': 'username1',
+      'password': 'lksdjflksjfsd',
+      'username': 'Vasya',
+      'is_bot': True,
+      'auth_id': '464645646464',
+      'email': 'querty@querty.com',
+      'avatar': 'fffdddddd',
+      'bio': 'My bio'
+      },
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод register_user
@@ -949,48 +943,65 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'register_user',
-    'data': {
-        'user': {
-            'password': 'ds45ds45fd45fd',
-            'login': 'User',
-            'email': 'qwwer@qwer.ru',
-            'username': 'User1'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'register_user',
+  'data': {
+    'user': {
+      'password': 'ds45ds45fd45fd',
+      'login': 'User',
+      'email': 'querty@querty.com',
+      'username': 'User1'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
-Пример ответа:
+Пример ответа (успех):
 
 ```python
 {
-    'type': 'register_user',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'UUID': 5654665416541,
-            'auth_id': 'lkds89ds89fd98fd'
-            },
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'register_user',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'uuid': 5654665416541,
+      'auth_id': 'lkds89ds89fd98fd'
+      },
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
+```
+
+Пример ответа (провал):
+
+```python
+{
+  'type': 'register_user',
+  'errors': {
+    'code': 400,
+    'status': 'Bad Request',
+    'time': 1594492370,
+    'detail': 'Bad Request'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод authentication
@@ -1001,47 +1012,45 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'auth',
-    'data': {
-        'user': {
-            'password': 'ds45ds45fd45fd',
-            'login': 'User',
-            'username': 'User1'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'auth',
+  'data': {
+    'user': {
+      'password': 'ds45ds45fd45fd',
+      'login': 'User'
+      },
     'meta': None
-    }
+    },
+    'jsonapi': {
+      'version': '1.0'
+      },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'auth',
-    'data': {
-        'time': 1594492370.5225992,
-        'user': {
-            'UUID': 5654665416541,
-            'auth_id': 'lkds89ds89fd98fd'
-            },
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'auth',
+  'data': {
+    'time': 1594492370,
+    'user': {
+      'uuid': 5654665416541,
+      'auth_id': 'lkds89ds89fd98fd'
+      },
     'meta': None
-    }
+    },
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод delete_user
@@ -1052,46 +1061,45 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'delete_user',
-    'data': {
-        'user': {
-            'password': 'ds45ds45fd45fd',
-            'login': 'User',
-            'username': 'User1'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'delete_user',
+  'data': {
+    'user': {
+      'password': 'ds45ds45fd45fd',
+      'login': 'User',
+      'username': 'User1'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'delete_user',
-    'data': {
-        'user': {
-            'UUID': 5345634567354
-            'login': 'User'
-            },
-        'meta': None
-        },
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'delete_user',
+  'data': {
+    'user': {
+      'uuid': 5345634567354
+      'login': 'User'
+      },
     'meta': None
-    }
+      },
+    'errors': {
+      'code': 200,
+      'status': 'OK',
+      'time': 1594492370,
+      'detail': 'successfully'
+      },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод delete_message
@@ -1102,46 +1110,45 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'delete_message',
-    'data': {
-        'flow': {
-            'id': 123
-            },
-        'message': {
-            'id': 858585,
-            'time': 1594492370.5225992
-            },
-        'user': {
-            'UUID': 5345634567354,
-            'auth_id': 'lkds89ds89fd98fd'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'delete_message',
+  'data': {
+    'flow': {
+      'id': 123
+      },
+    'message': {
+      'id': 858585,
+      'time': 1594492370
+      },
+    'user': {
+      'uuid': 5345634567354,
+      'auth_id': 'lkds89ds89fd98fd'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'delete_message',
-    'data': None,
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
-    'meta': None
-    }
+  'type': 'delete_message',
+  'data': None,
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 ### Метод edited_message
@@ -1152,47 +1159,46 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'edited_message',
-    'data': {
-        'flow': {
-            'id': 123
-            },
-        'message': {
-            'id': 858585,
-            'text': 'Hello!',
-            'time': 1594492370.5225992
-            },
-        'user': {
-            'UUID': 5345634567354,
-            'auth_id': 'lkds89ds89fd98fd'
-            },
-        'meta': None
+  'type': 'edited_message',
+  'data': {
+    'flow': {
+      'id': 123
+      },
+      'message': {
+        'id': 858585,
+        'text': 'Hello!',
+        'time': 1594492370
         },
-    'jsonapi': {
-        'version': 1.0
+      'user': {
+        'uuid': 5345634567354,
+        'auth_id': 'lkds89ds89fd98fd'
         },
-    'meta': None
-    }
+      'meta': None
+      },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'edited_message',
-    'data': None,
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
-    'meta': None
-    }
+  'type': 'edited_message',
+  'data': None,
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+      'version': '1.0'
+      },
+  'meta': None
+  }
 ```
 
 ### Метод ping-pong
@@ -1203,39 +1209,74 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    'type': 'ping-pong',
-    'data': {
-        'user': {
-            'UUID': 5345634567354,
-            'auth_id': 'lkds89ds89fd98fd'
-            },
-        'meta': None
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
+  'type': 'ping-pong',
+  'data': {
+    'user': {
+      'uuid': 5345634567354,
+      'auth_id': 'lkds89ds89fd98fd'
+      },
     'meta': None
-    }
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
 ```
 
 Пример ответа:
 
 ```python
 {
-    'type': 'ping-pong',
-    'data': None,
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        },
-    'jsonapi': {
-        'version': 1.0
-        },
-    'meta': None
-    }
+  'type': 'ping-pong',
+  'data': None,
+  'errors': {
+    'code': 200,
+    'status': 'OK',
+    'time': 1594492370,
+    'detail': 'successfully'
+    },
+  'jsonapi': {
+    'version': '1.0'
+    },
+  'meta': None
+  }
+```
+
+### Метод error
+
+В случае если запрос к серверу/клиенту им не распознан должен выдаваться стандартный тип ответа: `error`, который в себе содержит объект `errors` с описанием возникшей ошибки.
+
+_В качестве примера приведен запрос клиента, без передачи ключа `type` и его значения. В ответ сервер посылает JSON-объект с указанием имени метода `error` и информацией о возникшей ошибке, в поле `errors`._
+
+Пример запроса:
+
+```python
+{
+  'data': {
+    'uuid': 45654645,
+    'auth_id': 'asdfadsfadfggzasd'
+  },
+}
+```
+
+Пример ответа:
+
+```python
+{
+  'type': "error",
+  'data': None,
+  'errors': {
+    'code': 400,
+    'status': 'Bad Request',
+    'time': 1594492370,
+    'detail': 'Bad Request'
+  },
+  'jasonapi': {
+    'version': '1.0'
+  },
+  'meta': None
+}
 ```
 
 ## Описание ошибок
@@ -1247,13 +1288,12 @@ meta | Any | No | Зарезервировано.
 Команда выполнена успешно.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OK',
-        'code': 200,
-        'detail': 'successfully'
-        }
+'errors': {
+  'code': 200,
+  'status': 'OK',
+  'time': 1594492370,
+  'detail': 'successfully'
+  }
 ```
 
 ### Код 201 статус 'Created'
@@ -1261,13 +1301,12 @@ meta | Any | No | Зарезервировано.
 Объект (пользователь) создан.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Created',
-        'code': 201,
-        'detail': 'Created'
-        }
+'errors': {
+  'code': 201,
+  'status': 'Created',
+  'time': 1594492370,
+  'detail': 'Created'
+  }
 ```
 
 ### Код 202 статус 'Accepted'
@@ -1275,13 +1314,12 @@ meta | Any | No | Зарезервировано.
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Accepted',
-        'code': 202,
-        'detail': 'Accepted'
-        }
+'errors': {
+  'code': 202,
+  'status': 'Accepted',
+  'time': 1594492370,
+  'detail': 'Accepted'
+  }
 ```
 
 ### Код 400 статус 'Bad Request'
@@ -1289,13 +1327,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Bad Request',
-        'code': 400,
-        'detail': 'Bad Request'
-        }
+'errors': {
+  'code': 400,
+  'status': 'Bad Request',
+  'time': 1594492370,
+  'detail': 'Bad Request'
+  }
 ```
 
 ### Код 401 статус 'Unauthorized'
@@ -1303,13 +1340,12 @@ _Дополнить_
 Ошибка авторизации. Неверный логин или пароль.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Unauthorized',
-        'code': 401,
-        'detail': 'Unauthorized'
-        }
+'errors': {
+  'code': 401,
+  'status': 'Unauthorized',
+  'time': 1594492370,
+  'detail': 'Unauthorized'
+  }
 ```
 
 ### Код 403 статус 'Forbidden'
@@ -1317,26 +1353,25 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Forbidden',
-        'code': 403,
-        'detail': 'Forbidden'
-        }
+'errors': {
+  'code': 403,
+  'status': 'Forbidden',
+  'time': 1594492370,
+  'detail': 'Forbidden'
+  }
 ```
 
 ### Код 404 статус 'Not Found'
 
+_Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Not Found',
-        'code': 404,
-        'detail': 'Not Found'
-        }
+'errors': {
+  'code': 404,
+  'status': 'Not Found',
+  'time': 1594492370,
+  'detail': 'Not Found'
+  }
 ```
 
 ### Код 405 статус 'Method Not Allowed'
@@ -1344,13 +1379,12 @@ _Дополнить_
 Такой запрос недоступен. Возможно клиент использует старый API.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'OMethod Not AllowedK',
-        'code': 405,
-        'detail': 'Method Not Allowed'
-        }
+'errors': {
+  'code': 405,
+  'status': 'OMethod Not Allowed',
+  'time': 1594492370,
+  'detail': 'Method Not Allowed'
+  }
 ```
 
 ### Код 408 статус 'Request Timeout'
@@ -1358,13 +1392,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Request Timeout',
-        'code': 408,
-        'detail': 'Request Timeout'
-        }
+'errors': {
+  'code': 408,
+  'status': 'Request Timeout',
+  'time': 1594492370,
+  'detail': 'Request Timeout'
+  }
 ```
 
 ### Код 415 статус 'Unsupported Media Type'
@@ -1372,13 +1405,12 @@ _Дополнить_
 Неподдерживаемый тип данных (не пройдена валидация).
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Unsupported Media Type',
-        'code': 415,
-        'detail': 'Unsupported Media Type'
-        }
+'errors': {
+  'code': 415,
+  'status': 'Unsupported Media Type',
+  'time': 1594492370,
+  'detail': 'Unsupported Media Type'
+  }
 ```
 
 ### Код 417 статус 'Expectation Failed'
@@ -1386,13 +1418,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Expectation Failed',
-        'code': 417,
-        'detail': 'Expectation Failed'
-        }
+'errors': {
+  'code': 417,
+  'status': 'Expectation Failed',
+  'time': 1594492370,
+  'detail': 'Expectation Failed'
+  }
 ```
 
 ### Код 426 статус 'Upgrade Required'
@@ -1400,13 +1431,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Upgrade Required',
-        'code': 426,
-        'detail': 'Upgrade Required'
-        }
+'errors': {
+  'code': 426,
+  'status': 'Upgrade Required',
+  'time': 1594492370,
+  'detail': 'Upgrade Required'
+  }
 ```
 
 ### Код 429 статус 'Too Many Requests'
@@ -1414,13 +1444,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Too Many Requests',
-        'code': 429,
-        'detail': 'Too Many Requests'
-        }
+'errors': {
+  'code': 429,
+  'status': 'Too Many Requests',
+  'time': 1594492370,
+  'detail': 'Too Many Requests'
+  }
 ```
 
 ### Код 499 статус 'Client Closed Request'
@@ -1428,13 +1457,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Client Closed Request',
-        'code': 499,
-        'detail': 'Client Closed Request'
-        }
+'errors': {
+  'code': 499,
+  'status': 'Client Closed Request',
+  'time': 1594492370,
+  'detail': 'Client Closed Request'
+  }
 ```
 
 ### Код 500 статус 'Internal Server Error'
@@ -1442,13 +1470,12 @@ _Дополнить_
 Серверу настала жопа.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Internal Server Error',
-        'code': 500,
-        'detail': 'Internal Server Error'
-        }
+'errors': {
+  'code': 500,
+  'status': 'Internal Server Error',
+  'time': 1594492370,
+  'detail': 'Internal Server Error'
+  }
 ```
 
 ### Код 503 статус 'Service Unavailable'
@@ -1456,13 +1483,12 @@ _Дополнить_
 _Дополнить_
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Service Unavailable',
-        'code': 503,
-        'detail': 'Service Unavailable'
-        }
+'errors': {
+  'code': 503,
+  'status': 'Service Unavailable',
+  'time': 1594492370,
+  'detail': 'Service Unavailable'
+  }
 ```
 
 ### Код 526 статус 'Invalid SSL Certificate'
@@ -1470,11 +1496,10 @@ _Дополнить_
 Недействительный сертификат SSL.
 
 ```python
-    'errors': {
-        'id': 25665546,
-        'time': 1594492370.5225992,
-        'status': 'Invalid SSL Certificate',
-        'code': 526,
-        'detail': 'Invalid SSL Certificate'
-        }
+'errors': {
+  'code': 526,
+  'status': 'Invalid SSL Certificate',
+  'time': 1594492370,
+  'detail': 'Invalid SSL Certificate'
+  }
 ```
