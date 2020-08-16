@@ -87,7 +87,7 @@ time | int | Yes | Время на сервере, в секундах со вр
 flow | flow | No | Объект данных в виде массива типа dict.
 message | message | No | Объект данных в виде массива типа dict.
 user | user | No | Объект данных в виде массива типа dict.
-meta | str | No | Зарезервировано.
+meta | Any | No | Зарезервировано.
 
 ### Объект flow
 
@@ -172,7 +172,7 @@ avatar | bytes | No | Изображение пользователя.
 password | str | Yes | Пароль пользователя.
 login | str | Yes | Логин пользователя.
 is_bot | bool | Yes | Указывает на тип пользователя (бот или человек).
-auth_id | bytes | Yes | Хэш пароля.
+auth_id | str | Yes | Хэш пароля.
 email | EmailStr | Yes | Контактная информация (адрес почты) пользователя.
 username | str | Yes | Имя пользователя (не уникальное).
 
@@ -252,7 +252,7 @@ meta | Any | No | Зарезервировано.
       'password': 'lksdjflksjfsd',
       'username': 'Vasya',
       'is_bot': True,
-      'auth_id': '464645646464',
+      'auth_id': '4646hjgjhg64',
       'email': 'querty@querty.com',
       'avatar': 'fffdddddd',
       'bio': 'My bio'
