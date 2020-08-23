@@ -1,8 +1,8 @@
 # Официальная документация протокола MoreliaTalk Network
 
-Актуально на: **13.08.2020**
+Актуально на: **23.08.2020**
 
-Версия протокола: **1.0** Редакция протокола: **1.14**
+Версия протокола: **1.0** Редакция протокола: **1.15**
 
 MoreliaTalk protocol создан для унификации взаимодействия между клиентом и сервером в MoreliaTalk Network.
 Интерфейс взаимодействия реализован через ВебСокеты, путём отправки JSON-объекта. Значение первого поля `type` является наименованием метода.
@@ -55,6 +55,7 @@ MoreliaTalk protocol создан для унификации взаимодей
     - [Код 499 статус 'Client Closed Request'](#код-499-статус-client-closed-request)
     - [Код 500 статус 'Internal Server Error'](#код-500-статус-internal-server-error)
     - [Код 503 статус 'Service Unavailable'](#код-503-статус-service-unavailable)
+    - [Код 520 статус 'Unknown Error'](#код-520-статус-unknown-error)
     - [Код 526 статус 'Invalid SSL Certificate'](#код-526-статус-invalid-ssl-certificate)
 
 ## Описание API
@@ -1565,7 +1566,7 @@ _Дополнить_
 ```python
 'errors': {
   'code': 405,
-  'status': 'OMethod Not Allowed',
+  'status': 'Method Not Allowed',
   'time': 1594492370,
   'detail': 'Method Not Allowed'
   }
@@ -1674,6 +1675,20 @@ _Дополнить_
   'detail': 'Service Unavailable'
   }
 ```
+
+### Код 520 статус 'Unknown Error'
+
+Неизвестная ошибка. Этот статус получают в том числе все исключения.
+
+```python
+'errors': {
+  'code': 520,
+  'status': 'Unknown Error',
+  'time': 1594492370,
+  'detail': 'Unknown Error'
+  }
+```
+
 
 ### Код 526 статус 'Invalid SSL Certificate'
 
