@@ -212,65 +212,65 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-  'type': 'user_info',
-  'data': {
-    'time': 1594492370,
-    'flow': {
-      'id': 1254,
-      'time': 1594492370,
-      'type': 'chat',
-      'title': 'Name Chat',
-      'info': 'Info about this chat'
+  "type": "user_info",
+    "data": {
+      "time": 1594492370,
+      "flow": {
+        "id": 1254,
+        "time": 1594492370,
+        "type": "chat",
+        "title": "Name Chat",
+        "info": "Info about this chat"
+        },
+        "message": {
+        "id": 1,
+        "text": "some text...",
+        "from_user": {
+          "uuid": 1254,
+          "username": "Vasya"
+          },
+        "time": 1594492370,
+        "from_flow": {
+          "id": 123655455,
+          "type": "chat"
+          },
+        "file": {
+          "picture": "jkfikdkdsd",
+          "video": "sdfsdfsdf",
+          "audio": "fgfsdfsdfsdf",
+          "document": "fghsfghsfgh"
+          },
+        "emoji": "sfdfsdfsdf",
+        "edited_message": {
+          "time": 1594492370,
+          "status": true
+          },
+        "reply_to": null
+        },
+      "user": {
+        "uuid": 5855,
+        "login": "username1",
+        "password": "lksdjflksjfsd",
+        "username": "Vasya",
+        "is_bot": true,
+        "auth_id": "4646hjgjhg64",
+        "email": "querty@querty.com",
+        "avatar": "fffdddddd",
+        "bio": "My bio"
+        },
+      "meta": null
       },
-    'message': {
-      'id': 1,
-      'text': 'some text...',
-      'from_user': {
-        'uuid': 1254,
-        'username': 'Vasya'
-        },
-      'time': 1594492370,
-      'from_flow': {
-        'id': 123655455,
-        'type': 'chat'
-        },
-      'file': {
-        'picture': 'jkfikdkdsd',
-        'video': 'sdfsdfsdf',
-        'audio': 'fgfsdfsdfsdf',
-        'document': 'fghsfghsfgh'
-        },
-      'emoji': 'sfdfsdfsdf',
-      'edited_message': {
-        'time': 1594492370,
-        'status': True
-        },
-      'reply_to': None
+    "errors": {
+      "code": 200,
+      "status": "OK",
+      "time": 1594492370,
+      "detail": "successfully"
       },
-    'user': {
-      'uuid': 5855,
-      'login': 'username1',
-      'password': 'lksdjflksjfsd',
-      'username': 'Vasya',
-      'is_bot': True,
-      'auth_id': '4646hjgjhg64',
-      'email': 'querty@querty.com',
-      'avatar': 'fffdddddd',
-      'bio': 'My bio'
+    "jsonapi": {
+      "version": "1.0"
       },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "meta": null
+    }
 ```
 
 ### Схема валидации
