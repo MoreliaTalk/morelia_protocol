@@ -210,7 +210,7 @@ meta | Any | No | Зарезервировано.
 
 Содержание JSON-объекта в виде python dict содержащем все используемые поля.
 
-```python
+```javascript
 {
   "type": "user_info",
     "data": {
