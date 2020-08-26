@@ -32,7 +32,7 @@ Udav (MoreliaTalk protocol) создан для унификации взаим�
     - [Метод all_flow](#метод-all_flow)
     - [Метод user_info](#метод-user_info)
     - [Метод register_user](#метод-register_user)
-    - [Метод authentication](#метод-authentication)
+    - [Метод authentication](#метод-authentification)
     - [Метод delete_user](#метод-delete_user)
     - [Метод delete_message](#метод-delete_message)
     - [Метод edited_message](#метод-edited_message)
