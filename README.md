@@ -314,7 +314,7 @@ meta | Any | No | Зарезервировано.
         },
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
         "type": {
           "title": "Type",
@@ -337,8 +337,8 @@ meta | Any | No | Зарезервировано.
       "title": "Information about forwarded message user",
       "type": "object",
       "properties": {
-        "id": {
-          "title": "Id",
+        "uuid": {
+          "title": "Uuid",
           "type": "integer"
         },
         "username": {
@@ -347,7 +347,7 @@ meta | Any | No | Зарезервировано.
         }
       },
       "required": [
-        "id",
+        "uuid",
         "username"
       ]
     },
@@ -358,15 +358,10 @@ meta | Any | No | Зарезервировано.
         "id": {
           "title": "Id",
           "type": "integer"
-        },
-        "type": {
-          "title": "Type",
-          "type": "string"
         }
       },
       "required": [
-        "id",
-        "type"
+        "id"
       ]
     },
     "File": {
@@ -401,7 +396,7 @@ meta | Any | No | Зарезервировано.
       "properties": {
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
         "status": {
           "title": "Status",
@@ -430,10 +425,10 @@ meta | Any | No | Зарезервировано.
         },
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
         "from_flow": {
-          "$ref": "#/definitions/FromChat"
+          "$ref": "#/definitions/FromFlow"
         },
         "file": {
           "$ref": "#/definitions/File"
@@ -460,19 +455,24 @@ meta | Any | No | Зарезервировано.
       "type": "object",
       "properties": {
         "uuid": {
-          "title": "uuid",
+          "title": "Uuid",
           "type": "integer"
         },
-        "login": {
-          "title": "Login",
+        "bio": {
+          "title": "Bio",
           "type": "string"
+        },
+        "avatar": {
+          "title": "Avatar",
+          "type": "string",
+          "format": "binary"
         },
         "password": {
           "title": "Password",
           "type": "string"
         },
-        "username": {
-          "title": "Username",
+        "login": {
+          "title": "Login",
           "type": "string"
         },
         "is_bot": {
@@ -481,27 +481,18 @@ meta | Any | No | Зарезервировано.
         },
         "auth_id": {
           "title": "Auth Id",
-          "type": "integer"
+          "type": "string"
         },
         "email": {
           "title": "Email",
           "type": "string",
           "format": "email"
         },
-        "avatar": {
-          "title": "Avatar",
-          "type": "string",
-          "format": "binary"
-        },
-        "bio": {
-          "title": "Bio",
+        "username": {
+          "title": "Username",
           "type": "string"
         }
-      },
-      "required": [
-        "uuid",
-        "auth_id"
-      ]
+      }
     },
     "Data": {
       "title": "Main data-object",
@@ -509,10 +500,10 @@ meta | Any | No | Зарезервировано.
       "properties": {
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
-        "chat": {
-          "$ref": "#/definitions/Chat"
+        "flow": {
+          "$ref": "#/definitions/Flow"
         },
         "message": {
           "$ref": "#/definitions/Message"
@@ -529,20 +520,16 @@ meta | Any | No | Зарезервировано.
       "title": "Error information and statuses of request processing",
       "type": "object",
       "properties": {
-        "id": {
-          "title": "Id",
+        "code": {
+          "title": "Code",
           "type": "integer"
-        },
-        "time": {
-          "title": "Time",
-          "type": "number"
         },
         "status": {
           "title": "Status",
           "type": "string"
         },
-        "code": {
-          "title": "Code",
+        "time": {
+          "title": "Time",
           "type": "integer"
         },
         "detail": {
@@ -551,10 +538,9 @@ meta | Any | No | Зарезервировано.
         }
       },
       "required": [
-        "id",
-        "time",
-        "status",
         "code",
+        "status",
+        "time",
         "detail"
       ]
     },
