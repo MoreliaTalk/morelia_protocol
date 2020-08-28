@@ -808,7 +808,7 @@ meta | Any | No | Зарезервировано.
     "user": {
       "uuid": 556565656,
       "auth_id": "jkds78dsids89ds89sd"
-      }
+      },
     "message": {
       "id": 1,
       "text": "some text...",
