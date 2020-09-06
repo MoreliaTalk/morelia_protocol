@@ -87,9 +87,9 @@ type | str | Yes | Уникальное имя метода из следующ�
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 time | int | No | Время, в секундах со времени началы эпохи (Unix-время). Используется в поисковых запросах.
-flow | flow | No | Объект данных в виде словаря или списка содержащего словарь (определяется типом метода). Информация о потоке.
-message | message | No | Объект данных в виде словаря или списка содержащего словарь (определяется типом метода). Информация о сообщении.
-user | user | No | Объект данных в виде словаря или списка содержащего словарь (определяется типом метода). Информация о пользователе.
+flow | flow | No | Объект данных в виде словаря или списка содержащего словарь. Информация о потоке.
+message | message | No | Объект данных в виде словаря или списка содержащего словарь. Информация о сообщении.
+user | user | No | Объект данных в виде словаря или списка содержащего словарь. Информация о пользователе.
 meta | Any | No | Зарезервировано. По умолчанию значение `null`.
 
 ### Объект flow
@@ -284,285 +284,292 @@ meta | Any | No | Зарезервировано.
 
 ```python
 {
-    "title": "MoreliaTalk protocol v1.0",
-    "type": "object",
-    "properties": {
+  "title": "MoreliaTalk protocol v1.0",
+  "type": "object",
+  "properties": {
+    "type": {
+      "title": "Type",
+      "type": "string"
+    },
+    "data": {
+      "$ref": "#/definitions/Data"
+    },
+    "errors": {
+      "$ref": "#/definitions/Errors"
+    },
+    "jsonapi": {
+      "$ref": "#/definitions/Version"
+    },
+    "meta": {
+      "title": "Meta"
+    }
+  },
+  "definitions": {
+    "Flow": {
+      "title": "Flow with description and type",      
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "time": {
+          "title": "Time",
+          "type": "integer"
+        },
         "type": {
-            "title": "Type",
-            "type": "string"
+          "title": "Type",
+          "type": "string"
         },
-        "data": {
-            "$ref": "#/definitions/Data"
+        "title": {
+          "title": "Title",
+          "type": "string"
         },
-        "errors": {
-            "$ref": "#/definitions/Errors"
+        "info": {
+          "title": "Info",
+          "type": "string"
+        }
+      }
+    },
+    "ListFlow": {
+      "title": "List of flow",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Flow"
+      }
+    },
+    "MessageFromUser": {
+      "title": "UUID user who write this message",    
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "title": "Uuid",
+          "type": "integer"
+        }
+      }
+    },
+    "FromFlow": {
+      "title": "Id flow attached for message",        
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        }
+      }
+    },
+    "File": {
+      "title": "Files attached to message",
+      "type": "object",
+      "properties": {
+        "picture": {
+          "title": "Picture",
+          "type": "string",
+          "format": "binary"
         },
-        "jsonapi": {
-            "$ref": "#/definitions/Version"
+        "video": {
+          "title": "Video",
+          "type": "string",
+          "format": "binary"
+        },
+        "audio": {
+          "title": "Audio",
+          "type": "string",
+          "format": "binary"
+        },
+        "document": {
+          "title": "Document",
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "EditedMessage": {
+      "title": "Status and time of editing message",  
+      "type": "object",
+      "properties": {
+        "time": {
+          "title": "Time",
+          "type": "integer"
+        },
+        "status": {
+          "title": "Status",
+          "type": "boolean"
+        }
+      }
+    },
+    "Message": {
+      "title": "Message information",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "integer"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "from_user": {
+          "$ref": "#/definitions/MessageFromUser"     
+        },
+        "time": {
+          "title": "Time",
+          "type": "integer"
+        },
+        "from_flow": {
+          "$ref": "#/definitions/FromFlow"
+        },
+        "file": {
+          "$ref": "#/definitions/File"
+        },
+        "emoji": {
+          "title": "Emoji",
+          "type": "string",
+          "format": "binary"
+        },
+        "edited": {
+          "$ref": "#/definitions/EditedMessage"       
+        }
+      }
+    },
+    "ListMessage": {
+      "title": "List of messages",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Message"
+      }
+    },
+    "User": {
+      "title": "User information",
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "title": "Uuid",
+          "type": "integer"
+        },
+        "bio": {
+          "title": "Bio",
+          "type": "string"
+        },
+        "avatar": {
+          "title": "Avatar",
+          "type": "string",
+          "format": "binary"
+        },
+        "password": {
+          "title": "Password",
+          "type": "string"
+        },
+        "login": {
+          "title": "Login",
+          "type": "string"
+        },
+        "is_bot": {
+          "title": "Is Bot",
+          "type": "boolean"
+        },
+        "auth_id": {
+          "title": "Auth Id",
+          "type": "string"
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email"
+        },
+        "username": {
+          "title": "Username",
+          "type": "string"
+        }
+      }
+    },
+    "ListUser": {
+      "title": "List of users",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "Data": {
+      "title": "Main data-object",
+      "type": "object",
+      "properties": {
+        "time": {
+          "title": "Time",
+          "type": "integer"
+        },
+        "flow": {
+          "title": "Flow",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ListFlow"        
+            },
+            {
+              "$ref": "#/definitions/Flow"
+            }
+          ]
+        },
+        "message": {
+          "title": "Message",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ListMessage"     
+            },
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
+        },
+        "user": {
+          "title": "User",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ListUser"        
+            },
+            {
+              "$ref": "#/definitions/User"
+            }
+          ]
         },
         "meta": {
-            "title": "Meta"
+          "title": "Meta"
         }
+      }
     },
-    "required": [
-        "type",
-        "jsonapi"
-    ],
-    "definitions": {
-        "Flow": {
-            "title": "List of chat rooms with their description and type",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "title": "Id",
-                    "type": "integer"
-                },
-                "time": {
-                    "title": "Time",
-                    "type": "integer"
-                },
-                "type": {
-                    "title": "Type",
-                    "type": "string"
-                },
-                "title": {
-                    "title": "Title",
-                    "type": "string"
-                },
-                "info": {
-                    "title": "Info",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ]
+    "Errors": {
+      "title": "Error information and statuses of request processing",
+      "type": "object",
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "integer"
         },
-        "MessageFromUser": {
-            "title": "Information about forwarded message user",
-            "type": "object",
-            "properties": {
-                "uuid": {
-                    "title": "Uuid",
-                    "type": "integer"
-                },
-                "username": {
-                    "title": "Username",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "uuid",
-                "username"
-            ]
+        "status": {
+          "title": "Status",
+          "type": "string"
         },
-        "FromFlow": {
-            "title": "Information from chat id",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "title": "Id",
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "id"
-            ]
+        "time": {
+          "title": "Time",
+          "type": "integer"
         },
-        "File": {
-            "title": "Files attached to the message",
-            "type": "object",
-            "properties": {
-                "picture": {
-                    "title": "Picture",
-                    "type": "string",
-                    "format": "binary"
-                },
-                "video": {
-                    "title": "Video",
-                    "type": "string",
-                    "format": "binary"
-                },
-                "audio": {
-                    "title": "Audio",
-                    "type": "string",
-                    "format": "binary"
-                },
-                "document": {
-                    "title": "Document",
-                    "type": "string",
-                    "format": "binary"
-                }
-            }
-        },
-        "EditedMessage": {
-            "title": "Time of editing the message",
-            "type": "object",
-            "properties": {
-                "time": {
-                    "title": "Time",
-                    "type": "integer"
-                },
-                "status": {
-                    "title": "Status",
-                    "type": "boolean"
-                }
-            },
-            "required": [
-                "time",
-                "status"
-            ]
-        },
-        "Message": {
-            "title": "Message options",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "title": "Id",
-                    "type": "integer"
-                },
-                "text": {
-                    "title": "Text",
-                    "type": "string"
-                },
-                "from_user": {
-                    "$ref": "#/definitions/MessageFromUser"
-                },
-                "time": {
-                    "title": "Time",
-                    "type": "integer"
-                },
-                "from_flow": {
-                    "$ref": "#/definitions/FromFlow"
-                },
-                "file": {
-                    "$ref": "#/definitions/File"
-                },
-                "emoji": {
-                    "title": "Emoji",
-                    "type": "string",
-                    "format": "binary"
-                },
-                "edited": {
-                    "$ref": "#/definitions/EditedMessage"
-                },
-                "reply_to": {
-                    "title": "Reply To"
-                }
-            },
-            "required": [
-                "id",
-                "time"
-            ]
-        },
-        "User": {
-            "title": "User information",
-            "type": "object",
-            "properties": {
-                "uuid": {
-                    "title": "Uuid",
-                    "type": "integer"
-                },
-                "bio": {
-                    "title": "Bio",
-                    "type": "string"
-                },
-                "avatar": {
-                    "title": "Avatar",
-                    "type": "string",
-                    "format": "binary"
-                },
-                "password": {
-                    "title": "Password",
-                    "type": "string"
-                },
-                "login": {
-                    "title": "Login",
-                    "type": "string"
-                },
-                "is_bot": {
-                    "title": "Is Bot",
-                    "type": "boolean"
-                },
-                "auth_id": {
-                    "title": "Auth Id",
-                    "type": "string"
-                },
-                "email": {
-                    "title": "Email",
-                    "type": "string",
-                    "format": "email"
-                },
-                "username": {
-                    "title": "Username",
-                    "type": "string"
-                }
-            }
-        },
-        "Data": {
-            "title": "Main data-object",
-            "type": "object",
-            "properties": {
-                "time": {
-                    "title": "Time",
-                    "type": "integer"
-                },
-                "flow": {
-                    "$ref": "#/definitions/Flow"
-                },
-                "message": {
-                    "$ref": "#/definitions/Message"
-                },
-                "user": {
-                    "$ref": "#/definitions/User"
-                },
-                "meta": {
-                    "title": "Meta"
-                }
-            }
-        },
-        "Errors": {
-            "title": "Error information and statuses of request processing",
-            "type": "object",
-            "properties": {
-                "code": {
-                    "title": "Code",
-                    "type": "integer"
-                },
-                "status": {
-                    "title": "Status",
-                    "type": "string"
-                },
-                "time": {
-                    "title": "Time",
-                    "type": "integer"
-                },
-                "detail": {
-                    "title": "Detail",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "code",
-                "status",
-                "time",
-                "detail"
-            ]
-        },
-        "Version": {
-            "title": "Protocol version",
-            "type": "object",
-            "properties": {
-                "version": {
-                    "title": "Version",
-                    "type": "number"
-                }
-            },
-            "required": [
-                "version"
-            ]
+        "detail": {
+          "title": "Detail",
+          "type": "string"
         }
+      }
+    },
+    "Version": {
+      "title": "Protocol version",
+      "type": "object",
+      "properties": {
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      }
     }
+  }
 }
 ```
 
@@ -587,10 +594,10 @@ _Примечание:_
     "type": "get_update",
     "data": {
         "time": 1594492370,
-        "user": {
+        "user": [{
             "uuid": 111111111,
             "auth_id": "dks7sd9f6g4fg67vb78g65"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -696,10 +703,10 @@ _Примечание:_
 {
     "type": "send_message",
     "data": {
-        "flow": {
+        "flow": [{
             "id": 123
-            },
-        "message": {
+            }],
+        "message": [{
             "text": "Hello!",
             "file": {
                 "picture": "jkfikdkdsd",
@@ -708,11 +715,11 @@ _Примечание:_
                 "document": "adgdfhfgth"
                 },
             "emoji": "sfdfsdfsdf"
-            },
-        "user": {
+            ]},
+        "user": [{
             "uuid": 111111111,
             "auth_id": "dks7sd9f6g4fg67vb78g65",
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -771,13 +778,13 @@ _Примечание:_
     "type": "all_messages",
     "data": {
         "time": 1594492370,
-        "flow": {
+        "flow": [{
             "id": 123
-            },
-        "user": {
+            }],
+        "user": [{
             "uuid": 111111111,
             "auth_id": "dks7sd9f6g4fg67vb78g65"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -793,9 +800,9 @@ _Примечание:_
 {
     "type": "all_messages",
     "data": {
-        "flow": {
+        "flow": [{
             "id": 123
-            },
+            }],
         "message": [{
             "id": 1,
             "text": "some text...",
@@ -865,15 +872,15 @@ _Примечание:_
 {
     "type": "add_flow",
     "data": {
-        "flow": {
+        "flow": [{
             "type": "chat",
             "title": "title",
             "info": "info"
-            },
-        "user": {
+            }],
+        "user": [{
             "uuid": 123456,
             "auth_id": "auth_id"
-            }
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -889,13 +896,13 @@ _Примечание:_
 {
     "type": "add_flow",
     "data": {
-        "flow": {
+        "flow": [{
             "id": 5655,
             "time": 1594492370,
             "type": "chat",
             "title": "title",
             "info": "info"
-            },
+            }],
         "meta": null
         },
     "errors": {
@@ -940,10 +947,10 @@ _Примечание:_
 {
     "type": "all_flow",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 111111111,
             "auth_id": "dks7sd9f6g4fg67vb78g65"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1018,10 +1025,10 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 111111111,
             "auth_id": "dks7sd9f6g4fg67vb78g65"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1037,7 +1044,7 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 5855,
             "login": "username1",
             "password": "lksdjflksjfsd",
@@ -1049,7 +1056,7 @@ _Примечание:_
             "email": "querty@querty.com",
             "avatar": "fffdddddd",
             "bio": "My bio"
-            },
+            }],
         "meta": null
         },
     "errors": {
@@ -1094,14 +1101,14 @@ _Примечание:_
 {
     "type": "register_user",
     "data": {
-        "user": {
+        "user": [{
             "password": "ds45ds45fd45fd",
             "salt": "salt",
             "key": "key",
             "login": "User",
             "email": "querty@querty.com",
             "username": "User1"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1117,9 +1124,9 @@ _Примечание:_
 {
     "type": "register_user",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 5654665416541,
-            }
+            }],
         "meta": null
         },
     "errors": {
@@ -1164,10 +1171,10 @@ _Примечание:_
 {
     "type": "auth",
     "data": {
-        "user": {
+        "user": [{
             "password": "ds45ds45fd45fd",
             "login": "User"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1183,10 +1190,10 @@ _Примечание:_
 {
     "type": "auth",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 5654665416541,
             "auth_id": "lkds89ds89fd98fd"
-            },
+            }],
         "meta": null
         },
     "errors": {
@@ -1231,14 +1238,14 @@ _Примечание:_
 {
     "type": "delete_user",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 123456,
             "password": "ds45ds45fd45fd",
             "salt": "salt",
             "key": "key",
             "login": "User",
             "auth_id": "jkfdjkfdjkf"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1296,13 +1303,13 @@ _Примечание:_
 {
     "type": "delete_message",
     "data": {
-        "message": {
+        "message": [{
             "id": 858585
-            },
-        "user": {
+            }],
+        "user": [{
             "uuid": 5345634567354,
             "auth_id": "lkds89ds89fd98fd"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1360,14 +1367,14 @@ _Примечание:_
 {
     "type": "edited_message",
     "data": {
-        "message": {
+        "message": [{
             "id": 858585,
             "text": "Hello!"
-            },
-        "user": {
+            }],
+        "user": [{
             "uuid": 5345634567354,
             "auth_id": "lkds89ds89fd98fd"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
@@ -1426,10 +1433,10 @@ _Примечание:_
 {
     "type": "ping-pong",
     "data": {
-        "user": {
+        "user": [{
             "uuid": 5345634567354,
             "auth_id": "lkds89ds89fd98fd"
-            },
+            }],
         "meta": null
         },
     "jsonapi": {
