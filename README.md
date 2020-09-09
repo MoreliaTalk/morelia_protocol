@@ -260,7 +260,7 @@ meta | Any | No | Зарезервировано.
   },
   "definitions": {
     "Flow": {
-      "title": "Flow with description and type",
+      "title": "List of flow with description and type",
       "type": "object",
       "properties": {
         "id": {
@@ -285,75 +285,8 @@ meta | Any | No | Зарезервировано.
         }
       }
     },
-    "ListFlow": {
-      "title": "List of flow",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Flow"
-      }
-    },
-    "MessageFromUser": {
-      "title": "UUID user who write this message",
-      "type": "object",
-      "properties": {
-        "uuid": {
-          "title": "Uuid",
-          "type": "integer"
-        }
-      }
-    },
-    "FromFlow": {
-      "title": "Id flow attached for message",
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "Id",
-          "type": "integer"
-        }
-      }
-    },
-    "File": {
-      "title": "Files attached to message",
-      "type": "object",
-      "properties": {
-        "picture": {
-          "title": "Picture",
-          "type": "string",
-          "format": "binary"
-        },
-        "video": {
-          "title": "Video",
-          "type": "string",
-          "format": "binary"
-        },
-        "audio": {
-          "title": "Audio",
-          "type": "string",
-          "format": "binary"
-        },
-        "document": {
-          "title": "Document",
-          "type": "string",
-          "format": "binary"
-        }
-      }
-    },
-    "EditedMessage": {
-      "title": "Status and time of editing message",
-      "type": "object",
-      "properties": {
-        "time": {
-          "title": "Time",
-          "type": "integer"
-        },
-        "status": {
-          "title": "Status",
-          "type": "boolean"
-        }
-      }
-    },
     "Message": {
-      "title": "Message information",
+      "title": "List of message information",
       "type": "object",
       "properties": {
         "id": {
@@ -364,38 +297,55 @@ meta | Any | No | Зарезервировано.
           "title": "Text",
           "type": "string"
         },
-        "from_user": {
-          "$ref": "#/definitions/MessageFromUser"
+        "from_user_uuid": {
+          "title": "From User Uuid",
+          "type": "integer"
         },
         "time": {
           "title": "Time",
           "type": "integer"
         },
-        "from_flow": {
-          "$ref": "#/definitions/FromFlow"
+        "from_flow_id": {
+          "title": "From Flow Id",
+          "type": "integer"
         },
-        "file": {
-          "$ref": "#/definitions/File"
+        "file_picture": {
+          "title": "File Picture",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_video": {
+          "title": "File Video",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_audio": {
+          "title": "File Audio",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_document": {
+          "title": "File Document",
+          "type": "string",
+          "format": "binary"
         },
         "emoji": {
           "title": "Emoji",
           "type": "string",
           "format": "binary"
         },
-        "edited": {
-          "$ref": "#/definitions/EditedMessage"
+        "edited_time": {
+          "title": "Edited Time",
+          "type": "integer"
+        },
+        "edited_status": {
+          "title": "Edited Status",
+          "type": "boolean"
         }
       }
     },
-    "ListMessage": {
-      "title": "List of messages",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Message"
-      }
-    },
     "User": {
-      "title": "User information",
+      "title": "List of user information",
       "type": "object",
       "properties": {
         "uuid": {
@@ -438,13 +388,6 @@ meta | Any | No | Зарезервировано.
         }
       }
     },
-    "ListUser": {
-      "title": "List of users",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/User"
-      }
-    },
     "Data": {
       "title": "Main data-object",
       "type": "object",
@@ -457,7 +400,10 @@ meta | Any | No | Зарезервировано.
           "title": "Flow",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListFlow"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Flow"
+              }
             },
             {
               "$ref": "#/definitions/Flow"
@@ -468,7 +414,10 @@ meta | Any | No | Зарезервировано.
           "title": "Message",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListMessage"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Message"
+              }
             },
             {
               "$ref": "#/definitions/Message"
@@ -479,7 +428,10 @@ meta | Any | No | Зарезервировано.
           "title": "User",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListUser"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
             },
             {
               "$ref": "#/definitions/User"
