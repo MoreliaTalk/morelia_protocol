@@ -15,10 +15,6 @@ Udav (MoreliaTalk protocol) создан для унификации взаим�
     - [Объект data](#объект-data)
     - [Объект flow](#объект-flow)
     - [Объект message](#объект-message)
-    - [Объект from_user](#объект-from_user)
-    - [Объект from_flow](#объект-from_flow)
-    - [Объект file](#объект-file)
-    - [Объект edited_message](#объект-edited_message)
     - [Объект user](#объект-user)
     - [Объект errors](#объект-errors)
     - [Объект jsonapi](#объект-jsonapi)
@@ -118,48 +114,16 @@ info | str | No | Описание потока.
 ---- | --- | ------------ | --------
 id | int | Yes | Уникальный номер сообщения.
 text | str | No | Текст сообщения.
-from_user | from_user | No | Объект данных в виде словаря. Информация о пользователе который написал это сообщение.
-time | int | Yes | Время когда сообщение было написано, в секундах со времени началы эпохи (Unix-время).
-from_flow | from_flow | No | Объект данных в виде словаря. Информация к какому потоку принадлежит это сообщение.
-file | file | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (аудио, видео, фото, документ).
+from_user_uuid | int | No | Уникальный номер пользователя который написал сообщение.
+from_flow_id | int | No | Уникальный номер потока которому принадлежит сообщение.
+time | int | No | Время когда сообщение было написано, в секундах со времени началы эпохи (Unix-время).
+file_picture | bytes | No | Файл-вложение к сообщению (фото).
+file_video | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (видео).
+file_audio | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (аудио).
+file_document | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (документ).
 emoji | bytes | No | Тип емоджи (в виде файла).
-edited_message | edited_message | No | Объект данных в виде словаря. Информация о редактировании сообщения, а так же о дате редактирования.
-
-### Объект from_user
-
-В объекте `from_user` передается информация о пользователе который написал сообщение.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-uuid | int | Yes | Уникальный номер пользователя.
-
-### Объект from_flow
-
-В объекте `from_flow` передается информация об `id` потока к которому относится `message` (сообщение).
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-id | int | Yes | Уникальный номер потока.
-
-### Объект file
-
-В объекте `file` передаются файлы, которые пользователь прикрепил к сообщению.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-picture | bytes | No | Изображение.
-video | bytes | No | Видео.
-audio | bytes | No | Аудио.
-document | bytes | No | Документ.
-
-### Объект edited_message
-
-В объекте `edited_message` передается информация об исправлении сообщения, а так же дата последнего редактирования.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-time | int | Yes | Время когда пользователь последний раз исправил сообщение, в секундах со времени началы эпохи (Unix-время).
-status | bool | Yes | Статус сообщения (исправлено или нет).
+edited_time | int | No | Время когда пользователь последний раз исправил сообщение, в секундах со времени началы эпохи (Unix-время).
+edited_status | bool | No | Статус сообщения (исправлено или нет).
 
 ### Объект user
 
@@ -227,26 +191,16 @@ meta | Any | No | Зарезервировано.
             "message": [{
                 "id": 1,
                 "text": "some text...",
-                "from_user": {
-                    "uuid": 1254,
-                    "username": "Vasya"
-                    },
+                "from_user_uuid": 1254,
                 "time": 1594492370,
-                "from_flow": {
-                    "id": 123655455,
-                    "type": "chat"
-                    },
-                "file": {
-                    "picture": "jkfikdkdsd",
-                    "video": "sdfsdfsdf",
-                    "audio": "fgfsdfsdfsdf",
-                    "document": "fghsfghsfgh"
-                    },
+                "from_flow_id": 123655455,
+                "file_picture": "jkfikdkdsd",
+                "file_video": "sdfsdfsdf",
+                "file_audio": "fgfsdfsdfsdf",
+                "file_document": "fghsfghsfgh"
                 "emoji": "sfdfsdfsdf",
-                "edited_message": {
-                    "time": 1594492370,
-                    "status": true
-                    }
+                "edited_time": 1594492370,
+                "edited_status": true
                 },
                 {...}],
             "user": [{
@@ -306,7 +260,7 @@ meta | Any | No | Зарезервировано.
   },
   "definitions": {
     "Flow": {
-      "title": "Flow with description and type",      
+      "title": "Flow with description and type",
       "type": "object",
       "properties": {
         "id": {
@@ -339,7 +293,7 @@ meta | Any | No | Зарезервировано.
       }
     },
     "MessageFromUser": {
-      "title": "UUID user who write this message",    
+      "title": "UUID user who write this message",
       "type": "object",
       "properties": {
         "uuid": {
@@ -349,7 +303,7 @@ meta | Any | No | Зарезервировано.
       }
     },
     "FromFlow": {
-      "title": "Id flow attached for message",        
+      "title": "Id flow attached for message",
       "type": "object",
       "properties": {
         "id": {
@@ -385,7 +339,7 @@ meta | Any | No | Зарезервировано.
       }
     },
     "EditedMessage": {
-      "title": "Status and time of editing message",  
+      "title": "Status and time of editing message",
       "type": "object",
       "properties": {
         "time": {
@@ -411,7 +365,7 @@ meta | Any | No | Зарезервировано.
           "type": "string"
         },
         "from_user": {
-          "$ref": "#/definitions/MessageFromUser"     
+          "$ref": "#/definitions/MessageFromUser"
         },
         "time": {
           "title": "Time",
@@ -429,7 +383,7 @@ meta | Any | No | Зарезервировано.
           "format": "binary"
         },
         "edited": {
-          "$ref": "#/definitions/EditedMessage"       
+          "$ref": "#/definitions/EditedMessage"
         }
       }
     },
@@ -503,7 +457,7 @@ meta | Any | No | Зарезервировано.
           "title": "Flow",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListFlow"        
+              "$ref": "#/definitions/ListFlow"
             },
             {
               "$ref": "#/definitions/Flow"
@@ -514,7 +468,7 @@ meta | Any | No | Зарезервировано.
           "title": "Message",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListMessage"     
+              "$ref": "#/definitions/ListMessage"
             },
             {
               "$ref": "#/definitions/Message"
@@ -525,7 +479,7 @@ meta | Any | No | Зарезервировано.
           "title": "User",
           "anyOf": [
             {
-              "$ref": "#/definitions/ListUser"        
+              "$ref": "#/definitions/ListUser"
             },
             {
               "$ref": "#/definitions/User"
@@ -631,24 +585,16 @@ _Примечание:_
         "message": [{
             "id": 1,
             "text": "some text...",
-            "from_user": {
-                "uuid": 1254
-                },
+            "from_user_uuid": 1254,
             "time": 1594492370,
-            "from_flow": {
-                "id": 123655455
-                },
-            "file": {
-                "picture": "jkfikdkdsd",
-                "video": "sdfsdfsdf",
-                "audio": "fgfsdfsdfsdf",
-                "document": "adgdfhfgth"
-                },
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
             "emoji": "sfdfsdfsdf",
-            "edited_message": {
-                "time": 1594492370,
-                "status": true
-                }
+            "edited_time": 1594492370,
+            "edited_status": true
             },
             {...}],
         "user": [{
@@ -806,26 +752,16 @@ _Примечание:_
         "message": [{
             "id": 1,
             "text": "some text...",
-            "from_user": {
-                "uuid": 1254,
-                "username": "Vasya"
-                },
+            "from_user_uuid": 1254,
             "time": 1594492370,
-            "from_flow": {
-                "id": 123655455,
-                "type": "chat"
-                },
-            "file": {
-                "picture": "jkfikdkdsd",
-                "video": "sdfsdfsdf",
-                "audio": "fgfsdfsdfsdf",
-                "document": "adgdfhfgth"
-                },
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
             "emoji": "sfdfsdfsdf",
-            "edited_message": {
-                "time": 1594492370,
-                "status": true
-                }
+            "edited_time": 1594492370,
+            "edited_status": true
             },
             {...}],
         "meta": null
