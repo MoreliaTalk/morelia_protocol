@@ -1,97 +1,97 @@
-# Официальная документация протокола MoreliaTalk Network
+# Официальная документация протокола Udav
 
-Актуально на: **13.08.2020**
+Актуально на: **05.09.2020**
 
-Версия протокола: **1.0** Редакция протокола: **1.14**
+Версия протокола: **1.0** Редакция протокола: **1.15**
 
-MoreliaTalk protocol создан для унификации взаимодействия между клиентом и сервером в MoreliaTalk Network.
-Интерфейс взаимодействия реализован через ВебСокеты, путём отправки JSON-объекта. Значение первого поля `type` является наименованием метода.
+Udav (MoreliaTalk protocol) создан для унификации взаимодействия между клиентом и сервером в MoreliaTalk Network.
+Интерфейс взаимодействия реализован через вебсокеты. Приложения общаются между собой путём отправки JSON-файла.
 
 Содержание:
 
-- [Официальная документация протокола MoreliaTalk Network](#официальная-документация-протокола-moreliatalk-network)
+- [Официальная документация протокола Udav](#официальная-документация-протокола-Udav)
   - [Описание API](#описание-api)
     - [Объект type](#объект-type)
     - [Объект data](#объект-data)
     - [Объект flow](#объект-flow)
     - [Объект message](#объект-message)
-    - [Объект from_user](#объект-from_user)
-    - [Объект from_flow](#объект-from_flow)
-    - [Объект file](#объект-file)
-    - [Объект edited_message](#объект-edited_message)
     - [Объект user](#объект-user)
     - [Объект errors](#объект-errors)
     - [Объект jsonapi](#объект-jsonapi)
     - [Объект meta](#объект-meta)
-    - [Пример JSON-объекта](#пример-json-объекта)
-    - [Схема валидации](#схема-валидации)
+  - [Пример JSON-объекта](#пример-json-объекта)
+  - [Схема валидации](#схема-валидации)
   - [Описание методов](#описание-методов)
     - [Метод get_update](#метод-get_update)
     - [Метод send_message](#метод-send_message)
     - [Метод all_messages](#метод-all_messages)
+    - [Метод add_flow](#метод-add_flow)
     - [Метод all_flow](#метод-all_flow)
     - [Метод user_info](#метод-user_info)
     - [Метод register_user](#метод-register_user)
-    - [Метод authentication](#метод-authentication)
+    - [Метод authentication](#метод-authentification)
     - [Метод delete_user](#метод-delete_user)
     - [Метод delete_message](#метод-delete_message)
     - [Метод edited_message](#метод-edited_message)
     - [Метод ping-pong](#метод-ping-pong)
     - [Метод error](#метод-error)
   - [Описание ошибок](#описание-ошибок)
-    - [Код 200 статус 'Ok'](#код-200-статус-ok)
-    - [Код 201 статус 'Created'](#код-201-статус-created)
-    - [Код 202 статус 'Accepted'](#код-202-статус-accepted)
-    - [Код 400 статус 'Bad Request'](#код-400-статус-bad-request)
-    - [Код 401 статус 'Unauthorized'](#код-401-статус-unauthorized)
-    - [Код 403 статус 'Forbidden'](#код-403-статус-forbidden)
-    - [Код 404 статус 'Not Found'](#код-404-статус-not-found)
-    - [Код 405 статус 'Method Not Allowed'](#код-405-статус-method-not-allowed)
-    - [Код 408 статус 'Request Timeout'](#код-408-статус-request-timeout)
-    - [Код 415 статус 'Unsupported Media Type'](#код-415-статус-unsupported-media-type)
-    - [Код 417 статус 'Expectation Failed'](#код-417-статус-expectation-failed)
-    - [Код 426 статус 'Upgrade Required'](#код-426-статус-upgrade-required)
-    - [Код 429 статус 'Too Many Requests'](#код-429-статус-too-many-requests)
-    - [Код 499 статус 'Client Closed Request'](#код-499-статус-client-closed-request)
-    - [Код 500 статус 'Internal Server Error'](#код-500-статус-internal-server-error)
-    - [Код 503 статус 'Service Unavailable'](#код-503-статус-service-unavailable)
-    - [Код 526 статус 'Invalid SSL Certificate'](#код-526-статус-invalid-ssl-certificate)
+    - [Код 200 статус "Ok"](#код-200-статус-ok)
+    - [Код 201 статус "Created"](#код-201-статус-created)
+    - [Код 202 статус "Accepted"](#код-202-статус-accepted)
+    - [Код 400 статус "Bad Request"](#код-400-статус-bad-request)
+    - [Код 401 статус "Unauthorized"](#код-401-статус-unauthorized)
+    - [Код 403 статус "Forbidden"](#код-403-статус-forbidden)
+    - [Код 404 статус "Not Found"](#код-404-статус-not-found)
+    - [Код 405 статус "Method Not Allowed"](#код-405-статус-method-not-allowed)
+    - [Код 408 статус "Request Timeout"](#код-408-статус-request-timeout)
+    - [Код 409 статус "Conflict"](#код-409-статус-conflict)
+    - [Код 415 статус "Unsupported Media Type"](#код-415-статус-unsupported-media-type)
+    - [Код 417 статус "Expectation Failed"](#код-417-статус-expectation-failed)
+    - [Код 426 статус "Upgrade Required"](#код-426-статус-upgrade-required)
+    - [Код 429 статус "Too Many Requests"](#код-429-статус-too-many-requests)
+    - [Код 499 статус "Client Closed Request"](#код-499-статус-client-closed-request)
+    - [Код 500 статус "Internal Server Error"](#код-500-статус-internal-server-error)
+    - [Код 503 статус "Service Unavailable"](#код-503-статус-service-unavailable)
+    - [Код 520 статус "Unknown Error"](#код-520-статус-unknown-error)
+    - [Код 526 статус "Invalid SSL Certificate"](#код-526-статус-invalid-ssl-certificate)
 
 ## Описание API
 
-Запросы между клиентом и сервером передаются в виде JSON-объекта. Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
+Запросы между клиентом и сервером передаются в виде JSON-объекта. В каждом запросе имеется ключ `type` значение которого является именем метода.
 
-- Первая пара _ключ:значение_ (объект `Type`) устанавливает тип метода. Клиент/сервер обрабатывают запрос в соответсвии с типом метода. Не может быть пустым.
-- Вторая пара _ключ:значение_ (объект `Data`) передает массив данных соответствующих запросу. В случае отсутствия данных значение поля `None`.
-- Третья пара _ключ:значение_ (объект `Errors`) передает информацию о статусе выполенения запроса, коды статусов соответствуют кодам протокола HTTP. Не может быть пустым.
-- Четвёртая пара _ключ:значение_ (объект `Jsonapi`) передает информацию об используемом протоколе. Не может быть пустым.
-- Пятая пара _ключ:значение_ (объект `Meta`) резервная, для дальнейшего расширения протокола. В случае отсутствия данных значение поля `None`.
+- Первая пара _ключ:значение_ (объект `type`) устанавливает тип метода. Клиент/сервер обрабатывают запрос в соответсвии с именем метода. Значение ключа не может быть пустым или `null`.
+- Вторая пара _ключ:значение_ (объект `data`) передает массив данных соответствующих запросу. В случае отсутствия данных, значение ключа `null`.
+- Третья пара _ключ:значение_ (объект `errors`) передает информацию о статусе выполенения запроса. Значение ключа не может быть пустым или `null`.
+- Четвёртая пара _ключ:значение_ (объект `jsonapi`) передает информацию об используемом протоколе. Значение ключа не может быть пустым или `null`.
+- Пятая пара _ключ:значение_ (объект `meta`) резервная, для дальнейшего расширения протокола. В случае отсутствия данных, значение поля `null`.
 
 Ниже описаны все возможные поля JSON-объекта.
 
 ### Объект type
 
-В объекте Type передается тип метода. Не может быть пустым.
+В объекте `type` передается тип метода. Значение ключа `type` не может быть пустым или `null`.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user, delete_message, edited_message, ping-pong.
+type | str | Yes | Уникальное имя метода из следующего списка: all_flow, add_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user, delete_message, edited_message, ping-pong.
 
 ### Объект data
 
-В объекте Data передается основной массив информации. В случае отсутствия данных значение поля `None`.
+В объекте `data` передается основной массив информации. В случае отсутствия данных значение ключа `data` должно быть `null`.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-time | int | Yes | Время на сервере, в секундах со времени началы эпохи (Unix-время).
-flow | flow | No | Объект данных в виде массива типа dict.
-message | message | No | Объект данных в виде массива типа dict.
-user | user | No | Объект данных в виде массива типа dict.
-meta | Any | No | Зарезервировано.
+time | int | No | Время, в секундах со времени началы эпохи (Unix-время). Используется в поисковых запросах.
+flow | flow | No | Объект данных в виде словаря или списка содержащего словарь. Информация о потоке.
+message | message | No | Объект данных в виде словаря или списка содержащего словарь. Информация о сообщении.
+user | user | No | Объект данных в виде словаря или списка содержащего словарь. Информация о пользователе.
+meta | Any | No | Зарезервировано. По умолчанию значение `null`.
 
 ### Объект flow
 
-В объекте Flow передается полная информация о потоке (чате, канале, группе).
+В объекте `flow` передается полная информация о потоке (чате, канале, группе).
+
 Всего существуют три типа потока:
 
 - chat (2 пишут, 2 читают)
@@ -101,97 +101,63 @@ meta | Any | No | Зарезервировано.
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 id | int | Yes | Уникальный номер потока.
-time | int | Yes | Время обновления потока, в секундах со времени началы эпохи (Unix-время).
-type | str | Yes | Тип потока.
-title | str | Yes | Персональное имя потока (может быть не уникальным).
+time | int | No | Время создания потока, в секундах со времени начала эпохи (Unix-время).
+type | str | No | Тип потока.
+title | str | No | Персональное имя потока (может быть не уникальным).
 info | str | No | Описание потока.
 
 ### Объект message
 
-В объекте message передается информация о сообщении.
+В объекте `message` передается информация о сообщении.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 id | int | Yes | Уникальный номер сообщения.
-text | str | Yes | Текст сообщения.
-from_user | from_user | Yes | Объект в ввиде массива типа dict. Информация о пользователе который написал это сообщение.
-time | int | Yes | Время когда сообщение было написано, в секундах со времени началы эпохи (Unix-время).
-from_flow | from_flow | Yes | Объект в ввиде массива типа dict. Информация к какому чату принадлежит это сообщение.
-file | file | No | Объект в ввиде массива типа dict. Файл-вложение к сообщению (аудио, видео, фото, документ).
+text | str | No | Текст сообщения.
+from_user_uuid | int | No | Уникальный номер пользователя который написал сообщение.
+from_flow_id | int | No | Уникальный номер потока которому принадлежит сообщение.
+time | int | No | Время когда сообщение было написано, в секундах со времени началы эпохи (Unix-время).
+file_picture | bytes | No | Файл-вложение к сообщению (фото).
+file_video | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (видео).
+file_audio | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (аудио).
+file_document | bytes | No | Объект данных в виде списка содержащего словарь. Файл-вложение к сообщению (документ).
 emoji | bytes | No | Тип емоджи (в виде файла).
-edited_message | edited_message | No | Объект в ввиде массива типа dict. Информация о редактировании сообщения, а так же о дате редактирования.
-reply_to | Any | No | Ссылка на цитируемое сообщение.
-
-### Объект from_user
-
-В объекте from_user передается информация о пользователе который написал сообщение.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-uuid | int | Yes | Уникальный номер пользователя.
-username | str | Yes | Имя пользователя.
-
-### Объект from_flow
-
-В объекте from_flow передается информация об id потока к которому относится message (сообщение).
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-id | int | Yes | Уникальный номер потока.
-type | str | Yes | Тип потока.
-
-### Объект file
-
-В объекте file передаются файлы, которые пользователь прикрепил к сообщению.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-picture | bytes | No | Изображение.
-video | bytes | No | Видео.
-audio | bytes | No | Аудио.
-document | bytes | No | Документ.
-
-### Объект edited_message
-
-В объекте edited_message передается информация об исправлении сообщения, а так же дата последнего редактирования.
-
-Ключ | Тип | Обязательный | Описание
----- | --- | ------------ | --------
-time | int | Yes | Время когда пользователь последний раз исправил сообщение, в секундах со времени началы эпохи (Unix-время).
-status | bool | Yes | Статус сообщения (исправлено или нет).
+edited_time | int | No | Время когда пользователь последний раз исправил сообщение, в секундах со времени началы эпохи (Unix-время).
+edited_status | bool | No | Статус сообщения (исправлено или нет).
 
 ### Объект user
 
-В объекте user передается информация о пользователе (настройки пользователя).
+В объекте `user` передается информация о пользователе, а так же его настройки.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-uuid | int | Yes | Уникальный номер пользователя.
+uuid | int | No | Уникальный номер пользователя. Выдается сервером после аутентификации.
+login | str | No | Логин пользователя.
+username | str | No | Отображаемое имя пользователя.
 bio | str | No | Информация о пользователе.
 avatar | bytes | No | Изображение пользователя.
-password | str | Yes | Пароль пользователя.
-login | str | Yes | Логин пользователя.
-is_bot | bool | Yes | Указывает на тип пользователя (бот или человек).
-auth_id | str | Yes | Хэш пароля.
-email | EmailStr | Yes | Контактная информация (адрес почты) пользователя.
-username | str | Yes | Имя пользователя (не уникальное).
+password | str | No | Пароль пользователя.
+salt | str | No | Соль. Ключевое слово подмешиваемое к паролю при создании Хэш-пароля.
+key | str | No | Дополнительный ключ для генерации хэш-пароля.
+is_bot | bool | No | Указывает на тип пользователя (бот или человек).
+auth_id | str | No | Токен аутентификации.
+email | EmailStr | No | Адрес почты пользователя.
 
 ### Объект errors
 
-В объекте errors передается информация о результате выполнения запроса.
-Коды ошибок (и их статусы) соответствуют кодам протокола HTTP.
-Значения ключа `detail` поясняет статус указанный в ключе `status`. Не может быть пустым.
+В объекте `errors` передается информация о результате выполнения запроса. Не может быть пустым.
+Коды ошибок (и их статусы) соответствуют кодам протокола [HTTP](https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP). Значения ключа `detail` предназначено для подробного разъяснения статуса выполнения запроса.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 code | int | Yes | Код ошибки.
 status | str | Yes | Статус ошибки.
 time | int | Yes | Время когда произошла ошибка, в секундах со времени началы эпохи (Unix-время).
-detail | str | Yes | Описание ошибки.
+detail | str | Yes | Подробное описание ошибки.
 
 ### Объект jsonapi
 
-В объекте jsonapi передается версия протокола. Не может быть пустым.
+В объекте `jsonapi` передается версия протокола. Не может быть пустым.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
@@ -199,82 +165,76 @@ version | str | Yes | Версия протокола.
 
 ### Объект meta
 
-Объект meta зарезервирован. В случае отсутствия данных значение поля `None`.
+Объект `meta` зарезервирован. В случае отсутствия данных значение поля `null`.
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 meta | Any | No | Зарезервировано.
 
-### Пример JSON-объекта
+## Пример JSON-объекта
 
-Содержание JSON-объекта в виде python dict содержащем все используемые поля.
+Содержание JSON-объекта, используются все возможные поля.
 
-```python
+```javascript
 {
-  'type': 'user_info',
-  'data': {
-    'time': 1594492370,
-    'flow': {
-      'id': 1254,
-      'time': 1594492370,
-      'type': 'chat',
-      'title': 'Name Chat',
-      'info': 'Info about this chat'
-      },
-    'message': {
-      'id': 1,
-      'text': 'some text...',
-      'from_user': {
-        'uuid': 1254,
-        'username': 'Vasya'
-        },
-      'time': 1594492370,
-      'from_flow': {
-        'id': 123655455,
-        'type': 'chat'
-        },
-      'file': {
-        'picture': 'jkfikdkdsd',
-        'video': 'sdfsdfsdf',
-        'audio': 'fgfsdfsdfsdf',
-        'document': 'fghsfghsfgh'
-        },
-      'emoji': 'sfdfsdfsdf',
-      'edited_message': {
-        'time': 1594492370,
-        'status': True
-        },
-      'reply_to': None
-      },
-    'user': {
-      'uuid': 5855,
-      'login': 'username1',
-      'password': 'lksdjflksjfsd',
-      'username': 'Vasya',
-      'is_bot': True,
-      'auth_id': '4646hjgjhg64',
-      'email': 'querty@querty.com',
-      'avatar': 'fffdddddd',
-      'bio': 'My bio'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "user_info",
+        "data": {
+            "time": 1594492370,
+            "flow": [{
+                "id": 1254,
+                "time": 1594492370,
+                "type": "chat",
+                "title": "Name Chat",
+                "info": "Info about this chat"
+                },
+                {...}],
+            "message": [{
+                "id": 1,
+                "text": "some text...",
+                "from_user_uuid": 1254,
+                "time": 1594492370,
+                "from_flow_id": 123655455,
+                "file_picture": "jkfikdkdsd",
+                "file_video": "sdfsdfsdf",
+                "file_audio": "fgfsdfsdfsdf",
+                "file_document": "fghsfghsfgh"
+                "emoji": "sfdfsdfsdf",
+                "edited_time": 1594492370,
+                "edited_status": true
+                },
+                {...}],
+            "user": [{
+                "uuid": 5855,
+                "login": "username1",
+                "password": "lksdjflksjfsd",
+                "salt": "salt",
+                "key": "key",
+                "username": "Vasya",
+                "is_bot": true,
+                "auth_id": "4646hjgjhg64",
+                "email": "querty@querty.com",
+                "avatar": "fffdddddd",
+                "bio": "My bio"
+                },
+                {...}],
+            "meta": null
+            },
+        "errors": {
+            "code": 200,
+            "status": "OK",
+            "time": 1594492370,
+            "detail": "successfully"
+            },
+        "jsonapi": {
+            "version": "1.0"
+            },
+        "meta": null
+        }
 ```
 
-### Схема валидации
+## Схема валидации
 
-"Эталонная" схема валидации данных. Используется для валидации запросов и ответов.
+Схема валидации данных. Эта схема используется сервером для валидации запросов от клиентов.
 
 ```python
 {
@@ -298,13 +258,9 @@ meta | Any | No | Зарезервировано.
       "title": "Meta"
     }
   },
-  "required": [
-    "type",
-    "jsonapi"
-  ],
   "definitions": {
     "Flow": {
-      "title": "List of chat rooms with their description and type",
+      "title": "List of flow with description and type",
       "type": "object",
       "properties": {
         "id": {
@@ -313,7 +269,7 @@ meta | Any | No | Зарезервировано.
         },
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
         "type": {
           "title": "Type",
@@ -327,93 +283,10 @@ meta | Any | No | Зарезервировано.
           "title": "Info",
           "type": "string"
         }
-      },
-      "required": [
-        "id"
-      ]
-    },
-    "MessageFromUser": {
-      "title": "Information about forwarded message user",
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "Id",
-          "type": "integer"
-        },
-        "username": {
-          "title": "Username",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "username"
-      ]
-    },
-    "FromFlow": {
-      "title": "Information from chat id",
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "Id",
-          "type": "integer"
-        },
-        "type": {
-          "title": "Type",
-          "type": "string"
-        }
-      },
-      "required": [
-        "id",
-        "type"
-      ]
-    },
-    "File": {
-      "title": "Files attached to the message",
-      "type": "object",
-      "properties": {
-        "picture": {
-          "title": "Picture",
-          "type": "string",
-          "format": "binary"
-        },
-        "video": {
-          "title": "Video",
-          "type": "string",
-          "format": "binary"
-        },
-        "audio": {
-          "title": "Audio",
-          "type": "string",
-          "format": "binary"
-        },
-        "document": {
-          "title": "Document",
-          "type": "string",
-          "format": "binary"
-        }
       }
     },
-    "EditedMessage": {
-      "title": "Time of editing the message",
-      "type": "object",
-      "properties": {
-        "time": {
-          "title": "Time",
-          "type": "number"
-        },
-        "status": {
-          "title": "Status",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "time",
-        "status"
-      ]
-    },
     "Message": {
-      "title": "Message options",
+      "title": "List of message information",
       "type": "object",
       "properties": {
         "id": {
@@ -424,54 +297,76 @@ meta | Any | No | Зарезервировано.
           "title": "Text",
           "type": "string"
         },
-        "from_user": {
-          "$ref": "#/definitions/MessageFromUser"
+        "from_user_uuid": {
+          "title": "From User Uuid",
+          "type": "integer"
         },
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
-        "from_flow": {
-          "$ref": "#/definitions/FromChat"
+        "from_flow_id": {
+          "title": "From Flow Id",
+          "type": "integer"
         },
-        "file": {
-          "$ref": "#/definitions/File"
+        "file_picture": {
+          "title": "File Picture",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_video": {
+          "title": "File Video",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_audio": {
+          "title": "File Audio",
+          "type": "string",
+          "format": "binary"
+        },
+        "file_document": {
+          "title": "File Document",
+          "type": "string",
+          "format": "binary"
         },
         "emoji": {
           "title": "Emoji",
           "type": "string",
           "format": "binary"
         },
-        "edited": {
-          "$ref": "#/definitions/EditedMessage"
+        "edited_time": {
+          "title": "Edited Time",
+          "type": "integer"
         },
-        "reply_to": {
-          "title": "Reply To"
+        "edited_status": {
+          "title": "Edited Status",
+          "type": "boolean"
         }
-      },
-      "required": [
-        "id",
-        "time"
-      ]
+      }
     },
     "User": {
-      "title": "User information",
+      "title": "List of user information",
       "type": "object",
       "properties": {
         "uuid": {
-          "title": "uuid",
+          "title": "Uuid",
           "type": "integer"
         },
-        "login": {
-          "title": "Login",
+        "bio": {
+          "title": "Bio",
           "type": "string"
+        },
+        "avatar": {
+          "title": "Avatar",
+          "type": "string",
+          "format": "binary"
         },
         "password": {
           "title": "Password",
           "type": "string"
         },
-        "username": {
-          "title": "Username",
+        "login": {
+          "title": "Login",
           "type": "string"
         },
         "is_bot": {
@@ -480,27 +375,18 @@ meta | Any | No | Зарезервировано.
         },
         "auth_id": {
           "title": "Auth Id",
-          "type": "integer"
+          "type": "string"
         },
         "email": {
           "title": "Email",
           "type": "string",
           "format": "email"
         },
-        "avatar": {
-          "title": "Avatar",
-          "type": "string",
-          "format": "binary"
-        },
-        "bio": {
-          "title": "Bio",
+        "username": {
+          "title": "Username",
           "type": "string"
         }
-      },
-      "required": [
-        "uuid",
-        "auth_id"
-      ]
+      }
     },
     "Data": {
       "title": "Main data-object",
@@ -508,16 +394,49 @@ meta | Any | No | Зарезервировано.
       "properties": {
         "time": {
           "title": "Time",
-          "type": "number"
+          "type": "integer"
         },
-        "chat": {
-          "$ref": "#/definitions/Chat"
+        "flow": {
+          "title": "Flow",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Flow"
+              }
+            },
+            {
+              "$ref": "#/definitions/Flow"
+            }
+          ]
         },
         "message": {
-          "$ref": "#/definitions/Message"
+          "title": "Message",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Message"
+              }
+            },
+            {
+              "$ref": "#/definitions/Message"
+            }
+          ]
         },
         "user": {
-          "$ref": "#/definitions/User"
+          "title": "User",
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            },
+            {
+              "$ref": "#/definitions/User"
+            }
+          ]
         },
         "meta": {
           "title": "Meta"
@@ -528,34 +447,23 @@ meta | Any | No | Зарезервировано.
       "title": "Error information and statuses of request processing",
       "type": "object",
       "properties": {
-        "id": {
-          "title": "Id",
+        "code": {
+          "title": "Code",
           "type": "integer"
-        },
-        "time": {
-          "title": "Time",
-          "type": "number"
         },
         "status": {
           "title": "Status",
           "type": "string"
         },
-        "code": {
-          "title": "Code",
+        "time": {
+          "title": "Time",
           "type": "integer"
         },
         "detail": {
           "title": "Detail",
           "type": "string"
         }
-      },
-      "required": [
-        "id",
-        "time",
-        "status",
-        "code",
-        "detail"
-      ]
+      }
     },
     "Version": {
       "title": "Protocol version",
@@ -563,12 +471,9 @@ meta | Any | No | Зарезервировано.
       "properties": {
         "version": {
           "title": "Version",
-          "type": "number"
+          "type": "string"
         }
-      },
-      "required": [
-        "version"
-      ]
+      }
     }
   }
 }
@@ -577,382 +482,425 @@ meta | Any | No | Зарезервировано.
 ## Описание методов
 
 Имя метода передается как значение ключа `type` внутри JSON-объекта.
-Передача имени метода происходит как при запросе, так и при ответе.
-Ниже описаны примеры запросов и ответы на них.
-Запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _400 Bad Request_.
+Передача имени метода происходит как при запросе, так и при ответе. Ниже описаны примеры запросов и ответы на них.
+
+_Примечание:_
+
+- запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _405 Method Not Allowed_.
+- запрос в котором не будет указан метод всегда вернёт ошибку _400 Bad Request_.
 
 ### Метод get_update
 
-Позволяет получить от сервера обновление информации (сообщений, чатов, пользовательских данных) за период.
+Позволяет получить от сервера обновление общедоступной информации (сообщений, чатов, пользовательских данных) за период от времени time до текущего времени.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'get_update',
-  'data': {
-    'time': 1594492370,
-    'flow': {
-      'id': 123
-      },
-    'user': {
-      'uuid': 111111111,
-      'auth_id': 'dks7sd9f6g4fg67vb78g65'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "get_update",
+    "data": {
+        "time": 1594492370,
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'get_update',
-  'data': {
-    'time': 1594492370,
-    'flow': {
-      'id': 1254,
-      'time': 1594492370,
-      'type': 'chat',
-      'title': 'Name Chat',
-      'info': 'Info about this chat'
-      },
-    'message': {
-      'id': 1,
-      'text': 'some text...',
-      'from_user': {
-        'uuid': 1254,
-        'username': 'Vasya'
+    "type": "get_update",
+    "data": {
+        "flow": [{
+            "id": 1254,
+            "time": 1594492370,
+            "type": "chat",
+            "title": "Name Chat",
+            "info": "Info about this chat"
+            },
+            {
+            "id": 1236,
+            "time": 1594492370,
+            "type": "group",
+            "title": "Name group",
+            "info": "Info about this group"
+            },
+            {...}],
+        "message": [{
+            "id": 1,
+            "text": "some text...",
+            "from_user_uuid": 1254,
+            "time": 1594492370,
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
+            "emoji": "sfdfsdfsdf",
+            "edited_time": 1594492370,
+            "edited_status": true
+            },
+            {...}],
+        "user": [{
+            "uuid": 5855,
+            "username": "Vasya",
+            "is_bot": true,
+            "avatar": "fffdddddd",
+            "bio": "My bio"
+            },
+            {...}],
+        "meta": null
         },
-        'time': 1594492370,
-        'from_flow': {
-          'id': 123655455,
-          'type': 'chat'
-          },
-        'file': {
-          'picture': 'jkfikdkdsd',
-          'video': 'sdfsdfsdf',
-          'audio': 'fgfsdfsdfsdf',
-          'document': 'adgdfhfgth'
-          },
-        'emoji': 'sfdfsdfsdf',
-        'edited_message': {
-          'time': 1594492370,
-          'status': True
-          },
-        'reply_to': None
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
         },
-    'user': {
-      'uuid': 5855,
-      'login': 'username1',
-      'password': 'lksdjflksjfsd',
-      'username': 'Vasya',
-      'is_bot': True,
-      'auth_id': '464645646464',
-      'email': 'querty@querty.com',
-      'avatar': 'fffdddddd',
-      'bio': 'My bio'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
     }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'get_update',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "get_update",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод send_message
 
-Метод позволяет отправить сообщение другому клиенту. `Flow` может быть любой, не только `chat`.
+Метод позволяет отправить сообщение в поток `flow`.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'send_message',
-  'data': {
-    'flow': {
-      'id': 123,
-      'time': 1594492370,
-      'type': 'chat'
-      },
-    'message': {
-      'id': 858585,
-      'text': 'Hello!',
-      'from_user': {
-        'uuid': 111111111,
-        'username': 'User'
+    "type": "send_message",
+    "data": {
+        "flow": [{
+            "id": 123
+            }],
+        "message": [{
+            "text": "Hello!",
+            "file": {
+                "picture": "jkfikdkdsd",
+                "video": "sdfsdfsdf",
+                "audio": "fgfsdfsdfsdf",
+                "document": "adgdfhfgth"
+                },
+            "emoji": "sfdfsdfsdf"
+            ]},
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65",
+            }],
+        "meta": null
         },
-      'time': 1594492370,
-      'from_flow': {
-        'id': 5656565656,
-        'type': 'chat'
+    "jsonapi": {
+        "version": "1.0"
         },
-      'file': {
-        'picture': 'jkfikdkdsd',
-        'video': 'sdfsdfsdf',
-        'audio': 'fgfsdfsdfsdf',
-        'document': 'adgdfhfgth'
-        },
-      'emoji': 'sfdfsdfsdf',
-      'edited_message': {
-        'time': 1594492370,
-        'status': True
-        },
-      'reply_to': None
-    },
-    'user': {
-      'uuid': 111111111,
-      'auth_id': 'dks7sd9f6g4fg67vb78g65',
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'send_message',
-  'data': {
-    'time': 1594492370,
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "send_message",
+    "data": null,
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'send_message',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "send_message",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод all_messages
 
-Метод позволяет получить все сообщения за период с начала времени `time` по настоящее время.
+Метод позволяет получить все сообщения в потоке `flow`, за период с начала времени `time` по настоящее время.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'all_messages',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'uuid': 111111111,
-      'auth_id': 'dks7sd9f6g4fg67vb78g65'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "all_messages",
+    "data": {
+        "time": 1594492370,
+        "flow": [{
+            "id": 123
+            }],
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'all_messages',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'uuid': 556565656,
-      'auth_id': 'jkds78dsids89ds89sd'
-      }
-    'message': {
-      'id': 1,
-      'text': 'some text...',
-      'from_user': {
-        'uuid': 1254,
-        'username': 'Vasya'
-        },
-      'time': 1594492370,
-      'from_flow': {
-        'id': 123655455,
-        'type': 'chat'
-        },
-        'file': {
-          'picture': 'jkfikdkdsd',
-          'video': 'sdfsdfsdf',
-          'audio': 'fgfsdfsdfsdf',
-          'document': 'adgdfhfgth'
-          },
-        'emoji': 'sfdfsdfsdf',
-        'edited_message': {
-            'time': 1594492370,
-            'status': True
+    "type": "all_messages",
+    "data": {
+        "flow": [{
+            "id": 123
+            }],
+        "message": [{
+            "id": 1,
+            "text": "some text...",
+            "from_user_uuid": 1254,
+            "time": 1594492370,
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
+            "emoji": "sfdfsdfsdf",
+            "edited_time": 1594492370,
+            "edited_status": true
             },
-        'reply_to': None
+            {...}],
+        "meta": null
         },
-      'meta': None
-      },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'all_message',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "all_message",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+### Метод add_flow
+
+Метод позволяет создать новый поток `flow`.
+
+Пример запроса:
+
+```javascript
+{
+    "type": "add_flow",
+    "data": {
+        "flow": [{
+            "type": "chat",
+            "title": "title",
+            "info": "info"
+            }],
+        "user": [{
+            "uuid": 123456,
+            "auth_id": "auth_id"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (успех):
+
+```javascript
+{
+    "type": "add_flow",
+    "data": {
+        "flow": [{
+            "id": 5655,
+            "time": 1594492370,
+            "type": "chat",
+            "title": "title",
+            "info": "info"
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (ошибка):
+
+```javascript
+{
+    "type": "add_flow",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод all_flow
 
-Метод позволяет получить от сервера перечень и информацию обо всех потоках.
+Метод позволяет получить от сервера перечень всех потоков `flow` которые зарегистрированы на сервере. Помимо списка потоков сервер выдаёт по каждому из них всю информацию.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'all_flow',
-  'data': {
-    'user': {
-      'uuid': 111111111,
-      'auth_id': 'dks7sd9f6g4fg67vb78g65'
-      },
-  'meta': None
-  },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "all_flow",
+    "data": {
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'all_flow',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'id': 556565656,
-      'auth_id': 'jkds78dsids89ds89sd'
-       },
-    'flow': {
-      'id': 5655,
-      'time': 1594492370,
-      'type': 'chat',
-      'title': 'Some chat',
-      'info': 'Info from some chat'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "all_flow",
+    "data": {
+        "flow": [{
+            "id": 5655,
+            "time": 1594492370,
+            "type": "chat",
+            "title": "Some chat",
+            "info": "Info from some chat"
+            },
+            {
+            "id": 123,
+            "time": 1594492365,
+            "type": "group",
+            "title": "Some group",
+            "info": "Info from some group"
+            },
+            {...}]
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'all_flow',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "all_flow",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод user_info
@@ -961,73 +909,74 @@ meta | Any | No | Зарезервировано.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'user_info',
-  'data': {
-    'user': {
-      'uuid': 111111111,
-      'auth_id': 'dks7sd9f6g4fg67vb78g65'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "user_info",
+    "data": {
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа:
 
-```python
+```javascript
 {
-  'type': 'user_info',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'uuid': 5855,
-      'login': 'username1',
-      'password': 'lksdjflksjfsd',
-      'username': 'Vasya',
-      'is_bot': True,
-      'auth_id': '464645646464',
-      'email': 'querty@querty.com',
-      'avatar': 'fffdddddd',
-      'bio': 'My bio'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "user_info",
+    "data": {
+        "user": [{
+            "uuid": 5855,
+            "login": "username1",
+            "password": "lksdjflksjfsd",
+            "salt": "salt",
+            "key": "key"
+            "username": "Vasya",
+            "is_bot": true,
+            "auth_id": "dfhdfghdfghdfgh",
+            "email": "querty@querty.com",
+            "avatar": "fffdddddd",
+            "bio": "My bio"
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'user_info',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "user_info",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод register_user
@@ -1036,136 +985,135 @@ meta | Any | No | Зарезервировано.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'register_user',
-  'data': {
-    'user': {
-      'password': 'ds45ds45fd45fd',
-      'login': 'User',
-      'email': 'querty@querty.com',
-      'username': 'User1'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "register_user",
+    "data": {
+        "user": [{
+            "password": "ds45ds45fd45fd",
+            "salt": "salt",
+            "key": "key",
+            "login": "User",
+            "email": "querty@querty.com",
+            "username": "User1"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'register_user',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'uuid': 5654665416541,
-      'auth_id': 'lkds89ds89fd98fd'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "register_user",
+    "data": {
+        "user": [{
+            "uuid": 5654665416541,
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'register_user',
-  'data': None,
-  'errors': {
-    'code': 400,
-    'status': 'Bad Request',
-    'time': 1594492370,
-    'detail': 'Bad Request'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "register_user",
+    "data": null,
+    "errors": {
+        "code": 400,
+        "status": "Bad Request",
+        "time": 1594492370,
+        "detail": "Bad Request"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
-### Метод authentication
+### Метод authentification
 
 Метод позволяет клиенту пройти аутентификацию на сервере.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'auth',
-  'data': {
-    'user': {
-      'password': 'ds45ds45fd45fd',
-      'login': 'User'
-      },
-    'meta': None
-    },
-    'jsonapi': {
-      'version': '1.0'
-      },
-  'meta': None
-  }
+    "type": "auth",
+    "data": {
+        "user": [{
+            "password": "ds45ds45fd45fd",
+            "login": "User"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'auth',
-  'data': {
-    'time': 1594492370,
-    'user': {
-      'uuid': 5654665416541,
-      'auth_id': 'lkds89ds89fd98fd'
-      },
-    'meta': None
-    },
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "auth",
+    "data": {
+        "user": [{
+            "uuid": 5654665416541,
+            "auth_id": "lkds89ds89fd98fd"
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'auth',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "auth",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод delete_user
@@ -1174,65 +1122,63 @@ meta | Any | No | Зарезервировано.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'delete_user',
-  'data': {
-    'user': {
-      'password': 'ds45ds45fd45fd',
-      'login': 'User'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_user",
+    "data": {
+        "user": [{
+            "uuid": 123456,
+            "password": "ds45ds45fd45fd",
+            "salt": "salt",
+            "key": "key",
+            "login": "User",
+            "auth_id": "jkfdjkfdjkf"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'delete_user',
-  'data': {
-    'user': {
-      'uuid': 5345634567354
-      'login': 'User'
-      },
-    'meta': None
-      },
-    'errors': {
-      'code': 200,
-      'status': 'OK',
-      'time': 1594492370,
-      'detail': 'successfully'
-      },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_user",
+    "data": null,
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'delete_user',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_user",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод delete_message
@@ -1241,63 +1187,62 @@ meta | Any | No | Зарезервировано.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'delete_message',
-  'data': {
-    'message': {
-      'id': 858585,
-      'time': 1594492370
-      },
-    'user': {
-      'uuid': 5345634567354,
-      'auth_id': 'lkds89ds89fd98fd'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_message",
+    "data": {
+        "message": [{
+            "id": 858585
+            }],
+        "user": [{
+            "uuid": 5345634567354,
+            "auth_id": "lkds89ds89fd98fd"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'delete_message',
-  'data': None,
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_message",
+    "data": null,
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'delete_message',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "delete_message",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод edited_message
@@ -1306,384 +1251,414 @@ meta | Any | No | Зарезервировано.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'edited_message',
-  'data': {
-      'message': {
-        'id': 858585,
-        'text': 'Hello!',
-        'time': 1594492370
+    "type": "edited_message",
+    "data": {
+        "message": [{
+            "id": 858585,
+            "text": "Hello!"
+            }],
+        "user": [{
+            "uuid": 5345634567354,
+            "auth_id": "lkds89ds89fd98fd"
+            }],
+        "meta": null
         },
-      'user': {
-        'uuid': 5345634567354,
-        'auth_id': 'lkds89ds89fd98fd'
+    "jsonapi": {
+        "version": "1.0"
         },
-      'meta': None
-      },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'edited_message',
-  'data': None,
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-      'version': '1.0'
-      },
-  'meta': None
-  }
+    "type": "edited_message",
+    "data": null,
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'edited_message',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "edited_message",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод ping-pong
 
-Метод позволяет определить наличие связи между сервером и клиентом. При отсутствии ответа сервер удаляет сессию клиента из памяти.
+Метод позволяет определить наличие связи между сервером и клиентом.
+При отсутствии ответа сервер удаляет сессию клиента из памяти.
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'type': 'ping-pong',
-  'data': {
-    'user': {
-      'uuid': 5345634567354,
-      'auth_id': 'lkds89ds89fd98fd'
-      },
-    'meta': None
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "ping-pong",
+    "data": {
+        "user": [{
+            "uuid": 5345634567354,
+            "auth_id": "lkds89ds89fd98fd"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (успех):
 
-```python
+```javascript
 {
-  'type': 'ping-pong',
-  'data': None,
-  'errors': {
-    'code': 200,
-    'status': 'OK',
-    'time': 1594492370,
-    'detail': 'successfully'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "ping-pong",
+    "data": null,
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 Пример ответа (ошибка):
 
-```python
+```javascript
 {
-  'type': 'ping-pong',
-  'data': None,
-  'errors': {
-    'code': 401,
-    'status': 'Unauthorized',
-    'time': 1594492370,
-    'detail': 'Unauthorized'
-    },
-  'jsonapi': {
-    'version': '1.0'
-    },
-  'meta': None
-  }
+    "type": "ping-pong",
+    "data": null,
+    "errors": {
+        "code": 401,
+        "status": "Unauthorized",
+        "time": 1594492370,
+        "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
 ```
 
 ### Метод error
 
-В случае если запрос к серверу/клиенту им не распознан должен выдаваться стандартный тип ответа: `error`, который в себе содержит объект `errors` с описанием возникшей ошибки.
+В случае если запрос к серверу/клиенту им не распознан должен выдаваться стандартный тип ответа: `error`,
+который в себе содержит объект `errors` с описанием возникшей ошибки.
 
-_В качестве примера приведен запрос клиента, без передачи ключа `type` и его значения. В ответ сервер посылает JSON-объект с указанием имени метода `error` и информацией о возникшей ошибке, в поле `errors`._
+_Примечание:_
+
+_В качестве примера приведен запрос клиента, без передачи ключа `type` и его значения._
+_В ответ сервер посылает JSON-объект с указанием имени метода `error` и информацией о возникшей ошибке, в поле `errors`._
 
 Пример запроса:
 
-```python
+```javascript
 {
-  'data': {
-    'uuid': 45654645,
-    'auth_id': 'asdfadsfadfggzasd'
-  }
+    "data": {
+        "uuid": 45654645,
+        "auth_id": "asdfadsfadfggzasd"
+        }
 }
 ```
 
 Пример ответа:
 
-```python
+```javascript
 {
-  'type': "error",
-  'data': None,
-  'errors': {
-    'code': 400,
-    'status': 'Bad Request',
-    'time': 1594492370,
-    'detail': 'Bad Request'
-  },
-  'jasonapi': {
-    'version': '1.0'
-  },
-  'meta': None
+    "type": "error",
+    "data": null,
+    "errors": {
+        "code": 400,
+        "status": "Bad Request",
+        "time": 1594492370,
+        "detail": "Bad Request"
+        },
+    "jasonapi": {
+        "version": "1.0"
+        },
+    "meta": null
 }
 ```
 
 ## Описание ошибок
 
-Информация о коде состояния запроса передается в поле `Errors`. Ниже приведены все варианты кодов состояния запроса.
+Информация о коде состояния запроса передается в поле `errors`. Ниже приведены все варианты кодов состояния запроса.
 
-### Код 200 статус 'Ok'
+### Код 200 статус "Ok"
 
 Команда выполнена успешно.
 
-```python
-'errors': {
-  'code': 200,
-  'status': 'OK',
-  'time': 1594492370,
-  'detail': 'successfully'
-  }
+```javascript
+"errors": {
+    "code": 200,
+    "status": "OK",
+    "time": 1594492370,
+    "detail": "Successfully"
+    }
 ```
 
-### Код 201 статус 'Created'
+### Код 201 статус "Created"
 
 Объект (пользователь) создан.
 
-```python
-'errors': {
-  'code': 201,
-  'status': 'Created',
-  'time': 1594492370,
-  'detail': 'Created'
-  }
+```javascript
+"errors": {
+    "code": 201,
+    "status": "Created",
+    "time": 1594492370,
+    "detail": "A new user has been created."
+    }
 ```
 
-### Код 202 статус 'Accepted'
+### Код 202 статус "Accepted"
 
 Информация переданная вместе с запросом принята.
 
-```python
-'errors': {
-  'code': 202,
-  'status': 'Accepted',
-  'time': 1594492370,
-  'detail': 'Accepted'
-  }
+```javascript
+"errors": {
+    "code": 202,
+    "status": "Accepted",
+    "time": 1594492370,
+    "detail": "Information is accepted."
+    }
 ```
 
-### Код 400 статус 'Bad Request'
+### Код 400 статус "Bad Request"
 
-_Дополнить_
+Запрос не распознан.
 
-```python
-'errors': {
-  'code': 400,
-  'status': 'Bad Request',
-  'time': 1594492370,
-  'detail': 'Bad Request'
-  }
+```javascript
+"errors": {
+    "code": 400,
+    "status": "Bad Request",
+    "time": 1594492370,
+    "detail": "Request is not recognized."
+    }
 ```
 
-### Код 401 статус 'Unauthorized'
+### Код 401 статус "Unauthorized"
 
 Ошибка авторизации. Неверный логин или пароль.
 
-```python
-'errors': {
-  'code': 401,
-  'status': 'Unauthorized',
-  'time': 1594492370,
-  'detail': 'Unauthorized'
-  }
+```javascript
+"errors": {
+    "code": 401,
+    "status": "Unauthorized",
+    "time": 1594492370,
+    "detail": "Wrong login or password."
+    }
 ```
 
-### Код 403 статус 'Forbidden'
+### Код 403 статус "Forbidden"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 403,
-  'status': 'Forbidden',
-  'time': 1594492370,
-  'detail': 'Forbidden'
-  }
+```javascript
+"errors": {
+    "code": 403,
+    "status": "Forbidden",
+    "time": 1594492370,
+    "detail": "Forbidden"
+    }
 ```
 
-### Код 404 статус 'Not Found'
+### Код 404 статус "Not Found"
 
 Не найдена запрашиваемая информация или не найден пользователь.
 
-```python
-'errors': {
-  'code': 404,
-  'status': 'Not Found',
-  'time': 1594492370,
-  'detail': 'Not Found'
-  }
+```javascript
+"errors": {
+    "code": 404,
+    "status": "Not Found",
+    "time": 1594492370,
+    "detail": "The requested information was not found or the user was not found."
+    }
 ```
 
-### Код 405 статус 'Method Not Allowed'
+### Код 405 статус "Method Not Allowed"
 
 Такой запрос недоступен. Возможно клиент использует старый API.
 
-```python
-'errors': {
-  'code': 405,
-  'status': 'OMethod Not Allowed',
-  'time': 1594492370,
-  'detail': 'Method Not Allowed'
-  }
+```javascript
+"errors": {
+    "code": 405,
+    "status": "Method Not Allowed",
+    "time": 1594492370,
+    "detail": "Such request is not available. Maybe the client uses an old API."
+    }
 ```
 
-### Код 408 статус 'Request Timeout'
+### Код 408 статус "Request Timeout"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 408,
-  'status': 'Request Timeout',
-  'time': 1594492370,
-  'detail': 'Request Timeout'
-  }
+```javascript
+"errors": {
+    "code": 408,
+    "status": "Request Timeout",
+    "time": 1594492370,
+    "detail": "Request Timeout"
+    }
 ```
 
-### Код 415 статус 'Unsupported Media Type'
+### Код 409 статус "Conflict"
+
+Такой пользователь (поток) уже есть на сервере.
+
+```javascript
+"errors": {
+    "code": 409,
+    "status": "Conflict",
+    "time": 1594492370,
+    "detail": "Such user (flow) is already on the server."
+    }
+```
+
+### Код 415 статус "Unsupported Media Type"
 
 Неподдерживаемый тип данных (не пройдена валидация).
 
-```python
-'errors': {
-  'code': 415,
-  'status': 'Unsupported Media Type',
-  'time': 1594492370,
-  'detail': 'Unsupported Media Type'
-  }
+```javascript
+"errors": {
+    "code": 415,
+    "status": "Unsupported Media Type",
+    "time": 1594492370,
+    "detail": "Unsupported data type (no validation passed)."
+    }
 ```
 
-### Код 417 статус 'Expectation Failed'
+### Код 417 статус "Expectation Failed"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 417,
-  'status': 'Expectation Failed',
-  'time': 1594492370,
-  'detail': 'Expectation Failed'
-  }
+```javascript
+"errors": {
+    "code": 417,
+    "status": "Expectation Failed",
+    "time": 1594492370,
+    "detail": "Expectation Failed"
+    }
 ```
 
-### Код 426 статус 'Upgrade Required'
+### Код 426 статус "Upgrade Required"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 426,
-  'status': 'Upgrade Required',
-  'time': 1594492370,
-  'detail': 'Upgrade Required'
-  }
+```javascript
+"errors": {
+    "code": 426,
+    "status": "Upgrade Required",
+    "time": 1594492370,
+    "detail": "Upgrade Required"
+    }
 ```
 
-### Код 429 статус 'Too Many Requests'
+### Код 429 статус "Too Many Requests"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 429,
-  'status': 'Too Many Requests',
-  'time': 1594492370,
-  'detail': 'Too Many Requests'
-  }
+```javascript
+"errors": {
+    "code": 429,
+    "status": "Too Many Requests",
+    "time": 1594492370,
+    "detail": "Too Many Requests"
+    }
 ```
 
-### Код 499 статус 'Client Closed Request'
+### Код 499 статус "Client Closed Request"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 499,
-  'status': 'Client Closed Request',
-  'time': 1594492370,
-  'detail': 'Client Closed Request'
-  }
+```javascript
+"errors": {
+    "code": 499,
+    "status": "Client Closed Request",
+    "time": 1594492370,
+    "detail": "Client Closed Request"
+    }
 ```
 
-### Код 500 статус 'Internal Server Error'
+### Код 500 статус "Internal Server Error"
 
 Серверу настала жопа.
 
-```python
-'errors': {
-  'code': 500,
-  'status': 'Internal Server Error',
-  'time': 1594492370,
-  'detail': 'Internal Server Error'
-  }
+```javascript
+"errors": {
+    "code": 500,
+    "status": "Internal Server Error",
+    "time": 1594492370,
+    "detail": "The server got its ass."
+    }
 ```
 
-### Код 503 статус 'Service Unavailable'
+### Код 503 статус "Service Unavailable"
 
 _Дополнить_
 
-```python
-'errors': {
-  'code': 503,
-  'status': 'Service Unavailable',
-  'time': 1594492370,
-  'detail': 'Service Unavailable'
-  }
+```javascript
+"errors": {
+    "code": 503,
+    "status": "Service Unavailable",
+    "time": 1594492370,
+    "detail": "Service Unavailable"
+    }
 ```
 
-### Код 526 статус 'Invalid SSL Certificate'
+### Код 520 статус "Unknown Error"
+
+Неизвестная ошибка. Этот статус получают в том числе все исключения `Exception`.
+
+```javascript
+"errors": {
+    "code": 520,
+    "status": "Unknown Error",
+    "time": 1594492370,
+    "detail": "Unknown Error"
+    }
+```
+
+### Код 526 статус "Invalid SSL Certificate"
 
 Недействительный сертификат SSL.
 
-```python
-'errors': {
-  'code': 526,
-  'status': 'Invalid SSL Certificate',
-  'time': 1594492370,
-  'detail': 'Invalid SSL Certificate'
-  }
+```javascript
+"errors": {
+    "code": 526,
+    "status": "Invalid SSL Certificate",
+    "time": 1594492370,
+    "detail": "Invalid SSL Certificate"
+    }
 ```
