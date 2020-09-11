@@ -606,12 +606,10 @@ _Примечание:_
             }],
         "message": [{
             "text": "Hello!",
-            "file": {
-                "picture": "jkfikdkdsd",
-                "video": "sdfsdfsdf",
-                "audio": "fgfsdfsdfsdf",
-                "document": "adgdfhfgth"
-                },
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "adgdfhfgth"
             "emoji": "sfdfsdfsdf"
             ]},
         "user": [{
