@@ -673,7 +673,7 @@ _Примечание:_
 
 ### Метод all_messages
 
-Метод позволяет получить все сообщения в потоке `flow`, за период с начала времени `time` по настоящее время.
+Метод позволяет получить все сообщения в потоке `flow`, за период с начала времени `time` по настоящее время. Если число сообщений превышает 1000, сервер выдаст только первую 1000 сообщений, по порядку с начала времени `time`. При наличии количества сообщений более 1000 в `errors` будет указываться статус "Partial Content" с кодом "206".
 
 Пример запроса:
 
@@ -698,7 +698,7 @@ _Примечание:_
     }
 ```
 
-Пример ответа (успех):
+Пример ответа (успех, до 1000 сообщений):
 
 ```javascript
 {
@@ -729,6 +729,57 @@ _Примечание:_
         "status": "OK",
         "time": 1594492370,
         "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (успех, более 1000 сообщений):
+
+```javascript
+{
+    "type": "all_messages",
+    "data": {
+        "flow": [{
+            "id": 123
+            }],
+        "message": [{
+            "id": 1,
+            "text": "some text...",
+            "from_user_uuid": 1254,
+            "time": 1594492370,
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
+            "emoji": "sfdfsdfsdf",
+            "edited_time": 1594492370,
+            "edited_status": true
+            },{
+            "id": 1000,
+            "text": "some text...",
+            "from_user_uuid": 55555,
+            "time": 1594496896,
+            "from_flow_id": 123655455,
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
+            "emoji": "sfdfsdfsdf",
+            "edited_time": 1594496896,
+            "edited_status": true
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 206,
+        "status": "Partial Content",
+        "time": 1594492370,
+        "detail": "Information provided partially."
         },
     "jsonapi": {
         "version": "1.0"
@@ -921,16 +972,13 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": [
-            {
-                "uuid": 111111111,
-                "auth_id": "dks7sd9f6g4fg67vb78g65"
-            },
-            {
-                "uuid": 222222222,
-            },
-            {
-                "uuid": 333333333,
+        "user": [{
+            "uuid": 111111111,
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
+            },{
+            "uuid": 222222222,
+            },{
+            "uuid": 333333333,
             }],
         "meta": null
         },
@@ -947,37 +995,34 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": [
-            {
-                "uuid": 111111111,
-                "login": "username1",
-                "password": "lksdjflksjfsd",
-                "salt": "salt",
-                "key": "key",
-                "username": "Vasya",
-                "is_bot": false,
-                "auth_id": "dfhdfghdfghdfgh",
-                "email": "querty@querty.com",
-                "avatar": "fffdddddd",
-                "bio": "My bio",
-                "time_created": 46655456655
-            },
-            {
-                "uuid": 222222222,
-                "username": "Tony",
-                "is_bot": false,
-                "email": "querty@querty.com",
-                "avatar": "fffdddddd",
-                "bio": "My bio",
-            },
-            {
-                "uuid": 333333333,
-                "username": "Marta",
-                "is_bot": false,
-                "email": "querty@querty.com",
-                "avatar": "fffdddddd",
-                "bio": "My bio",
-                "time_created": 46655456655
+        "user": [{
+            "uuid": 111111111,
+            "login": "username1",
+            "password": "lksdjflksjfsd",
+            "salt": "salt",
+            "key": "key",
+            "username": "Vasya",
+            "is_bot": false,
+            "auth_id": "dfhdfghdfghdfgh",
+            "email": "querty@querty.com",
+            "avatar": "fffdddddd",
+            "bio": "My bio",
+            "time_created": 46655456655
+            },{
+            "uuid": 222222222,
+            "username": "Tony",
+            "is_bot": false,
+            "email": "querty@querty.com",
+            "avatar": "fffdddddd",
+            "bio": "My bio",
+            },{
+            "uuid": 333333333,
+            "username": "Marta",
+            "is_bot": false,
+            "email": "querty@querty.com",
+            "avatar": "fffdddddd",
+            "bio": "My bio",
+            "time_created": 46655456655
             }],
         "meta": null
         },
@@ -1530,6 +1575,19 @@ _В ответ сервер посылает JSON-объект с указани
     "status": "Accepted",
     "time": 1594492370,
     "detail": "Information is accepted."
+    }
+```
+
+### Код 206 статус "Partial Content"
+
+Информация выдана частично. Такой статус служит для информирования что запрос сервером выполнен успешно, но запрошенно данных больше чем сервер может передать.
+
+```javascript
+"errors": {
+    "code": 206,
+    "status": "Partial Content",
+    "time": 1594492370,
+    "detail": "Information provided partially."
     }
 ```
 
