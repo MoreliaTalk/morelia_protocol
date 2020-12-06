@@ -142,6 +142,7 @@ key | str | No | Дополнительный ключ для генерации
 is_bot | bool | No | Указывает на тип пользователя (бот или человек).
 auth_id | str | No | Токен аутентификации.
 email | EmailStr | No | Адрес почты пользователя.
+time_created | int | No | Дата и время создания пользователя.
 
 ### Объект errors
 
@@ -214,7 +215,8 @@ meta | Any | No | Зарезервировано.
                 "auth_id": "4646hjgjhg64",
                 "email": "querty@querty.com",
                 "avatar": "fffdddddd",
-                "bio": "My bio"
+                "bio": "My bio",
+                "time_created": 2542445821452
                 },
                 {...}],
             "meta": null
@@ -385,6 +387,10 @@ meta | Any | No | Зарезервировано.
         "username": {
           "title": "Username",
           "type": "string"
+        },
+        "time_created": {
+            "title": "Time created",
+            "type": "integer"
         }
       }
     },
@@ -943,7 +949,8 @@ _Примечание:_
             "auth_id": "dfhdfghdfghdfgh",
             "email": "querty@querty.com",
             "avatar": "fffdddddd",
-            "bio": "My bio"
+            "bio": "My bio",
+            "time_created": 46655456655
             }],
         "meta": null
         },
