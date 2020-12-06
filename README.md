@@ -911,7 +911,9 @@ _Примечание:_
 
 ### Метод user_info
 
-Метод позволяет клиенту получить от сервера информацию о своих настройках.
+Метод позволяет клиенту получить от сервера информацию как о своих настройках и настройках других пользователей. При этом публикв ответе сервера содержится только та информация, которая пользователем разрешена к публикации, в настройках клиента.
+
+В одном запросе можно указать не менее 1 и не более 100 пользователей, если запрошено больше сервер возвратит ошибку. Первый по очереди UUID должен принадлежать пользователю который делает запрос.
 
 Пример запроса:
 
@@ -919,9 +921,16 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": [{
-            "uuid": 111111111,
-            "auth_id": "dks7sd9f6g4fg67vb78g65"
+        "user": [
+            {
+                "uuid": 111111111,
+                "auth_id": "dks7sd9f6g4fg67vb78g65"
+            },
+            {
+                "uuid": 222222222,
+            },
+            {
+                "uuid": 333333333,
             }],
         "meta": null
         },
@@ -938,19 +947,37 @@ _Примечание:_
 {
     "type": "user_info",
     "data": {
-        "user": [{
-            "uuid": 5855,
-            "login": "username1",
-            "password": "lksdjflksjfsd",
-            "salt": "salt",
-            "key": "key"
-            "username": "Vasya",
-            "is_bot": true,
-            "auth_id": "dfhdfghdfghdfgh",
-            "email": "querty@querty.com",
-            "avatar": "fffdddddd",
-            "bio": "My bio",
-            "time_created": 46655456655
+        "user": [
+            {
+                "uuid": 111111111,
+                "login": "username1",
+                "password": "lksdjflksjfsd",
+                "salt": "salt",
+                "key": "key",
+                "username": "Vasya",
+                "is_bot": false,
+                "auth_id": "dfhdfghdfghdfgh",
+                "email": "querty@querty.com",
+                "avatar": "fffdddddd",
+                "bio": "My bio",
+                "time_created": 46655456655
+            },
+            {
+                "uuid": 222222222,
+                "username": "Tony",
+                "is_bot": false,
+                "email": "querty@querty.com",
+                "avatar": "fffdddddd",
+                "bio": "My bio",
+            },
+            {
+                "uuid": 333333333,
+                "username": "Marta",
+                "is_bot": false,
+                "email": "querty@querty.com",
+                "avatar": "fffdddddd",
+                "bio": "My bio",
+                "time_created": 46655456655
             }],
         "meta": null
         },
@@ -978,6 +1005,44 @@ _Примечание:_
         "status": "Unauthorized",
         "time": 1594492370,
         "detail": "Unauthorized"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (ошибка при запросе более 100 UUID):
+
+```javascript
+{
+    "type": "user_info",
+    "data": null,
+    "errors": {
+        "code": 429,
+        "status": "Too Many Requests",
+        "time": 1594492370,
+        "detail": "Too much data has been requested"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (ошибка при запросе 0 пользователей):
+
+```javascript
+{
+    "type": "user_info",
+    "data": null,
+    "errors": {
+        "code": 400,
+        "status": "Bad Request",
+        "time": 1594492370,
+        "detail": "Bad Request"
         },
     "jsonapi": {
         "version": "1.0"
@@ -1600,14 +1665,14 @@ _Дополнить_
 
 ### Код 429 статус "Too Many Requests"
 
-_Дополнить_
+Запрошено слишком большое количестно данных (анпример при запросе информации о пользователях)
 
 ```javascript
 "errors": {
     "code": 429,
     "status": "Too Many Requests",
     "time": 1594492370,
-    "detail": "Too Many Requests"
+    "detail": "Too much data has been requested"
     }
 ```
 
