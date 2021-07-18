@@ -632,7 +632,7 @@ _Примечание:_
             ]},
         "user": [{
             "uuid": "123e4567-e89b-12d3-a456-426655440000",
-            "auth_id": "dks7sd9f6g4fg67vb78g65",
+            "auth_id": "dks7sd9f6g4fg67vb78g65"
             }],
         "meta": null
         },
