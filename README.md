@@ -611,7 +611,7 @@ _Примечание:_
 
 ### Метод send_message
 
-Метод позволяет отправить сообщение в поток `flow`.
+Метод позволяет отправить сообщение в поток `flow`. В случае успеха сервер возвращает в ответе значения `id`, `from_user_uuid`, `from_flow_id`.
 
 Пример запроса:
 
@@ -624,11 +624,11 @@ _Примечание:_
             }],
         "message": [{
             "text": "Hello!",
-            "file_picture": "jkfikdkdsd",
-            "file_video": "sdfsdfsdf",
-            "file_audio": "fgfsdfsdfsdf",
-            "file_document": "adgdfhfgth",
-            "emoji": "sfdfsdfsdf"
+            "file_picture": b"jkfikdkdsd",
+            "file_video": b"sdfsdfsdf",
+            "file_audio": b"fgfsdfsdfsdf",
+            "file_document": b"adgdfhfgth",
+            "emoji": b"sfdfsdfsdf"
             ]},
         "user": [{
             "uuid": "123e4567-e89b-12d3-a456-426655440000",
@@ -648,7 +648,13 @@ _Примечание:_
 ```javascript
 {
     "type": "send_message",
-    "data": null,
+    "data": {
+        "message": [{
+            "from_user_uuid": "123e4567-e89b-12d3-a456-426655440000",
+            "from_flow_id": 123,
+            "id": 858585
+        }]
+    },
     "errors": {
         "code": 200,
         "status": "OK",
