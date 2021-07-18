@@ -1540,7 +1540,7 @@ _Примечание:_
 
 _Примечание:_
 
-_В качестве примера приведен запрос клиента, без передачи ключа `type` и его значения._
+_В качестве примера приведен запрос клиента, который не содержит ключа `type`. Такой запрос не пройдёт валидацию сервером и вызовет ошибку с кодом 415 "Unsupported Media Type"_
 _В ответ сервер посылает JSON-объект с указанием имени метода `error` и информацией о возникшей ошибке, в поле `errors`._
 
 Пример запроса:
@@ -1561,10 +1561,10 @@ _В ответ сервер посылает JSON-объект с указани
     "type": "error",
     "data": null,
     "errors": {
-        "code": 400,
-        "status": "Bad Request",
+        "code": 415,
+        "status": "Unsupported Media Type",
         "time": 1594492370,
-        "detail": "Bad Request"
+        "detail": "Unsupported data type (no validation passed)"
         },
     "jasonapi": {
         "version": "1.0"
@@ -1729,7 +1729,7 @@ _Дополнить_
     "code": 415,
     "status": "Unsupported Media Type",
     "time": 1594492370,
-    "detail": "Unsupported data type (no validation passed)."
+    "detail": "Unsupported data type (no validation passed)"
     }
 ```
 
