@@ -1,6 +1,6 @@
 # Официальная документация протокола Udav
 
-Актуально на: **13.07.2021**
+Актуально на: **25.07.2021**
 
 Версия протокола: **1.0** Редакция протокола: **1.16**
 
@@ -294,20 +294,21 @@ meta | Any | No | Зарезервировано.
           "type": "string"
         },
         "owner": {
-            "title": "Owner",
-            "type": "string"
+          "title": "Owner",
+          "type": "string"
         },
         "users": {
-            "title": "Users",
-            "type": "dict"
+          "title": "Users",
+          "type": "array",
+          "items": {}
         },
         "message_start": {
-            "title": "Message Start",
-            "type": "integer"
+          "title": "Message Start",
+          "type": "integer"
         },
         "message_end": {
-            "title": "Message End",
-            "type": "integer"
+          "title": "Message End",
+          "type": "integer"
         }
       }
     },
@@ -324,7 +325,7 @@ meta | Any | No | Зарезервировано.
           "type": "string"
         },
         "from_user": {
-          "title": "From User Uuid",
+          "title": "From User",
           "type": "string"
         },
         "time": {
@@ -332,7 +333,7 @@ meta | Any | No | Зарезервировано.
           "type": "integer"
         },
         "from_flow": {
-          "title": "From Flow Id",
+          "title": "From Flow",
           "type": "string"
         },
         "file_picture": {
@@ -411,10 +412,6 @@ meta | Any | No | Зарезервировано.
         "username": {
           "title": "Username",
           "type": "string"
-        },
-        "time_created": {
-            "title": "Time created",
-            "type": "integer"
         }
       }
     },
@@ -428,45 +425,24 @@ meta | Any | No | Зарезервировано.
         },
         "flow": {
           "title": "Flow",
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Flow"
-              }
-            },
-            {
-              "$ref": "#/definitions/Flow"
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Flow"
+          }
         },
         "message": {
           "title": "Message",
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Message"
-              }
-            },
-            {
-              "$ref": "#/definitions/Message"
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Message"
+          }
         },
         "user": {
           "title": "User",
-          "anyOf": [
-            {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/User"
-              }
-            },
-            {
-              "$ref": "#/definitions/User"
-            }
-          ]
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
         },
         "meta": {
           "title": "Meta"
