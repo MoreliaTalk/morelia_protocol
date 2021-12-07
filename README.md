@@ -2,23 +2,23 @@
 
 Актуально на: **27.07.2021**
 
-Версия протокола: **1.0** Редакция протокола: **1.16**
+Версия протокола: **1.0** Редакция протокола: **1.17**
 
 MTP (MoreliaTalk protocol) создан для унификации взаимодействия между клиентом и сервером в MoreliaTalk Network.
 Интерфейс взаимодействия реализован через вебсокеты. Приложения общаются между собой путём отправки JSON-файла.
 
 Содержание:
 
-- [Официальная документация протокола Udav](#официальная-документация-протокола-Udav)
+- [Официальная документация протокола MTP](#официальная-документация-протокола-mtp)
   - [Описание API](#описание-api)
-    - [Объект type](#объект-type)
-    - [Объект data](#объект-data)
-    - [Объект flow](#объект-flow)
-    - [Объект message](#объект-message)
-    - [Объект user](#объект-user)
-    - [Объект errors](#объект-errors)
-    - [Объект jsonapi](#объект-jsonapi)
-    - [Объект meta](#объект-meta)
+    - [Поле type](#поле-type)
+    - [Поле data](#поле-data)
+    - [Поле flow](#поле-flow)
+    - [Поле message](#поле-message)
+    - [Поле user](#поле-user)
+    - [Поле errors](#поле-errors)
+    - [Поле jsonapi](#поле-jsonapi)
+    - [Поле meta](#поле-meta)
   - [Пример JSON-объекта](#пример-json-объекта)
   - [Схема валидации](#схема-валидации)
   - [Описание методов](#описание-методов)
@@ -29,16 +29,17 @@ MTP (MoreliaTalk protocol) создан для унификации взаимо
     - [Метод add_flow](#метод-add_flow)
     - [Метод all_flow](#метод-all_flow)
     - [Метод user_info](#метод-user_info)
-    - [Метод authentication](#метод-authentification)
+    - [Метод authentification](#метод-authentification)
     - [Метод delete_user](#метод-delete_user)
     - [Метод delete_message](#метод-delete_message)
     - [Метод edited_message](#метод-edited_message)
-    - [Метод ping-pong](#метод-ping-pong)
+    - [Метод ping_pong](#метод-ping_pong)
     - [Метод error](#метод-error)
   - [Описание ошибок](#описание-ошибок)
     - [Код 200 статус "Ok"](#код-200-статус-ok)
     - [Код 201 статус "Created"](#код-201-статус-created)
     - [Код 202 статус "Accepted"](#код-202-статус-accepted)
+    - [Код 206 статус "Partial Content"](#код-206-статус-partial-content)
     - [Код 400 статус "Bad Request"](#код-400-статус-bad-request)
     - [Код 401 статус "Unauthorized"](#код-401-статус-unauthorized)
     - [Код 403 статус "Forbidden"](#код-403-статус-forbidden)
@@ -74,7 +75,7 @@ MTP (MoreliaTalk protocol) создан для унификации взаимо
 
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
-type | str | Yes | Уникальное имя метода из следующего списка: all_flow, add_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user, delete_message, edited_message, ping-pong.
+type | str | Yes | Уникальное имя метода из следующего списка: all_flow, add_flow, all_messages, authentication, get_update, register_user, send_message, user_info, delete_user, delete_message, edited_message, ping_pong.
 
 ### Поле data
 
@@ -117,7 +118,7 @@ message_end | int | No | Конечный порядковый номер соо
 Ключ | Тип | Обязательный | Описание
 ---- | --- | ------------ | --------
 uuid | str | Yes | Уникальный номер сообщения.
-client_id | int | Yes | Номер сообщения присваеваемый самим клиентом. Сервер не меняет этот номер.
+client_id | int | Yes | Номер сообщения присваеваемый самим клиентом. Сервер не меняет этот номер, и после обработки возвращает его клиенту.
 text | str | No | Текст сообщения.
 from_user | str | No | Уникальный номер пользователя который написал сообщение.
 from_flow | str | No | Уникальный номер потока которому принадлежит сообщение.
@@ -498,8 +499,8 @@ meta | Any | No | Зарезервировано.
 
 _Примечание:_
 
-- запрос в котором указан неподдерживаемый тип метода всегда вернёт ошибку _405 Method Not Allowed_.
-- запрос в котором не будет указан метод всегда вернёт ошибку _400 Bad Request_.
+- запрос в котором указан неподдерживаемый тип метода или вовсе отсутствует указание на тип метода вернёт ошибку [405 Method Not Allowed](#код-405-статус-method-not-allowed)
+- запрос который не проходит валидацию вернёт ошибку [415 Unsupported Media Type](#код-415-статус-unsupported-media-type).
 
 ### Метод register_user
 
@@ -540,10 +541,10 @@ _Примечание:_
         "meta": null
         },
     "errors": {
-        "code": 200,
-        "status": "OK",
+        "code": 201,
+        "status": "CREATED",
         "time": 1594492370,
-        "detail": "successfully"
+        "detail": "Created"
         },
     "jsonapi": {
         "version": "1.0"
@@ -559,10 +560,10 @@ _Примечание:_
     "type": "register_user",
     "data": null,
     "errors": {
-        "code": 400,
-        "status": "Bad Request",
+        "code": 409,
+        "status": "CONFLICT",
         "time": 1594492370,
-        "detail": "Bad Request"
+        "detail": "Conflict"
         },
     "jsonapi": {
         "version": "1.0"
@@ -573,7 +574,7 @@ _Примечание:_
 
 ### Метод get_update
 
-Позволяет получить от сервера обновление общедоступной информации (сообщений, чатов, пользовательских данных) за период от времени time до текущего времени.
+Позволяет получить от сервера обновление общедоступной информации (сообщений, чатов, пользовательских данных) за период от времени `time` до текущего времени.
 
 Пример запроса:
 
@@ -698,7 +699,7 @@ _Примечание:_
             "file_audio": b"fgfsdfsdfsdf",
             "file_document": b"adgdfhfgth",
             "emoji": b"sfdfsdfsdf"
-            ]},
+            }],
         "user": [{
             "uuid": "1234567",
             "auth_id": "dks7sd9f6g4fg67vb78g65"
@@ -1196,7 +1197,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "auth",
+    "type": "authentification",
     "data": {
         "user": [{
             "password": "ds45ds45fd45fd",
@@ -1215,7 +1216,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "auth",
+    "type": "authentification",
     "data": {
         "user": [{
             "uuid": "1234567",
@@ -1240,7 +1241,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "auth",
+    "type": "authentification",
     "data": null,
     "errors": {
         "code": 401,
@@ -1462,7 +1463,7 @@ _Примечание:_
     }
 ```
 
-### Метод ping-pong
+### Метод ping_pong
 
 Метод позволяет определить наличие связи между сервером и клиентом.
 При отсутствии ответа сервер удаляет сессию клиента из памяти.
@@ -1471,7 +1472,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "ping-pong",
+    "type": "ping_pong",
     "data": {
         "user": [{
             "uuid": "1234567",
@@ -1490,7 +1491,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "ping-pong",
+    "type": "ping_pong",
     "data": null,
     "errors": {
         "code": 200,
@@ -1509,7 +1510,7 @@ _Примечание:_
 
 ```javascript
 {
-    "type": "ping-pong",
+    "type": "ping_pong",
     "data": null,
     "errors": {
         "code": 401,
@@ -1609,7 +1610,7 @@ _В ответ сервер посылает JSON-объект с указани
 
 ### Код 206 статус "Partial Content"
 
-Информация выдана частично. Такой статус служит для информирования что запрос сервером выполнен успешно, но запрошенно данных больше чем сервер может передать.
+Информация выдана частично. Такой статус служит для информирования о том, что запрос сервером выполнен успешно, но объём запрошенных данных больше чем сервер может передать.
 
 ```javascript
 "errors": {
