@@ -394,7 +394,8 @@ _Примечание:_
             "username": "Vasya",
             "is_bot": true,
             "avatar": "fffdddddd",
-            "bio": "My bio"
+            "bio": "My bio",
+            "time_created": 345345345345
             },
             {...}],
         "meta": null
@@ -909,14 +910,16 @@ _Примечание:_
             "username": "Tony",
             "is_bot": false,
             "avatar": "fffdddddd",
-            "bio": "My bio"
+            "bio": "My bio",
+            "time_created": 345345345345
             },{
             "uuid": "1234569",
             "login": "maria_pele0",
             "username": "Marta",
             "is_bot": false,
             "avatar": "fffdddddd",
-            "bio": "My bio"
+            "bio": "My bio",
+            "time_created": 345345345345
             }],
         "meta": null
         },
@@ -1074,7 +1077,7 @@ _Примечание:_
 - содержимое полей `login` и `username` заменяется на "User deleted";
 - содержимое полей: `salt`, `key`, `bio` заменяется на "deleted";
 - содержимое полей `avatar` и `email` заменяется на пустое значение "";
-- содержимое поля `password`, `hashPassword` и `auth_id` заменяется на случайным образом сгенерированное число размером 64 символа.
+- содержимое поля `password`, `hashPassword` и `auth_id`, `time_created` заменяется на случайным образом сгенерированное число размером 64 символа.
 
 Пример запроса:
 
