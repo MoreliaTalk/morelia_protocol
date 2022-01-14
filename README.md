@@ -52,6 +52,7 @@ MTP (MoreliaTalk protocol) создан для унификации взаимо
     - [Код 429 статус "Too Many Requests"](#код-429-статус-too-many-requests)
     - [Код 499 статус "Client Closed Request"](#код-499-статус-client-closed-request)
     - [Код 500 статус "Internal Server Error"](#код-500-статус-internal-server-error)
+    - [Код 505 статус "Version Not Supported"](#код-505-статус-version-not-supported)
     - [Код 503 статус "Service Unavailable"](#код-503-статус-service-unavailable)
     - [Код 520 статус "Unknown Error"](#код-520-статус-unknown-error)
     - [Код 526 статус "Invalid SSL Certificate"](#код-526-статус-invalid-ssl-certificate)
