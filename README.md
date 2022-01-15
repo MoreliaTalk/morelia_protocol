@@ -334,6 +334,76 @@ _Примечание:_
     }
 ```
 
+### Метод register_user
+
+Метод позволяет зарегистрировать нового пользователя.
+
+Пример запроса:
+
+```javascript
+{
+    "type": "register_user",
+    "data": {
+        "user": [{
+            "password": "ds45ds45fd45fd",
+            "salt": "salt",
+            "key": "key",
+            "login": "User",
+            "email": "querty@querty.com",
+            "username": "User1"
+            }],
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (успех):
+
+```javascript
+{
+    "type": "register_user",
+    "data": {
+        "user": [{
+            "uuid": "1234567",
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 200,
+        "status": "OK",
+        "time": 1594492370,
+        "detail": "successfully"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
+Пример ответа (ошибка):
+
+```javascript
+{
+    "type": "register_user",
+    "data": null,
+    "errors": {
+        "code": 400,
+        "status": "Bad Request",
+        "time": 1594492370,
+        "detail": "Bad Request"
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
 ### Метод get_update
 
 Позволяет получить от сервера обновление общедоступной информации (сообщений, чатов, пользовательских данных) за период от времени `time` до текущего времени.
@@ -661,6 +731,45 @@ _Примечание:_
     }
 ```
 
+Пример ответа (успех, более 100 сообщений):
+
+```javascript
+{
+    "type": "all_messages",
+    "data": {
+        "flow": [{
+            "uuid": "123",
+            "message_end": 256
+            }],
+        "message": [{
+            "uuid": "1",
+            "text": "some text...",
+            "from_user": "1234567",
+            "time": 1594492370,
+            "from_flow": "123655455",
+            "file_picture": "jkfikdkdsd",
+            "file_video": "sdfsdfsdf",
+            "file_audio": "fgfsdfsdfsdf",
+            "file_document": "fghsfghsfgh"
+            "emoji": "sfdfsdfsdf",
+            "edited_time": 1594492370,
+            "edited_status": true
+            }],
+        "meta": null
+        },
+    "errors": {
+        "code": 206,
+        "status": "Partial Content",
+        "time": 1594492370,
+        "detail": "Information provided partially."
+        },
+    "jsonapi": {
+        "version": "1.0"
+        },
+    "meta": null
+    }
+```
+
 Пример ответа (ошибка):
 
 ```javascript
@@ -735,6 +844,32 @@ _Примечание:_
     "jsonapi": {
         "version": "1.0",
         "revision": "17"
+        },
+    "meta": null
+    }
+```
+
+Пример запроса (создание chat):
+
+```javascript
+{
+    "type": "add_flow",
+    "data": {
+        "flow": [{
+            "type": "chat",
+            "title": "title",
+            "info": "info",
+            "owner": "123456",
+            "users": ["123456", "654987"]
+            }],
+        "user": [{
+            "uuid": "1234566",
+            "auth_id": "auth_id"
+            },
+        "meta": null
+        },
+    "jsonapi": {
+        "version": "1.0"
         },
     "meta": null
     }
