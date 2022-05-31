@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.46">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>Описание методов | MoreliaProtocol Documentation</title><meta name="description" content="">
+    <link rel="modulepreload" href="/morelia_protocol/assets/app.ffc166f1.js"><link rel="modulepreload" href="/morelia_protocol/assets/methods.html.63d0ecc6.js"><link rel="modulepreload" href="/morelia_protocol/assets/methods.html.e0644915.js"><link rel="prefetch" href="/morelia_protocol/assets/index.html.4f229f72.js"><link rel="prefetch" href="/morelia_protocol/assets/api.html.26d4d43e.js"><link rel="prefetch" href="/morelia_protocol/assets/errors.html.1b70aa8e.js"><link rel="prefetch" href="/morelia_protocol/assets/404.html.84caf70f.js"><link rel="prefetch" href="/morelia_protocol/assets/index.html.c1d5412b.js"><link rel="prefetch" href="/morelia_protocol/assets/api.html.2dbfae84.js"><link rel="prefetch" href="/morelia_protocol/assets/errors.html.4f07c804.js"><link rel="prefetch" href="/morelia_protocol/assets/404.html.06a49fd2.js"><link rel="prefetch" href="/morelia_protocol/assets/404.e1ba022b.js"><link rel="prefetch" href="/morelia_protocol/assets/Layout.631d0bdd.js">
+    <link rel="stylesheet" href="/morelia_protocol/assets/style.52294613.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/morelia_protocol/" class=""><!----><span class="site-name">MoreliaProtocol Documentation</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><!----><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><!----><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active"> <!----></p><ul style="" class="sidebar-item-children"><!--[--><li><a href="/morelia_protocol/README.md" class="sidebar-item" aria-label="О протоколе"><!--[--><!--]--> О протоколе <!--[--><!--]--></a><!----></li><li><a href="/morelia_protocol/api.html" class="sidebar-item" aria-label="Описание API"><!--[--><!--]--> Описание API <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="Описание методов"><!--[--><!--]--> Описание методов <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-register-user" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод register_user"><!--[--><!--]--> Метод register_user <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-register-user-1" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод register_user"><!--[--><!--]--> Метод register_user <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-get-update" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод get_update"><!--[--><!--]--> Метод get_update <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-send-message" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод send_message"><!--[--><!--]--> Метод send_message <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-all-messages" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод all_messages"><!--[--><!--]--> Метод all_messages <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-add-flow" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод add_flow"><!--[--><!--]--> Метод add_flow <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-all-flow" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод all_flow"><!--[--><!--]--> Метод all_flow <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-user-info" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод user_info"><!--[--><!--]--> Метод user_info <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-authentication" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод authentication"><!--[--><!--]--> Метод authentication <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-delete-user" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод delete_user"><!--[--><!--]--> Метод delete_user <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-delete-message" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод delete_message"><!--[--><!--]--> Метод delete_message <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-edited-message" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод edited_message"><!--[--><!--]--> Метод edited_message <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-ping-pong" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод ping_pong"><!--[--><!--]--> Метод ping_pong <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/morelia_protocol/methods.html#метод-error" class="router-link-active router-link-exact-active sidebar-item" aria-label="Метод error"><!--[--><!--]--> Метод error <!--[--><!--]--></a><!----></li><!--]--></ul></li><li><a href="/morelia_protocol/errors.html" class="sidebar-item" aria-label="Описание ошибок"><!--[--><!--]--> Описание ошибок <!--[--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="описание-методов" tabindex="-1"><a class="header-anchor" href="#описание-методов" aria-hidden="true">#</a> Описание методов</h1><p>Имя метода передается как значение поля <code>type</code> внутри объекта сериализованного как строка с JSON-форматированием. Передача имени метода происходит как при запросе, так и при ответе. Ниже описаны примеры запросов и ответы на них.</p><p><em>Примечание:</em></p><ul><li>запрос в котором указан неподдерживаемый тип метода или вовсе отсутствует указание на тип метода вернёт ошибку <a href="#%D0%BA%D0%BE%D0%B4-405-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-method-not-allowed">405 Method Not Allowed</a></li><li>запрос который не проходит валидацию вернёт ошибку <a href="#%D0%BA%D0%BE%D0%B4-415-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81-unsupported-media-type">415 Unsupported Media Type</a>.</li></ul><h2 id="метод-register-user" tabindex="-1"><a class="header-anchor" href="#метод-register-user" aria-hidden="true">#</a> Метод register_user</h2><p>Метод позволяет зарегистрировать нового пользователя. В поле <code>password</code> клиент передает не пароль, а хэш от пароля который был получен клиентом самостоятельно. В ответ сервер отправляет клиенту его уникальный номер <code>uuid</code> токен и время жизни сессии <code>auth_id</code> и <code>token_ttl</code> соответственно.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ds45ds45fd45fd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;querty@querty.com&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User1&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">234345345435</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;35fg673g56fggfg735jg67&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;token_ttl&quot;</span><span class="token operator">:</span> <span class="token number">6000</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">201</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;CREATED&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Created&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">409</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;CONFLICT&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Conflict&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-register-user-1" tabindex="-1"><a class="header-anchor" href="#метод-register-user-1" aria-hidden="true">#</a> Метод register_user</h2><p>Метод позволяет зарегистрировать нового пользователя.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ds45ds45fd45fd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;salt&quot;</span><span class="token operator">:</span> <span class="token string">&quot;salt&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;key&quot;</span><span class="token operator">:</span> <span class="token string">&quot;key&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;email&quot;</span><span class="token operator">:</span> <span class="token string">&quot;querty@querty.com&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User1&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;register_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bad Request&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bad Request&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-get-update" tabindex="-1"><a class="header-anchor" href="#метод-get-update" aria-hidden="true">#</a> Метод get_update</h2><p>Позволяет получить от сервера обновление общедоступной информации (сообщений, чатов, пользовательских данных) за период от времени <code>time</code> до текущего времени.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;get_update&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;token_ttl&quot;</span><span class="token operator">:</span> <span class="token number">6000</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;get_update&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">23423535</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1254&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Name Chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Info about this chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;654789&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;client_id&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;some text...&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_flow&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123655455&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_picture&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jkfikdkdsd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_video&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_audio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fgfsdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_document&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fghsfghsfgh&quot;</span>
+            <span class="token property">&quot;emoji&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sfdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_status&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Vasya&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;is_bot&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;avatar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fffdddddd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;bio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;My bio&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time_created&quot;</span><span class="token operator">:</span> <span class="token number">345345345345</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;get_update&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-send-message" tabindex="-1"><a class="header-anchor" href="#метод-send-message" aria-hidden="true">#</a> Метод send_message</h2><p>Метод позволяет отправить сообщение в поток <code>flow</code>. Для того чтобы сделать привязку отправленного клиентом сообщения с ответным <code>uuid</code> от сервера - клиент, в своём запросе <strong>обязательно</strong> указывает сгенерированный им <code>client_id</code>. В случае успеха сервер возвращает в ответе <code>message</code> со значениями <code>uuid</code>, <code>from_user</code>, <code>from_flow</code> и неизменный <code>client_id</code>.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;send_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;client_id&quot;</span><span class="token operator">:</span> <span class="token number">1234</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hello!&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_picture&quot;</span><span class="token operator">:</span> b<span class="token string">&quot;jkfikdkdsd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_video&quot;</span><span class="token operator">:</span> b<span class="token string">&quot;sdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_audio&quot;</span><span class="token operator">:</span> b<span class="token string">&quot;fgfsdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_document&quot;</span><span class="token operator">:</span> b<span class="token string">&quot;adgdfhfgth&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;emoji&quot;</span><span class="token operator">:</span> b<span class="token string">&quot;sfdfsdfsdf&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;send_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">45346456</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;858585&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;client_id&quot;</span> <span class="token number">123</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_flow&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;send_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-all-messages" tabindex="-1"><a class="header-anchor" href="#метод-all-messages" aria-hidden="true">#</a> Метод all_messages</h2><p>Метод позволяет получить все сообщения в потоке <code>flow</code>, за период с начала времени <code>time</code> по настоящее время. Сервер за один запрос выдаёт не более 100 сообщений, по порядку с учётом начального порядкового номера сообщения указанного в <code>message_start</code>. Если в запросе будет отсутствовать <code>message_start</code> или количество сообщений больше 100 - сервер в ответе сообщит клиенту общее количество сообщений в ключе <code>message_end</code>. Если количество сообщений в потоке больше чем лимит (100) в <code>errors</code> будет указываться статус &quot;Partial Content&quot; с кодом &quot;206&quot;.</p><p>Пример запроса (отсутствуют <code>message_start</code> и <code>message_end</code>):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_messages&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_messages&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;message_start&quot;</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;message_end&quot;</span><span class="token operator">:</span> <span class="token number">99</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех, до 100 сообщений):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_messages&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;some text...&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_flow&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123655455&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_picture&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jkfikdkdsd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_video&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_audio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fgfsdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_document&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fghsfghsfgh&quot;</span>
+            <span class="token property">&quot;emoji&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sfdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_status&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех, более 100 сообщений):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_messages&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;message_end&quot;</span><span class="token operator">:</span> <span class="token number">256</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;some text...&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_flow&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123655455&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_picture&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jkfikdkdsd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_video&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_audio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fgfsdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_document&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fghsfghsfgh&quot;</span>
+            <span class="token property">&quot;emoji&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sfdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_status&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">206</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Partial Content&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Information provided partially.&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех, более 100 сообщений):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_messages&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;message_end&quot;</span><span class="token operator">:</span> <span class="token number">256</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;some text...&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_user&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;from_flow&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123655455&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_picture&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jkfikdkdsd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_video&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_audio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fgfsdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;file_document&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fghsfghsfgh&quot;</span>
+            <span class="token property">&quot;emoji&quot;</span><span class="token operator">:</span> <span class="token string">&quot;sfdfsdfsdf&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;edited_status&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">206</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Partial Content&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Information provided partially.&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-add-flow" tabindex="-1"><a class="header-anchor" href="#метод-add-flow" aria-hidden="true">#</a> Метод add_flow</h2><p>Метод позволяет создать новый поток <code>flow</code>. При создании <code>flow</code> с типом <code>chat</code> в ключе <code>users</code> необходимо указать uuid двух пользователей. При создании <code>flow</code> с любым типом ключ <code>owner</code> должен содержать uuid владельца этого <code>flow</code>.</p><p>Пример запроса (создание <code>group</code> и <code>channel</code>):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;add_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;12345&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;65478&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;auth_id&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример запроса (создание <code>chat</code>):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;add_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;654987&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234566&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;auth_id&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример запроса (создание chat):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;add_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;654987&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234566&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;auth_id&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;add_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">346456457567</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5655&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;title&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;info&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;654987&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;add_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-all-flow" tabindex="-1"><a class="header-anchor" href="#метод-all-flow" aria-hidden="true">#</a> Метод all_flow</h2><p>Метод позволяет получить от сервера перечень всех потоков <code>flow</code> которые зарегистрированы на сервере.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">345345345</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5655&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;title&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Some chat&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;info&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Info from some chat&quot;</span>
+            <span class="token property">&quot;owner&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;users&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;123456&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;654987&quot;</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>...<span class="token punctuation">}</span><span class="token punctuation">]</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;all_flow&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-user-info" tabindex="-1"><a class="header-anchor" href="#метод-user-info" aria-hidden="true">#</a> Метод user_info</h2><p>Метод позволяет клиенту получить от сервера информацию о своих настройках и настройках других пользователей. При этом в ответе сервера содержится только та информация, которая пользователем разрешена к публикации, в настройках клиента.</p><p>В одном запросе можно указать не более 100 пользователей, если запрошено больше пользователей сервер возвратит ошибку. Первый по очереди UUID должен принадлежать пользователю который делает запрос.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;user_info&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dks7sd9f6g4fg67vb78g65&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234568&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234569&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;user_info&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">345345345</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234568&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;tony95&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Tony&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;is_bot&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;avatar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fffdddddd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;bio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;My bio&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time_created&quot;</span><span class="token operator">:</span> <span class="token number">345345345345</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234569&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;maria_pele0&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Marta&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;is_bot&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;avatar&quot;</span><span class="token operator">:</span> <span class="token string">&quot;fffdddddd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;bio&quot;</span><span class="token operator">:</span> <span class="token string">&quot;My bio&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;time_created&quot;</span><span class="token operator">:</span> <span class="token number">345345345345</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;user_info&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка при запросе более 100 UUID):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;user_info&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">429</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Too Many Requests&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Too much data has been requested&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка при запросе 0 пользователей):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;user_info&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bad Request&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Bad Request&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-authentication" tabindex="-1"><a class="header-anchor" href="#метод-authentication" aria-hidden="true">#</a> Метод authentication</h2><p>Метод позволяет клиенту пройти процедуру подтверждения своей личности (аутентификацию) на сервере. Сервер проверяет наличие логина и пароля в базе данных и если клиент с такими данными существует, в ответе указывается <code>uuid</code>, токен <code>auth_id</code> и время его жизни <code>token_ttl</code>.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;authentication&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ds45ds45fd45fd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;authentication&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">2345345</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;lkds89ds89fd98fd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;token_ttl&quot;</span><span class="token operator">:</span> <span class="token number">6000</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;authentication&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-delete-user" tabindex="-1"><a class="header-anchor" href="#метод-delete-user" aria-hidden="true">#</a> Метод delete_user</h2><p>Метод позволяет клиенту удалить пользователя. При этом, сервер не удаляет запись о пользователе из БД, а делает замену следующим образом:</p><ul><li>содержимое полей <code>login</code> и <code>username</code> заменяется на &quot;User deleted&quot;;</li><li>содержимое полей: <code>salt</code>, <code>key</code>, <code>bio</code> заменяется на &quot;deleted&quot;;</li><li>содержимое полей <code>avatar</code> и <code>email</code> заменяется на пустое значение &quot;&quot;;</li><li>содержимое поля <code>password</code>, <code>hashPassword</code> и <code>auth_id</code>, <code>time_created</code> заменяется на случайным образом сгенерированное число размером 64 символа.</li></ul><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;password&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ds45ds45fd45fd&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;salt&quot;</span><span class="token operator">:</span> <span class="token string">&quot;salt&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;key&quot;</span><span class="token operator">:</span> <span class="token string">&quot;key&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;login&quot;</span><span class="token operator">:</span> <span class="token string">&quot;User&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;jkfdjkfdjkf&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_user&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-delete-message" tabindex="-1"><a class="header-anchor" href="#метод-delete-message" aria-hidden="true">#</a> Метод delete_message</h2><p>Метод позволяет клиенту удалить своё сообщение. При этом, сервер не удаляет сообщение из БД, а делает замену следующим образом:</p><ul><li>содержимое поля <code>text</code> заменяется на &quot;Message deleted&quot;;</li><li>содержимое полей: <code>filePicture</code>, <code>fileVideo</code>, <code>fileAudio</code>, <code>fileDocument</code>, <code>emoji</code> заменяется на пустое значение &quot;&quot;;</li><li>значение поля <code>editedTime</code> устанавливается равным текущему времени;</li><li>значение поля <code>editedStatus</code> устанавливается равным <code>True</code>;</li></ul><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;flow&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;858585&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;lkds89ds89fd98fd&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;delete_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-edited-message" tabindex="-1"><a class="header-anchor" href="#метод-edited-message" aria-hidden="true">#</a> Метод edited_message</h2><p>Метод позволяет клиенту отредактировать своё сообщение.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;edited_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;message&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;858585&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;text&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Hello!&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;lkds89ds89fd98fd&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;edited_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;edited_message&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-ping-pong" tabindex="-1"><a class="header-anchor" href="#метод-ping-pong" aria-hidden="true">#</a> Метод ping_pong</h2><p>Метод позволяет определить наличие связи между сервером и клиентом. При отсутствии ответа сервер удаляет сессию клиента из памяти.</p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ping_pong&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;user&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+            <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;lkds89ds89fd98fd&quot;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (успех):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ping_pong&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;OK&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;successfully&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа (ошибка):</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ping_pong&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unauthorized&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jsonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+    <span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="метод-error" tabindex="-1"><a class="header-anchor" href="#метод-error" aria-hidden="true">#</a> Метод error</h2><p>В случае если запрос к серверу/клиенту им не распознан должен выдаваться стандартный тип ответа: <code>error</code>, который в себе содержит объект <code>errors</code> с описанием возникшей ошибки.</p><p><em>Примечание:</em></p><p><em>В качестве примера приведен запрос клиента, который не содержит ключа <code>type</code>. Такой запрос не пройдёт валидацию сервером и вызовет ошибку с кодом 415 &quot;Unsupported Media Type&quot;</em><em>В ответ сервер посылает JSON-объект с указанием имени метода <code>error</code> и информацией о возникшей ошибке, в поле <code>errors</code>.</em></p><p>Пример запроса:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;uuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1234567&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;auth_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;asdfadsfadfggzasd&quot;</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>Пример ответа:</p><div class="language-json ext-json line-numbers-mode"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;error&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;data&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;errors&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;code&quot;</span><span class="token operator">:</span> <span class="token number">415</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;status&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unsupported Media Type&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;time&quot;</span><span class="token operator">:</span> <span class="token number">1594492370</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;detail&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Unsupported data type (no validation passed)&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;jasonapi&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;1.0&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;revision&quot;</span><span class="token operator">:</span> <span class="token string">&quot;17&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;meta&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!--[--><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><!----></div><!----></footer><nav class="page-nav"><p class="inner"><span class="prev"><a href="/morelia_protocol/api.html" class="" aria-label="Описание API"><!--[--><!--]--> Описание API <!--[--><!--]--></a></span><span class="next"><a href="/morelia_protocol/errors.html" class="" aria-label="Описание ошибок"><!--[--><!--]--> Описание ошибок <!--[--><!--]--></a></span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/morelia_protocol/assets/app.ffc166f1.js" defer></script>
+  </body>
+</html>
