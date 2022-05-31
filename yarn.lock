@@ -2359,7 +2359,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    vuepress: next
+    vuepress: v2.0.0-beta.46
   languageName: unknown
   linkType: soft
 
@@ -2758,7 +2758,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vuepress@npm:next":
+"vuepress@npm:v2.0.0-beta.46":
   version: 2.0.0-beta.46
   resolution: "vuepress@npm:2.0.0-beta.46"
   dependencies:
