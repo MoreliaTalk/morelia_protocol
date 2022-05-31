@@ -12,6 +12,7 @@ module.exports = {
         editLinks: false,
         docsDir: '',
         editLinkText: '',
+        contributors: false,
         sidebar: [{
             children: [
                 {
