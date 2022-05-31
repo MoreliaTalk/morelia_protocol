@@ -1,0 +1,30 @@
+name: Build and deploy docs
+
+on:
+  push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: 'yarn'
+        
+    - name: Install dependencies
+      run: yarn install
+    
+    - name: Build docs
+      run: yarn build
+      
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.2.3
+      with:
+        branch: docs
+        folder: ./src/.vuepress/dist
+    
+    
