@@ -1,0 +1,10 @@
+{
+  "packageManager": "yarn@3.2.1",
+  "dependencies": {
+    "vuepress": "v2.0.0-beta.46"
+  },
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  }
+}
